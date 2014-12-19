@@ -11,7 +11,7 @@ import model.Person;
 public class PersonAdapter {
     private static PersonAdapter mInstance;
     public static final String PREFS_NAME = "MyPrefsFile";
-   // public static final String PROPERTY_REG_ID = "registration_id";
+    public static final String PROPERTY_REG_ID = "registration_id";
     private Context mContext;
     SharedPreferences settings;
     private Person person;

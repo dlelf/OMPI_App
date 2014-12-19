@@ -3,14 +3,19 @@ package isst.fraunhofer.de.ompi;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
 import isst.fraunhofer.de.ompi.activities.TemplateActivity;
+import isst.fraunhofer.de.ompi.adapter.CycleAdapter;
+import isst.fraunhofer.de.ompi.adapter.RestAdapter;
 import isst.fraunhofer.de.ompi.util.SystemUiHider;
+import model.Cycle;
 
 //import isst.fraunhofer.de.ompi.util.Greeting;
 
@@ -22,6 +27,8 @@ import isst.fraunhofer.de.ompi.util.SystemUiHider;
  * @see SystemUiHider
  */
 public class Start extends Activity {
+    RestAdapter restAdapter;
+    Cycle cycle;
     /**
      * Whether or not the system UI should be auto-hidden after
      * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
@@ -168,35 +175,36 @@ public class Start extends Activity {
     @Override
     protected void onStart() {
         super.onStart();
+        /*HRVAdapter hrvAdapter = HRVAdapter.getInstance(this);
+        hrvAdapter.checkFiles();*/
+        CycleAdapter cycleAdapter=CycleAdapter.getInstance(this);
+        restAdapter = RestAdapter.getInstance(this);
+        cycle =cycleAdapter.createCycle();
+        System.out.print("Cycle readed successfull");
+        new HttpRequestTask().execute();
+
+
+
+
+
+
         //new HttpRequestTask().execute();
     }
 
-   /* private class HttpRequestTask extends AsyncTask<Void, Void, Greeting> {
+    private class HttpRequestTask extends AsyncTask<Void, Void, Cycle> {
         @Override
-        protected Greeting doInBackground(Void... params) {
+        protected Cycle doInBackground(Void... params) {
             try {
-                //final String url = "http://rest-service.guides.spring.io/greeting";
-                final String url = "http://192.168.200.176:8080/greeting";
-                RestTemplate restTemplate = new RestTemplate();
-                restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
-                Greeting greeting = restTemplate.getForObject(url, Greeting.class);
-                return greeting;
+
+                restAdapter.sendCycle(cycle);
+
             } catch (Exception e) {
                 Log.e("MainActivity", e.getMessage(), e);
             }
-
-            return null;
+            return cycle;
         }
 
-        @Override
-        protected void onPostExecute(Greeting greeting) {
-            TextView greetingIdText = (TextView) findViewById(R.id.id_value);
-            TextView greetingContentText = (TextView) findViewById(R.id.fullscreen_content);
-            //greetingIdText.setText(greeting.getId());
-            greetingContentText.setText(greeting.getContent());
-        }
-
-    }*/
+    }
 
     public void nextStep(){
         Intent intent = new Intent(this, TemplateActivity.class);

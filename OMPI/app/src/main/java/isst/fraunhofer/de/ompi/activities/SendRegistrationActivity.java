@@ -9,11 +9,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
-import org.springframework.web.client.RestTemplate;
-
 import isst.fraunhofer.de.ompi.R;
 import isst.fraunhofer.de.ompi.adapter.PersonAdapter;
+import isst.fraunhofer.de.ompi.adapter.RestAdapter;
 import model.Person;
 
 /**
@@ -27,6 +25,7 @@ public class SendRegistrationActivity extends Activity {
     public static final String PREFS_NAME = "MyPrefsFile";
    // public static final String PROPERTY_REG_ID = "registration_id";
    PersonAdapter personAdapter;
+    RestAdapter restAdapter;
 
     Button nextButton;
     TextView text;
@@ -38,8 +37,11 @@ public class SendRegistrationActivity extends Activity {
     protected void onStart() {
         super.onStart();
         personAdapter = PersonAdapter.getInstance(this);
+        restAdapter = RestAdapter.getInstance(this);
+
         person=personAdapter.getPerson();
         new HttpRequestTask().execute();
+
 
     }
 
@@ -71,17 +73,13 @@ public class SendRegistrationActivity extends Activity {
         @Override
         protected Person doInBackground(Void... params) {
             try {
-                //final String url = "http://rest-service.guides.spring.io/greeting";
-                final String url = "http://192.168.200.168:8080/people";
-                RestTemplate restTemplate = new RestTemplate();
-                restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
-                restTemplate.postForObject(url, person, Person.class);
-                return person;
+
+                 restAdapter.sendPerson(person);
+
             } catch (Exception e) {
                 Log.e("MainActivity", e.getMessage(), e);
             }
-
-            return null;
+            return person;
         }
 
         @Override

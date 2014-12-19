@@ -2,8 +2,11 @@ package model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import java.io.Serializable;
+import java.util.List;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Person {
+public class Person  implements Serializable {
 
 
 	private long id;
@@ -20,20 +23,8 @@ public class Person {
 
 
 	private Integer groupNr;
-	
 
-	private Status status;
-	
-	/*@OneToMany(mappedBy="person")	
-	private List<Cycle>  cycles;*/
-	
-	public Status getStatus() {
-		return status;
-	}
-
-	public void setStatus(Status status) {
-		this.status = status;
-	}
+	private List<Cycle> cycles;
 
 	private String googleCloudId;
 

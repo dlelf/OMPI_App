@@ -2,20 +2,17 @@ package isst.fraunhofer.de.ompi;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
-import android.os.AsyncTask;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.TextView;
 
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
-import org.springframework.web.client.RestTemplate;
-
-import isst.fraunhofer.de.ompi.util.Greeting;
+import isst.fraunhofer.de.ompi.activities.TemplateActivity;
 import isst.fraunhofer.de.ompi.util.SystemUiHider;
+
+//import isst.fraunhofer.de.ompi.util.Greeting;
 
 
 /**
@@ -143,7 +140,10 @@ public class Start extends Activity {
         public boolean onTouch(View view, MotionEvent motionEvent) {
             if (AUTO_HIDE) {
                 delayedHide(AUTO_HIDE_DELAY_MILLIS);
+
+
             }
+            nextStep();
             return false;
         }
     };
@@ -168,10 +168,10 @@ public class Start extends Activity {
     @Override
     protected void onStart() {
         super.onStart();
-        new HttpRequestTask().execute();
+        //new HttpRequestTask().execute();
     }
 
-    private class HttpRequestTask extends AsyncTask<Void, Void, Greeting> {
+   /* private class HttpRequestTask extends AsyncTask<Void, Void, Greeting> {
         @Override
         protected Greeting doInBackground(Void... params) {
             try {
@@ -195,6 +195,12 @@ public class Start extends Activity {
             //greetingIdText.setText(greeting.getId());
             greetingContentText.setText(greeting.getContent());
         }
+
+    }*/
+
+    public void nextStep(){
+        Intent intent = new Intent(this, TemplateActivity.class);
+        startActivity(intent);
 
     }
 }

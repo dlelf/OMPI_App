@@ -23,7 +23,6 @@ import model.Person;
 public class SendRegistrationActivity extends Activity {
 
     public static final String PREFS_NAME = "MyPrefsFile";
-   // public static final String PROPERTY_REG_ID = "registration_id";
    PersonAdapter personAdapter;
     RestAdapter restAdapter;
 

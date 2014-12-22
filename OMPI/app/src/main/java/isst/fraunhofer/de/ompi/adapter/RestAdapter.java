@@ -7,6 +7,7 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 import org.springframework.web.client.RestTemplate;
 
 import model.Cycle;
+import model.HRV;
 import model.Person;
 
 /**
@@ -17,7 +18,8 @@ public class RestAdapter {
     SharedPreferences settings;
     private static RestAdapter mInstance;
     public static final String PREFS_NAME = "MyPrefsFile";
-    public static final String url = "http://192.168.200.186:8080/people";
+    public static final String url = "http://192.168.200.154:8080";
+
 
 
 
@@ -39,14 +41,20 @@ public class RestAdapter {
 
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
-        restTemplate.postForObject(url, person, Person.class);
+        restTemplate.postForObject(url+"/people", person, Person.class);
 
     }
 
     public void sendCycle(Cycle cycle){
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
-        restTemplate.postForObject(url, cycle, Cycle.class);
+        restTemplate.postForObject(url+"/cycle", cycle, Cycle.class);
+
+    }
+    public void sendHRV(HRV hrv){
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
+        restTemplate.postForObject(url+"/HRV", hrv, HRV.class);
 
     }
 

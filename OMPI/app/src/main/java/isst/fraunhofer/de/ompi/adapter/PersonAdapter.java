@@ -42,7 +42,7 @@ public class PersonAdapter {
         Person person = new Person();
 
         person.setLongId( settings.getString("personId",""));
-        person.setGoogleCloudId(settings.getString("googleId",""));
+        person.setGoogleCloudId(settings.getString( PROPERTY_REG_ID,""));
 
         return person;
 
@@ -55,5 +55,7 @@ public class PersonAdapter {
         editor.commit();
 
     }
+
+
 
 }

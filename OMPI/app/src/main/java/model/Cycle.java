@@ -1,7 +1,7 @@
 package model;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  * Created by durin on 19/12/2014.
@@ -10,15 +10,15 @@ public class Cycle  implements Serializable {
 
     private long id;
     private long date;
-    private List<GoodThing> goodThings;
+    private ArrayList<GoodThing> goodThings = new ArrayList<>(3);
     private Person person;
     private String childMemory;
 
-    public List<GoodThing> getGoodThings() {
+    public ArrayList<GoodThing> getGoodThings() {
         return goodThings;
     }
 
-    public void setGoodThings(List<GoodThing> goodThings) {
+    public void setGoodThings(ArrayList<GoodThing> goodThings) {
         this.goodThings = goodThings;
     }
 
@@ -56,15 +56,15 @@ public class Cycle  implements Serializable {
 
 
 
-    public List<HRV> getHRV() {
+    public ArrayList<HRV> getHRV() {
         return HRV;
     }
 
-    public void setHRV(List<HRV> HRV) {
+    public void setHRV(ArrayList<HRV> HRV) {
        // for (HRV hrv:HRV)
        // this.HRV.add(hrv);
         this.HRV = HRV;
     }
 
-    private List<HRV> HRV;
+    private ArrayList<HRV> HRV = new ArrayList<>(165);
 }

@@ -11,11 +11,16 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
+import java.util.ArrayList;
+
 import isst.fraunhofer.de.ompi.activities.TemplateActivity;
-import isst.fraunhofer.de.ompi.adapter.CycleAdapter;
+import isst.fraunhofer.de.ompi.adapter.HRVAdapter;
 import isst.fraunhofer.de.ompi.adapter.RestAdapter;
+import isst.fraunhofer.de.ompi.adapter.WebAPI;
 import isst.fraunhofer.de.ompi.util.SystemUiHider;
 import model.Cycle;
+import model.Greeting;
+import model.HRV;
 
 //import isst.fraunhofer.de.ompi.util.Greeting;
 
@@ -28,6 +33,7 @@ import model.Cycle;
  */
 public class Start extends Activity {
     RestAdapter restAdapter;
+    HRVAdapter hrvAdapter ;
     Cycle cycle;
     /**
      * Whether or not the system UI should be auto-hidden after
@@ -175,12 +181,31 @@ public class Start extends Activity {
     @Override
     protected void onStart() {
         super.onStart();
-        /*HRVAdapter hrvAdapter = HRVAdapter.getInstance(this);
-        hrvAdapter.checkFiles();*/
-        CycleAdapter cycleAdapter=CycleAdapter.getInstance(this);
+        final WebAPI webservices = new WebAPI(this);
+        Greeting gr = webservices.getService().getPerson();
+
+
+
+        hrvAdapter = HRVAdapter.getInstance(this);
+        restAdapter=RestAdapter.getInstance(this);
+        /*hrvAdapter.checkFiles();
+
+
+
+        CycleAdapter cycleAdapter= CycleAdapter.getInstance(this);
         restAdapter = RestAdapter.getInstance(this);
-        cycle =cycleAdapter.createCycle();
-        System.out.print("Cycle readed successfull");
+        cycle = new Cycle();
+        cycle.setChildMemory("dddd");
+        Person person = new Person();
+        person.setId(53);
+        cycle.setPerson(person);*/
+
+
+        /*HRV hrv = new HRV();
+        hrv.setStep(5);
+        cycle.getHRV().add(hrv);
+        //cycle =cycleAdapter.createCycle();
+        System.out.print("Cycle readed successfull");*/
         new HttpRequestTask().execute();
 
 
@@ -195,13 +220,15 @@ public class Start extends Activity {
         @Override
         protected Cycle doInBackground(Void... params) {
             try {
-
-                restAdapter.sendCycle(cycle);
-
+                ArrayList<HRV> measurement = hrvAdapter.getHRV();
+                for (HRV hrv : measurement) {
+                    restAdapter.sendHRV(hrv);
+                    Log.i("Start", "Sending hrv:" + hrv.getRrInterval());
+                }
             } catch (Exception e) {
                 Log.e("MainActivity", e.getMessage(), e);
             }
-            return cycle;
+           return cycle;
         }
 
     }

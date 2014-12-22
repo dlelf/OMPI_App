@@ -37,4 +37,12 @@ dependencies {
     //compile 'com.google.code.gson:gson:2.3.1'           // Json Konvertierung
     //compile 'com.google.android.gms:play-services:6.5.+'
     compile "com.google.android.gms:play-services:3.1.+"
+    compile 'com.squareup.retrofit:retrofit:1.8.0'                      // Webservice API
+    compile 'com.squareup.okhttp:okhttp-urlconnection:2.1.0'            // Wird von Retrofit gebraucht
+    compile 'com.squareup.okhttp:okhttp:2.1.0'                          // Wird von Retrofit gebraucht
+    compile ('com.squareup.retrofit:converter-simplexml:1.8.0') {       // Wird von Retrofit gebraucht
+        exclude module: 'stax'
+        exclude module: 'stax-api'
+        exclude module: 'xpp3'
+    }
 }

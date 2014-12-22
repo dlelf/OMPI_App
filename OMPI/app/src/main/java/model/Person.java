@@ -3,7 +3,7 @@ package model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.ArrayList;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Person  implements Serializable {
@@ -22,9 +22,25 @@ public class Person  implements Serializable {
     private String longId;
 
 
-	private Integer groupNr;
+    public Integer getGroupNr() {
+        return groupNr;
+    }
 
-	private List<Cycle> cycles;
+    public void setGroupNr(Integer groupNr) {
+        this.groupNr = groupNr;
+    }
+
+    public ArrayList<Cycle> getCycles() {
+        return cycles;
+    }
+
+    public void setCycles(ArrayList<Cycle> cycles) {
+        this.cycles = cycles;
+    }
+
+    private Integer groupNr;
+
+	private ArrayList<Cycle> cycles= new ArrayList<>(10);
 
 	private String googleCloudId;
 

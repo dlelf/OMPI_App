@@ -29,7 +29,8 @@ public class CycleAdapter {
         cycle.setPerson(personAdapter.getPerson());
         cycle.setDate(getCurrentDate());
         hrvAdapter.setCycle(cycle);
-        cycle.setHRV(hrvAdapter.getHRV());
+        //cycle.setHRV(hrvAdapter.getHRV());
+        cycle.getHRV().add(hrvAdapter.getHRV().get(0));
         mCycle = cycle;
         return cycle;
 

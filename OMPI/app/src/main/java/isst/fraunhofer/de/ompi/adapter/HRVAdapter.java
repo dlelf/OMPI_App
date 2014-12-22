@@ -10,7 +10,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 import model.Cycle;
 import model.HRV;
@@ -27,7 +26,7 @@ public class HRVAdapter {
     private Cycle cycle;
 
 
-    public List<HRV> getHRV(){
+    public ArrayList<HRV> getHRV(){
 
         File files[] = checkFiles();
         if (files.length ==1)
@@ -51,8 +50,8 @@ public class HRVAdapter {
         return files;
     }
 
-    public List<HRV> readFile(File file){
-        List<HRV> measurement =new ArrayList<HRV>();
+    public ArrayList<HRV> readFile(File file){
+        ArrayList<HRV> measurement =new ArrayList<HRV>();
 
         try {
             BufferedReader br = new BufferedReader(new FileReader(file));

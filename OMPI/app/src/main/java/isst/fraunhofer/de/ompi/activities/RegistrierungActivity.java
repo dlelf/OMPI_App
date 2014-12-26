@@ -17,6 +17,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import isst.fraunhofer.de.ompi.R;
 import isst.fraunhofer.de.ompi.adapter.GCMAdapter;
+import isst.fraunhofer.de.ompi.adapter.Scheduler;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -32,6 +33,7 @@ public class RegistrierungActivity extends Activity {
     public static final String PREFS_NAME = "MyPrefsFile";
     final String appPackageName = "com.RMT.ompihrv";
     SharedPreferences settings;
+    Scheduler scheduler;
 
     Context context;
     Button nextButton;
@@ -47,6 +49,7 @@ public class RegistrierungActivity extends Activity {
         settings = getSharedPreferences(PREFS_NAME, 0);
         context = getApplicationContext();
         gcmAdapter = GCMAdapter.getInstance(context);
+        scheduler=Scheduler.getInstance(this);
 
         nextButton = (Button) this.findViewById(R.id.registrierung_next_button);
         id1 = (EditText) this.findViewById(R.id.registrierung_id1);
@@ -102,9 +105,8 @@ public class RegistrierungActivity extends Activity {
     }
     private void nextActivity(){
 
-        Intent intent = new Intent(this, SendRegistrationActivity.class);
+        Intent intent = new Intent(this,scheduler.chooseNextActivity(this));
         startActivity(intent);
-
     }
 
     private boolean appInstalledOrNot(String uri) {

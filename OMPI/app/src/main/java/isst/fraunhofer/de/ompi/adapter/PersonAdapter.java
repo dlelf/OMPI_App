@@ -8,10 +8,11 @@ import model.Person;
 /**
  * Created by durin on 18/12/2014.
  */
-public class PersonAdapter {
+ public  class PersonAdapter {
     private static PersonAdapter mInstance;
     public static final String PREFS_NAME = "MyPrefsFile";
     public static final String PROPERTY_REG_ID = "registration_id";
+
     private Context mContext;
     SharedPreferences settings;
     private Person person;
@@ -44,6 +45,7 @@ public class PersonAdapter {
         person.setLongId( settings.getString("personId",""));
         person.setGoogleCloudId(settings.getString( PROPERTY_REG_ID,""));
 
+
         return person;
 
     }
@@ -51,7 +53,7 @@ public class PersonAdapter {
     public void saveAll(){
         SharedPreferences.Editor editor = settings.edit();
         editor.putString("personId",person.getLongId());
-        editor.putString("googleId",person.getGoogleCloudId());
+        editor.putString(PROPERTY_REG_ID,person.getGoogleCloudId());
         editor.commit();
 
     }

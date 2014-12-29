@@ -1,6 +1,6 @@
 package isst.fraunhofer.de.ompi.adapter;
 
-import model.Greeting;
+import isst.fraunhofer.de.ompi.model.Greeting;
 import retrofit.http.GET;
 
 /**

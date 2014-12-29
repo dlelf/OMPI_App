@@ -3,7 +3,7 @@ package isst.fraunhofer.de.ompi.adapter;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import model.Person;
+import isst.fraunhofer.de.ompi.model.Person;
 
 /**
  * Created by durin on 18/12/2014.

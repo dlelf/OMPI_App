@@ -5,7 +5,7 @@ import android.content.Context;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import model.Cycle;
+import isst.fraunhofer.de.ompi.model.Cycle;
 
 /**
  * Created by durin on 19/12/2014.

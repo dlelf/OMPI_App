@@ -18,6 +18,4 @@
     <string name="registrierung_id2_text">1. Zahl Ihres Geburtsdatum (z.B 02.01.1993 ->02 eintragen)</string>
     <string name="registrierung_id3_text">1. Buchstabe im Vornamen Ihrer Mutter</string>
     <string name="registrierung_id4_text">1. Buchstabe im Vornamen Ihres Vaters</string>
-
-
 </resources>

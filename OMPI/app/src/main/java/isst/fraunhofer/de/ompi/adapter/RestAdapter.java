@@ -6,9 +6,9 @@ import android.content.SharedPreferences;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 
-import model.Cycle;
-import model.HRV;
-import model.Person;
+import isst.fraunhofer.de.ompi.model.Cycle;
+import isst.fraunhofer.de.ompi.model.HRV;
+import isst.fraunhofer.de.ompi.model.Person;
 
 /**
  * Created by durin on 19/12/2014.

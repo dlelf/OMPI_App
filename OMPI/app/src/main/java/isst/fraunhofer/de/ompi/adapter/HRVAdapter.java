@@ -11,8 +11,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import model.Cycle;
-import model.HRV;
+import isst.fraunhofer.de.ompi.model.Cycle;
+import isst.fraunhofer.de.ompi.model.HRV;
 
 /**
  * Created by durin on 19/12/2014.

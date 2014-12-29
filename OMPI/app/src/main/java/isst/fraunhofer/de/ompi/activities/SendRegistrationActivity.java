@@ -12,7 +12,7 @@ import android.widget.TextView;
 import isst.fraunhofer.de.ompi.R;
 import isst.fraunhofer.de.ompi.adapter.PersonAdapter;
 import isst.fraunhofer.de.ompi.adapter.RestAdapter;
-import model.Person;
+import isst.fraunhofer.de.ompi.model.Person;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.

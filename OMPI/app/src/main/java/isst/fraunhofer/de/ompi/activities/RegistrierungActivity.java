@@ -19,12 +19,7 @@ import isst.fraunhofer.de.ompi.R;
 import isst.fraunhofer.de.ompi.adapter.GCMAdapter;
 import isst.fraunhofer.de.ompi.adapter.Scheduler;
 
-/**
- * An example full-screen activity that shows and hides the system UI (i.e.
- * status bar and navigation/system bar) with user interaction.
- *
- * @see isst.fraunhofer.de.ompi.activities.util.SystemUiHider
- */
+
 public class RegistrierungActivity extends Activity {
 
     GCMAdapter gcmAdapter;

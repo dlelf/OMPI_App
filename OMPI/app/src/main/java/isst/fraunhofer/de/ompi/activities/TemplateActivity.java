@@ -23,6 +23,7 @@ public class TemplateActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_template);
         nextButton = (Button) this.findViewById(R.id.dummy_next_button);
+        text = (TextView)this.findViewById(R.id.fullscreen_content);
 
 
         nextButton.setOnClickListener(new View.OnClickListener() {
@@ -34,8 +35,9 @@ public class TemplateActivity extends Activity {
     }
 
     private void nextActivity(){
-        Intent intent = new Intent(this, RegistrierungActivity.class);
-        startActivity(intent);
+        text.setText(R.string.start_content);
+       // Intent intent = new Intent(this, RegistrierungActivity.class);
+       // startActivity(intent);
 
     }
 

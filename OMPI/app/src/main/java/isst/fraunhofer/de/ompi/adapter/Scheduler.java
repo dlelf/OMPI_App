@@ -12,6 +12,7 @@ import isst.fraunhofer.de.ompi.activities.TemplateActivity;
 import isst.fraunhofer.de.ompi.activities.WaitForRegistrationActivity;
 import isst.fraunhofer.de.ompi.activities.InstructionActivity;
 import isst.fraunhofer.de.ompi.activities.LinkActivity;
+import isst.fraunhofer.de.ompi.activities.HRVResultActivity;
 
 /**
  * Created by Dmytro Urin on 26.12.2014.
@@ -47,6 +48,8 @@ public class Scheduler {
         SendRegistrationActivity(SendRegistrationActivity.class, WaitForRegistrationActivity.class),
         WaitForRegistrationActivity(WaitForRegistrationActivity.class, InstructionActivity.class),
         InstructionActivity(InstructionActivity.class,TemplateActivity.class),
+
+        HRVResultActivity(HRVResultActivity.class,TemplateActivity.class),
 
 
 

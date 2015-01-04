@@ -22,7 +22,7 @@ public class StartActivity extends Activity {
         scheduler=Scheduler.getInstance(this);
 
        // scheduler.setStartActivity(new RegistrierungActivity());
-        scheduler.setStartActivity(LinkActivity.class);
+        scheduler.setStartActivity(HRVResultActivity.class);
 
         Intent intent = new Intent(this,scheduler.getLastActivity());
         startActivity(intent);

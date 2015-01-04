@@ -17,6 +17,10 @@
     Herzlich willkommen zur Studie!\n
     Bitte registrieren Sie sich zu Beginn. Dafür tragen Sie bitte den Code in das Freifeld  ein, den sie bei der Beantwortung des Fragebogens erhalten haben.
     </string>
+    <string name="registrierung_id1_text">2. Buchstabe des Namens</string>
+    <string name="registrierung_id2_text">1. Zahl Ihres Geburtsdatum (z.B 02.01.1993 ->02 eintragen)</string>
+    <string name="registrierung_id3_text">1. Buchstabe im Vornamen Ihrer Mutter</string>
+    <string name="registrierung_id4_text">1. Buchstabe im Vornamen Ihres Vaters</string>
 
     <string name="link_button">Dummy Button</string>
     <string name="link_title">Link zum Fragebogen</string>
@@ -46,6 +50,7 @@
     Dann bitte den Menüpunkt "HRV" drücken und, wie auf dem Bild dargestellt, den Zeigefinger auf die Kamera und das LED-Licht legen.  Es werden 10 Sekunden für die Kalibrierung benötigt und danach 2 Minuten für die Messung. Bitte halten Sie den Finger die ganze Zeit auf der Kamera.
     </string>
     <string name="hrvcheck_button">Messung starten</string>
+
 
     <string name="instruction_title">Anleitung</string>
     <string name="instruction_text">Sehr geehrte(r) Versuchsteilnehmer(in),\n\n
@@ -79,10 +84,12 @@
     <string name="instruction_button">Start</string>
 
 
-    <string name="registrierung_id1_text">2. Buchstabe des Namens</string>
-    <string name="registrierung_id2_text">1. Zahl Ihres Geburtsdatum (z.B 02.01.1993 ->02 eintragen)</string>
-    <string name="registrierung_id3_text">1. Buchstabe im Vornamen Ihrer Mutter</string>
-    <string name="registrierung_id4_text">1. Buchstabe im Vornamen Ihres Vaters</string>
+    <string name="hrvResultOk_title">Messung in Ordnung</string>
+    <string name="hrvResultOk_text">Danke für die HRV-Messung. Ihre Daten wurden erfolgreich gespeichert.</string>
+    <string name="hrvResultFailed_title">OK</string>
+    <string name="hrvResultFailed_text">Ihre HRV-Daten konnten nicht erfolgreich erfasst werden. Bitte wiederholen Sie die Messung.</string>
+    <string name="hrvResult_button">OK</string>
+
 
 
 </resources>

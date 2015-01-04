@@ -127,6 +127,12 @@ public class HRVAdapter {
         return mInstance;
     }
 
+    public boolean validateHRV(Context pContext)
+    {
+        //TODO Implement validation
+        return true;
+    }
+
 
 
 }

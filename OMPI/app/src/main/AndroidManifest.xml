@@ -57,7 +57,14 @@
         </activity>
 
         <activity
-            android:name=".activities.HRVCheckActivity"
+        android:name=".activities.HRVCheckActivity"
+        android:configChanges="orientation|keyboardHidden|screenSize"
+        android:label="@string/app_name"
+        android:theme="@style/FullscreenTheme" >
+    </activity>
+
+        <activity
+            android:name=".activities.HRVResultActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/app_name"
             android:theme="@style/FullscreenTheme" >

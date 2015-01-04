@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 
@@ -20,7 +21,7 @@ import isst.fraunhofer.de.ompi.adapter.GCMAdapter;
 import isst.fraunhofer.de.ompi.adapter.Scheduler;
 
 
-public class RegistrierungActivity extends Activity {
+public class RegistrationActivity extends Activity {
 
     GCMAdapter gcmAdapter;
 
@@ -32,6 +33,7 @@ public class RegistrierungActivity extends Activity {
 
     Context context;
     Button nextButton;
+    TextView text,title;
     EditText id1,id2,id3,id4;
     GoogleCloudMessaging gcm;
     AtomicInteger msgId = new AtomicInteger();
@@ -40,17 +42,23 @@ public class RegistrierungActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registrierung);
+        setContentView(R.layout.activity_registration);
         settings = getSharedPreferences(PREFS_NAME, 0);
         context = getApplicationContext();
         gcmAdapter = GCMAdapter.getInstance(context);
         scheduler=Scheduler.getInstance(this);
 
-        nextButton = (Button) this.findViewById(R.id.registrierung_next_button);
-        id1 = (EditText) this.findViewById(R.id.registrierung_id1);
-        id2 = (EditText) this.findViewById(R.id.registrierung_id2);
-        id3 = (EditText) this.findViewById(R.id.registrierung_id3);
-        id4 = (EditText) this.findViewById(R.id.registrierung_id4);
+        nextButton = (Button) this.findViewById(R.id.dummy_next_button);
+        id1 = (EditText) this.findViewById(R.id.regId1);
+        id2 = (EditText) this.findViewById(R.id.regId2);
+        id3 = (EditText) this.findViewById(R.id.regId3);
+        id4 = (EditText) this.findViewById(R.id.regId4);
+        text = (TextView)this.findViewById(R.id.textText);
+        title = (TextView)this.findViewById(R.id.textTitle);
+
+        title.setText(R.string.registration_title);
+        text.setText(R.string.registration_text);
+
 
 
         nextButton.setOnClickListener(new View.OnClickListener() {

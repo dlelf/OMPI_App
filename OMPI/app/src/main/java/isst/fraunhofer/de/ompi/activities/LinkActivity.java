@@ -10,10 +10,10 @@ import android.widget.TextView;
 import isst.fraunhofer.de.ompi.R;
 import isst.fraunhofer.de.ompi.adapter.Scheduler;
 
-public class TemplateActivity extends Activity {
+public class LinkActivity extends Activity {
 
     Button nextButton;
-    TextView text,title;
+    TextView text,title,link;
     Scheduler scheduler;
 
 
@@ -22,13 +22,14 @@ public class TemplateActivity extends Activity {
 
         //Initialize Activity
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_text);
+        setContentView(R.layout.activity_link);
         scheduler=Scheduler.getInstance(this);
 
         //Initialize activity components
         nextButton = (Button) this.findViewById(R.id.dummy_next_button);
         text = (TextView)this.findViewById(R.id.textText);
         title = (TextView)this.findViewById(R.id.textTitle);
+        link=(TextView)this.findViewById(R.id.textLink);
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) { nextActivity();
@@ -37,8 +38,9 @@ public class TemplateActivity extends Activity {
         });
 
         //Set real data to activity components
-        title.setText(R.string.dummy_title);
-        text.setText(R.string.dummy_text);
+        title.setText(R.string.link_title);
+        text.setText(R.string.link_text);
+        link.setText(R.string.link_link);
 
     }
 

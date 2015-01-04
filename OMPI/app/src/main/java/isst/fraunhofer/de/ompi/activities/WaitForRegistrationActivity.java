@@ -10,9 +10,9 @@ import android.widget.TextView;
 import isst.fraunhofer.de.ompi.R;
 import isst.fraunhofer.de.ompi.adapter.Scheduler;
 
-public class TemplateActivity extends Activity {
+public class WaitForRegistrationActivity extends Activity {
 
-    Button nextButton;
+
     TextView text,title;
     Scheduler scheduler;
 
@@ -22,29 +22,19 @@ public class TemplateActivity extends Activity {
 
         //Initialize Activity
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_text);
+        setContentView(R.layout.activity_wait);
         scheduler=Scheduler.getInstance(this);
 
         //Initialize activity components
-        nextButton = (Button) this.findViewById(R.id.dummy_next_button);
         text = (TextView)this.findViewById(R.id.textText);
         title = (TextView)this.findViewById(R.id.textTitle);
-        nextButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) { nextActivity();
-
-            }
-        });
 
         //Set real data to activity components
-        title.setText(R.string.dummy_title);
-        text.setText(R.string.dummy_text);
+        title.setText(R.string.wait_title);
+        text.setText(R.string.wait_text);
 
     }
 
-    private void nextActivity(){
-        Intent intent = new Intent(this,scheduler.chooseNextActivity(this));
-        startActivity(intent);
-    }
+
 
 }

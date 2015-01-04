@@ -2,6 +2,7 @@ package isst.fraunhofer.de.ompi.activities;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,22 +13,18 @@ import android.widget.TextView;
 import isst.fraunhofer.de.ompi.R;
 import isst.fraunhofer.de.ompi.adapter.PersonAdapter;
 import isst.fraunhofer.de.ompi.adapter.RestAdapter;
+import isst.fraunhofer.de.ompi.adapter.Scheduler;
 import isst.fraunhofer.de.ompi.model.Person;
 
-/**
- * An example full-screen activity that shows and hides the system UI (i.e.
- * status bar and navigation/system bar) with user interaction.
- *
- * @see isst.fraunhofer.de.ompi.activities.util.SystemUiHider
- */
+
 public class SendRegistrationActivity extends Activity {
 
     public static final String PREFS_NAME = "MyPrefsFile";
    PersonAdapter personAdapter;
     RestAdapter restAdapter;
-
+    Scheduler scheduler;
     Button nextButton;
-    TextView text;
+    TextView text,title;
     Person person;
     Context context;
 
@@ -37,9 +34,9 @@ public class SendRegistrationActivity extends Activity {
         super.onStart();
         personAdapter = PersonAdapter.getInstance(this);
         restAdapter = RestAdapter.getInstance(this);
-
+        scheduler= Scheduler.getInstance(this);
         person=personAdapter.getPerson();
-        new HttpRequestTask().execute();
+        //new HttpRequestTask().execute();
 
 
     }
@@ -48,9 +45,10 @@ public class SendRegistrationActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_send_registration);
-        nextButton = (Button) this.findViewById(R.id.send_registration_next_button);
-        text =(TextView) this.findViewById(R.id.send_registration_content);
+        setContentView(R.layout.activity_text);
+        nextButton = (Button) this.findViewById(R.id.dummy_next_button);
+        text = (TextView)this.findViewById(R.id.textText);
+        title = (TextView)this.findViewById(R.id.textTitle);
 
 
         nextButton.setOnClickListener(new View.OnClickListener() {
@@ -60,11 +58,16 @@ public class SendRegistrationActivity extends Activity {
 
             }
         });
+
+        //Set real data to activity components
+        title.setText(R.string.send_title);
+        text.setText(R.string.send_text);
+        nextButton.setText(R.string.send_button);
     }
 
     private void nextActivity(){
-        /*Intent intent = new Intent(this, RegistrierungActivity.class);
-        startActivity(intent);*/
+        Intent intent = new Intent(this,scheduler.chooseNextActivity(this));
+        startActivity(intent);
 
     }
 

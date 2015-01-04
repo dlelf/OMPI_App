@@ -2,21 +2,87 @@
 <resources>
 
     <string name="app_name">OMPI</string>
-    <string name="id_label">The ID is</string>
-    <string name="id_value">[id]</string>
-    <string name="content_label">The Content is</string>
-    <string name="content_value">[content]</string>
-    <string name="action_refresh">Refresh</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">Text template</string>
-    <string name="start_content">Herzlich willkommen \n zur Studie!\n Nur hier! \n10 VPS!!!! \nAngebot!</string>
-    <string name="title_activity_registration">registration</string>
-    <string name="title_activity_test">test</string>
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_template">OMPI Studie</string>
+
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_title">Title template</string>
+    <string name="dummy_text">Title template</string>
+    <string name="dummy_link">http:\\www.google.de</string>
+
+    <string name="start_content">Herzlich willkommen \n zur Studie!\n Nur hier! \n10 VPS!!!! \nAngebot!</string>
+
+    <string name="registration_title">Registration</string>
+    <string name="registration_text">Sehr  geehrte(r) Versuchsteilnehmer(in), \n
+    Herzlich willkommen zur Studie!\n
+    Bitte registrieren Sie sich zu Beginn. Dafür tragen Sie bitte den Code in das Freifeld  ein, den sie bei der Beantwortung des Fragebogens erhalten haben.
+    </string>
+
+    <string name="link_button">Dummy Button</string>
+    <string name="link_title">Link zum Fragebogen</string>
+    <string name="link_text">Sehr geehrte(r) Versuchsteilnehmer(in), \n\n
+    Bitte folgen Sie dem Link und füllen Sie den Fragebogen aus.\n\n
+    Bitte verwenden Sie dabei zur eindeutigen Zuordnung der Daten den initialen Registrierungscode.
+    </string>
+    <string name="link_link">https://www.soscisurvey.de/swb-hrv/</string>
+
+    <string name="send_title">Daten zum Server</string>
+    <string name="send_text">Ihre Daten wurden erfolgreich erfasst. \n \n
+    Jetzt stellen Sie bitte sicher, dass Sie eine Verbindung zum Internet haben und drücken Sie auf die Taste „Daten senden“ um Ihre Daten zum Server zu schicken.
+    </string>
+    <string name="send_button">Daten senden</string>
+
+    <string name="wait_title">Gruppeneinteilung läuft</string>
+    <string name="wait_text">Sehr geehrte(r) Versuchsteilnehmer(in), \n \n
+    sie sind jetzt für die Studie registriert. \n \n
+    Bis zum 07.12 erhalten Sie eine weitere Nachricht von uns und dann geht es erst richtig los!
+    </string>
+
+    <string name="hrvcheck_title">HRV Messung</string>
+    <string name="hrvcheck_text">Sie werden gleich zur initialen Messung  der Herzfrequenzvariabilität(HRV) weitergeleitet.\n\n
+    Die HRV bezeichnet die physiologische Fähigkeit eines Organismus, die Frequenz des Herzrhythmus zu verändern.\n\n
+    Es wird überprüft, ob Ihr Smartphone die technischen Voraussetzungen erfüllt, um die HRV messen zu können.\n\n
+    Dafür benötigen wir ca. 2 Minuten.  Achten Sie bitte darauf, dass Ihr Akku geladen ist. Wenn Sie die Messung durchführen wollen, drücken Sie bitte die Taste "Messung starten".
+    Dann bitte den Menüpunkt "HRV" drücken und, wie auf dem Bild dargestellt, den Zeigefinger auf die Kamera und das LED-Licht legen.  Es werden 10 Sekunden für die Kalibrierung benötigt und danach 2 Minuten für die Messung. Bitte halten Sie den Finger die ganze Zeit auf der Kamera.
+    </string>
+    <string name="hrvcheck_button">Messung starten</string>
+
+    <string name="instruction_title">Anleitung</string>
+    <string name="instruction_text">Sehr geehrte(r) Versuchsteilnehmer(in),\n\n
+    die Studie kann nun beginnen.\n
+    Erledigen Sie bitte die folgende Aufgabe innerhalb der nächsten zwei Wochen regelmäßig einmal täglich (am besten abends).\n\n
+    </string>
+    <string name="task_title">Aufgabe</string>
+    <string name="task1_text">Es wird bei Ihnen eine HRV-Messung durchgeführt. Danach schreiben Sie bitte drei positive Erlebnisse des Tages und den Grund dafür auf. Abschließend wird erneut eine HRV-Messung durchgeführt.  Die komplette Erfassung wird ca. 10-15 Minuten in Anspruch nehmen. Ihre Daten werden anonymisiert übertragen.
+    \n\n Bitte befolgen Sie während der beiden HRV-Messungen folgende Regeln:\n\n
+    •	ca. eine halbe Stunde vor der HRV-Erfassung sollte nichts mehr gegessen werden \n
+    •	Die Erfassung sollte täglich möglichst unter gleichen Bedingungen stattfinden (Raumtemperatur, Beleuchtung, Uhrzeit, etc.)  \n
+    •	30 Minuten vor der Messung sollte kein Sport getrieben werden (sowie keine sonstigen physischen Belastungen)  \n
+    •	Wenn Sie einen schlanken Körperbau  und kalte Hände haben – bitte die Messung an anderen Körperteilen durchführen (z.B. Handgelenk)  \n
+    •	Die Messung sollte bei guter Beleuchtung  durchgeführt werden  \n
+    •	Während der Messung bitte nicht sprechen \n
+    •	Während der Messung bitte nicht sprechen. \n \n
+    Bitte drücken Sie auf „Start“ wenn Sie mit der Aufgabe beginnen wollen.
+    </string>
+
+    <string name="task2_text">Es wird bei Ihnen eine HRV-Messung durchgeführt. Danach dokumentieren Sie bitte eine Erinnerung aus Ihrer Kindheit (ca.30-50 Wörter). Abschließend wird erneut eine HRV-Messung durchgeführt.  Die komplette Erfassung wird ca. 10-15 Minuten dauern. Ihre Daten werden anonymisiert übertragen.
+    \n\n Bitte befolgen Sie während der beiden HRV-Messungen folgende Regeln:\n\n
+    •	ca. eine halbe Stunde vor der HRV-Erfassung sollte nichts mehr gegessen werden \n
+    •	Die Erfassung sollte täglich möglichst unter gleichen Bedingungen stattfinden (Raumtemperatur, Beleuchtung, Uhrzeit, etc.)  \n
+    •	30 Minuten vor der Messung sollte kein Sport getrieben werden (sowie keine sonstigen physischen Belastungen)  \n
+    •	Wenn Sie einen schlanken Körperbau  und kalte Hände haben – bitte die Messung an anderen Körperteilen durchführen (z.B. Handgelenk)  \n
+    •	Die Messung sollte bei guter Beleuchtung  durchgeführt werden  \n
+    •	Während der Messung bitte nicht sprechen \n
+    •	Während der Messung bitte nicht sprechen. \n \n
+    Bitte drücken Sie auf „Start“ wenn Sie mit der Aufgabe beginnen wollen.
+    </string>
+    <string name="instruction_button">Start</string>
+
+
     <string name="registrierung_id1_text">2. Buchstabe des Namens</string>
     <string name="registrierung_id2_text">1. Zahl Ihres Geburtsdatum (z.B 02.01.1993 ->02 eintragen)</string>
     <string name="registrierung_id3_text">1. Buchstabe im Vornamen Ihrer Mutter</string>
     <string name="registrierung_id4_text">1. Buchstabe im Vornamen Ihres Vaters</string>
+
+
 </resources>

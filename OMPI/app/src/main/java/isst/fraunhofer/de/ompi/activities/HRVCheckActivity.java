@@ -10,7 +10,7 @@ import android.widget.TextView;
 import isst.fraunhofer.de.ompi.R;
 import isst.fraunhofer.de.ompi.adapter.Scheduler;
 
-public class TemplateActivity extends Activity {
+public class HRVCheckActivity extends Activity {
 
     Button nextButton;
     TextView text,title;
@@ -37,8 +37,9 @@ public class TemplateActivity extends Activity {
         });
 
         //Set real data to activity components
-        title.setText(R.string.dummy_title);
-        text.setText(R.string.dummy_text);
+        title.setText(R.string.hrvcheck_title);
+        text.setText(R.string.hrvcheck_text);
+        nextButton.setText(R.string.hrvcheck_button);
 
     }
 

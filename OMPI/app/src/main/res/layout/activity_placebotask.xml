@@ -41,14 +41,27 @@
                 android:text="@string/dummy_text"
                 android:id="@+id/textText" />
 
-            <TextView
+            <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="@string/dummy_link"
-                android:id="@+id/textLink"
-                android:autoLink="web" />
+                android:inputType="textMultiLine"
+                android:ems="10"
+                android:id="@+id/editText"
+                android:layout_gravity="left|top" />
         </LinearLayout>
     </ScrollView>
+
+    <LinearLayout android:id="@+id/fullscreen_content_controls" style="?metaButtonBarStyle"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:background="@color/black_overlay" android:orientation="horizontal"
+        tools:ignore="UselessParent">
+
+        <Button android:id="@+id/dummy_next_button" style="?metaButtonBarButtonStyle"
+            android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1" android:text="Start"
+            android:nestedScrollingEnabled="false" />
+
+    </LinearLayout>
 
 </FrameLayout>

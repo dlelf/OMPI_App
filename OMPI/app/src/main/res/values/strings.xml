@@ -13,9 +13,8 @@
     <string name="start_content">Herzlich willkommen \n zur Studie!\n Nur hier! \n10 VPS!!!! \nAngebot!</string>
 
     <string name="registration_title">Registration</string>
-    <string name="registration_text">Sehr  geehrte(r) Versuchsteilnehmer(in), \n
-    Herzlich willkommen zur Studie!\n
-    Bitte registrieren Sie sich zu Beginn. Dafür tragen Sie bitte den Code in das Freifeld  ein, den sie bei der Beantwortung des Fragebogens erhalten haben.
+    <string name="registration_text">Sehr  geehrte(r) Versuchsteilnehmer(in),\n
+    Herzlich willkommen zur Studie!\nBitte registrieren Sie sich zu Beginn. Dafür tragen Sie bitte den Code in das Freifeld  ein, den sie bei der Beantwortung des Fragebogens erhalten haben.
     </string>
     <string name="registrierung_id1_text">2. Buchstabe des Namens</string>
     <string name="registrierung_id2_text">1. Zahl Ihres Geburtsdatum (z.B 02.01.1993 ->02 eintragen)</string>

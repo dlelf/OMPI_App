@@ -7,6 +7,13 @@ import java.io.Serializable;
  */
 public class HRV  implements Serializable {
 
+    private long id;
+    private long date;
+    private long rrInterval;
+    private boolean beforeMeasurement;
+    private String personId;
+    private int dayNr;
+
     public long getDate() {
         return date;
     }
@@ -23,14 +30,6 @@ public class HRV  implements Serializable {
         this.id = id;
     }
 
-    public Cycle getCycle() {
-        return cycle;
-    }
-
-    public void setCycle(Cycle cycle) {
-        this.cycle = cycle;
-    }
-
     public long getRrInterval() {
         return rrInterval;
     }
@@ -40,28 +39,29 @@ public class HRV  implements Serializable {
     }
 
     public boolean isBeforeReading() {
-        return beforeReading;
+        return beforeMeasurement;
     }
 
     public void setBeforeReading(boolean beforeReading) {
-        this.beforeReading = beforeReading;
+        this.beforeMeasurement = beforeReading;
     }
 
-    public int getStep() {
-        return step;
+
+    public String getPersonId() {
+        return personId;
     }
 
-    public void setStep(int step) {
-        this.step = step;
+    public void setPersonId(String personId) {
+        this.personId = personId;
     }
 
-    private long id;
-    private long date;
-    private Cycle cycle;
-    private long rrInterval;
-    private boolean beforeReading;
+    public int getDayNr() {
+        return dayNr;
+    }
+
+    public void setDayNr(int dayNr) {
+        this.dayNr = dayNr;
+    }
 
 
-
-    private int step;
 }

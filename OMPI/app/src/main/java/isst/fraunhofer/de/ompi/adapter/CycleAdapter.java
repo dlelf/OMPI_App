@@ -5,7 +5,7 @@ import android.content.Context;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import isst.fraunhofer.de.ompi.model.Cycle;
+
 
 /**
  * Created by durin on 19/12/2014.
@@ -15,7 +15,7 @@ public class CycleAdapter {
     private static CycleAdapter mInstance;
     private HRVAdapter hrvAdapter;
     private PersonAdapter personAdapter;
-    private Cycle mCycle;
+   // private Cycle mCycle;
 
 
     public CycleAdapter (Context context){
@@ -24,7 +24,7 @@ public class CycleAdapter {
         personAdapter=PersonAdapter.getInstance(context);
     }
 
-    public  Cycle createCycle() {
+   /* public  Cycle createCycle() {
         Cycle cycle = new Cycle();
         cycle.setPerson(personAdapter.getPerson());
         cycle.setDate(getCurrentDate());
@@ -34,7 +34,7 @@ public class CycleAdapter {
         mCycle = cycle;
         return cycle;
 
-    }
+    }*/
 
 
 
@@ -55,8 +55,8 @@ public class CycleAdapter {
         return mInstance;
     }
 
-    public Cycle getCycle() {
+   /* public Cycle getCycle() {
         return mCycle;
-    }
+    }*/
 
 }

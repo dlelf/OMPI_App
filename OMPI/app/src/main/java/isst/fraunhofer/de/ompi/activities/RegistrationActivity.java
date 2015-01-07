@@ -107,7 +107,7 @@ public class RegistrationActivity extends Activity {
 
     }
     private void nextActivity(){
-
+        startHRV();
         Intent intent = new Intent(this,scheduler.chooseNextActivity(this));
         startActivity(intent);
     }

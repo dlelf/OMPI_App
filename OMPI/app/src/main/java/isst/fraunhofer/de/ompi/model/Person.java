@@ -10,15 +10,10 @@ public class Person  implements Serializable {
 
 
 	private long id;
-    private int step;
+    private String longId;
+    private Integer groupNr;
+    private String googleCloudId;
 
-    public int getStep() {
-        return step;
-    }
-
-    public void setStep(int step) {
-        this.step = step;
-    }
 
     public String getLongId() {
         return longId;
@@ -28,9 +23,6 @@ public class Person  implements Serializable {
         this.longId = longId;
     }
 
-    private String longId;
-
-
     public Integer getGroupNr() {
         return groupNr;
     }
@@ -39,19 +31,6 @@ public class Person  implements Serializable {
         this.groupNr = groupNr;
     }
 
-    public ArrayList<Cycle> getCycles() {
-        return cycles;
-    }
-
-    public void setCycles(ArrayList<Cycle> cycles) {
-        this.cycles = cycles;
-    }
-
-    private Integer groupNr;
-
-	private ArrayList<Cycle> cycles= new ArrayList<>(10);
-
-	private String googleCloudId;
 
 	public long getId() {
 		return id;

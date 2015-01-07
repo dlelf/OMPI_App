@@ -37,8 +37,8 @@ public class EndActivity extends Activity {
         });
 
         //Set real data to activity components
-        text.setText(R.string.endofexperiment_title);
-        title.setText(R.string.endofexperiment_text);
+        text.setText(R.string.endofexperiment_text);
+        title.setText(R.string.endofexperiment_title);
 
     }
 

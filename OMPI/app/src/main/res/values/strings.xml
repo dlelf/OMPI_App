@@ -13,11 +13,10 @@
     <string name="start_content">Herzlich willkommen \n zur Studie!\n Nur hier! \n10 VPS!!!! \nAngebot!</string>
 
     <string name="registration_title">Registration</string>
-    <string name="registration_text">Sehr  geehrte(r) Versuchsteilnehmer(in),\n
-    Herzlich willkommen zur Studie!\nBitte registrieren Sie sich zu Beginn. Dafür tragen Sie bitte den Code in das Freifeld  ein, den sie bei der Beantwortung des Fragebogens erhalten haben.
+    <string name="registration_text">Sehr  geehrte(r) Versuchsteilnehmer(in),\nHerzlich willkommen zur Studie!\nBitte registrieren Sie sich zu Beginn. Dafür tragen Sie bitte den Code in das Freifeld  ein, den sie bei der Beantwortung des Fragebogens erhalten haben.
     </string>
-    <string name="registrierung_id1_text">2. Buchstabe des Namens</string>
-    <string name="registrierung_id2_text">1. Zahl Ihres Geburtsdatum (z.B 02.01.1993 ->02 eintragen)</string>
+    <string name="registrierung_id1_text">2. Buchstabe des Nachnamens</string>
+    <string name="registrierung_id2_text">1. Zahl Ihres Geburtsdatums (z.B 02.01.1993 ->02 eintragen)</string>
     <string name="registrierung_id3_text">1. Buchstabe im Vornamen Ihrer Mutter</string>
     <string name="registrierung_id4_text">1. Buchstabe im Vornamen Ihres Vaters</string>
 
@@ -36,13 +35,13 @@
     <string name="send_button">Daten senden</string>
 
     <string name="wait_title">Gruppeneinteilung läuft</string>
-    <string name="wait_text">Sehr geehrte(r) Versuchsteilnehmer(in), \n \n
-    sie sind jetzt für die Studie registriert. \n \n
-    Bis zum 07.12 erhalten Sie eine weitere Nachricht von uns und dann geht es erst richtig los!
+    <string name="wait_text">Sehr geehrte(r) Versuchsteilnehmer(in),\n\n
+    sie sind jetzt für die Studie registriert. \n\n
+    Die Studie wird voraussichtlich ab dem 12.01. beginnen. Dann erhalten sie eine weitere Nachricht von uns.
     </string>
 
     <string name="hrvcheck_title">HRV Messung</string>
-    <string name="hrvcheck_text">Sie werden gleich zur initialen Messung  der Herzfrequenzvariabilität(HRV) weitergeleitet.\n\n
+    <string name="hrvcheck_text">Sie werden gleich zur initialen Messung  der Herzfrequenzvariabilität (HRV) weitergeleitet.\n\n
     Die HRV bezeichnet die physiologische Fähigkeit eines Organismus, die Frequenz des Herzrhythmus zu verändern.\n\n
     Es wird überprüft, ob Ihr Smartphone die technischen Voraussetzungen erfüllt, um die HRV messen zu können.\n\n
     Dafür benötigen wir ca. 2 Minuten.  Achten Sie bitte darauf, dass Ihr Akku geladen ist. Wenn Sie die Messung durchführen wollen, drücken Sie bitte die Taste "Messung starten".
@@ -58,26 +57,25 @@
     </string>
     <string name="task_title">Aufgabe</string>
     <string name="task1_text">Es wird bei Ihnen eine HRV-Messung durchgeführt. Danach schreiben Sie bitte drei positive Erlebnisse des Tages und den Grund dafür auf. Abschließend wird erneut eine HRV-Messung durchgeführt.  Die komplette Erfassung wird ca. 10-15 Minuten in Anspruch nehmen. Ihre Daten werden anonymisiert übertragen.
-    \n\n Bitte befolgen Sie während der beiden HRV-Messungen folgende Regeln:\n\n
-    •	ca. eine halbe Stunde vor der HRV-Erfassung sollte nichts mehr gegessen werden \n
-    •	Die Erfassung sollte täglich möglichst unter gleichen Bedingungen stattfinden (Raumtemperatur, Beleuchtung, Uhrzeit, etc.)  \n
-    •	30 Minuten vor der Messung sollte kein Sport getrieben werden (sowie keine sonstigen physischen Belastungen)  \n
-    •	Wenn Sie einen schlanken Körperbau  und kalte Hände haben – bitte die Messung an anderen Körperteilen durchführen (z.B. Handgelenk)  \n
-    •	Die Messung sollte bei guter Beleuchtung  durchgeführt werden  \n
-    •	Während der Messung bitte nicht sprechen \n
-    •	Während der Messung bitte nicht sprechen. \n \n
+    \n\nBitte befolgen Sie während der beiden HRV-Messungen folgende Regeln:\n\n
+        •	\t\t ca. eine halbe Stunde vor der HRV-Erfassung sollte nichts mehr gegessen werden \n
+        \t•	\t\tDie Erfassung sollte täglich möglichst unter gleichen Bedingungen stattfinden (Raumtemperatur, Beleuchtung, Uhrzeit, etc.)  \n
+        \t•	\t\t30 Minuten vor der Messung sollte kein Sport getrieben werden (sowie keine sonstigen physischen Belastungen)  \n
+        \t•	\t\tWenn Sie einen schlanken Körperbau  und kalte Hände haben – bitte die Messung an anderen Körperteilen durchführen (z.B. Handgelenk)  \n
+        \t•	\t\tDie Messung sollte bei guter Beleuchtung  durchgeführt werden  \n
+        \t•	\t\tWährend der Messung bitte nicht sprechen \n\n
     Bitte drücken Sie auf „Start“ wenn Sie mit der Aufgabe beginnen wollen.
     </string>
 
     <string name="task2_text">Es wird bei Ihnen eine HRV-Messung durchgeführt. Danach dokumentieren Sie bitte eine Erinnerung aus Ihrer Kindheit (ca.30-50 Wörter). Abschließend wird erneut eine HRV-Messung durchgeführt.  Die komplette Erfassung wird ca. 10-15 Minuten dauern. Ihre Daten werden anonymisiert übertragen.
     \n\n Bitte befolgen Sie während der beiden HRV-Messungen folgende Regeln:\n\n
-    •	ca. eine halbe Stunde vor der HRV-Erfassung sollte nichts mehr gegessen werden \n
-    •	Die Erfassung sollte täglich möglichst unter gleichen Bedingungen stattfinden (Raumtemperatur, Beleuchtung, Uhrzeit, etc.)  \n
-    •	30 Minuten vor der Messung sollte kein Sport getrieben werden (sowie keine sonstigen physischen Belastungen)  \n
-    •	Wenn Sie einen schlanken Körperbau  und kalte Hände haben – bitte die Messung an anderen Körperteilen durchführen (z.B. Handgelenk)  \n
-    •	Die Messung sollte bei guter Beleuchtung  durchgeführt werden  \n
-    •	Während der Messung bitte nicht sprechen \n
-    •	Während der Messung bitte nicht sprechen. \n \n
+    \t•   \t\tca. eine halbe Stunde vor der HRV-Erfassung sollte nichts mehr gegessen werden\n
+   \t•	\t\tDie Erfassung sollte täglich möglichst unter gleichen Bedingungen stattfinden (Raumtemperatur, Beleuchtung, Uhrzeit, etc.)  \n
+    \t•	\t\t30 Minuten vor der Messung sollte kein Sport getrieben werden (sowie keine sonstigen physischen Belastungen)  \n
+    \t•	\t\tWenn Sie einen schlanken Körperbau  und kalte Hände haben – bitte die Messung an anderen Körperteilen durchführen (z.B. Handgelenk)  \n
+    \t•	\t\tDie Messung sollte bei guter Beleuchtung  durchgeführt werden  \n
+    \t•	\t\tWährend der Messung bitte nicht sprechen \n
+    \t•	\t\tWährend der Messung bitte nicht sprechen. \n \n
     Bitte drücken Sie auf „Start“ wenn Sie mit der Aufgabe beginnen wollen.
     </string>
     <string name="instruction_button">Start</string>
@@ -101,7 +99,7 @@
     bitte dokumentieren Sie 3 positive Dinge des Tages und den Grund dafür.
     </string>
     <string name="goodThing">Ich habe heute...</string>
-    <string name="reason">Es war gut,weil...</string>
+    <string name="reason">Es war gut, weil...</string>
     <string name="realTask_button">Fertig</string>
 
     <string name="endofday_title">Danke für Heute</string>
@@ -110,9 +108,9 @@
     </string>
 
     <string name="endofexperiment_title">Experimentende</string>
-    <string name="endofexperiment_text">Vielen Dank für Ihre Teilnahme. /n/n
-        Anbei erhalten Sie den Link zu der Befragung.  Bitte füllen Sie den Fragebogen sofort aus – es wird lediglich 5 Minuten dauern./n/n
-        Bitte löschen Sie die App nicht. Nach zwei Wochen bitten wir Sie erneut, einen letzten Fragebogen auszufüllen. Sie erhalten dazu jedoch eine Benachrichtigung über Ihr Smartphone und die Anweisung wann und wo Sie sich Ihre Versuchspersonenstunde gutgeschrieben lassen können.
+    <string name="endofexperiment_text">Vielen Dank für Ihre Teilnahme. \n\n
+        Anbei erhalten Sie den Link zu der Befragung.  Bitte füllen Sie den Fragebogen sofort aus – es wird lediglich 5 Minuten dauern.\n\n
+        Bitte löschen Sie die App nicht. Nach zwei Wochen bitten wir Sie erneut, einen letzten Fragebogen auszufüllen. Sie erhalten dazu jedoch eine Benachrichtigung über Ihr Smartphone und die Anweisung wann und wo Sie sich Ihre Versuchspersonenstundne gutgeschrieben lassen können.
     </string>
 
 

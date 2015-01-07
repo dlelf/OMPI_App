@@ -45,8 +45,8 @@ public class InstructionActivity extends Activity {
         //Set real data to activity components
         title.setText(R.string.instruction_title);
         text.setText(R.string.instruction_text);
-        title.setText(R.string.task_title);
-        text.setText(R.string.task1_text);
+        taskTitle.setText(R.string.task_title);
+        taskText.setText(R.string.task1_text);
         //TODO check groupNr and show suitable taskText
         /*int groupNr = personAdapter.getPerson().getGroupNr();
         switch (groupNr) {

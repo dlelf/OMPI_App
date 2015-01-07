@@ -4,20 +4,19 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import isst.fraunhofer.de.ompi.activities.EndActivity;
 import isst.fraunhofer.de.ompi.activities.FirstHRVCheckActivity;
 import isst.fraunhofer.de.ompi.activities.HRVCheckActivity;
+import isst.fraunhofer.de.ompi.activities.HRVResultActivity;
+import isst.fraunhofer.de.ompi.activities.InstructionActivity;
+import isst.fraunhofer.de.ompi.activities.LinkActivity;
+import isst.fraunhofer.de.ompi.activities.PlaceboTaskActivity;
 import isst.fraunhofer.de.ompi.activities.RegistrationActivity;
 import isst.fraunhofer.de.ompi.activities.SendRegistrationActivity;
 import isst.fraunhofer.de.ompi.activities.StartActivity;
-import isst.fraunhofer.de.ompi.activities.TemplateActivity;
-import isst.fraunhofer.de.ompi.activities.WaitForRegistrationActivity;
-import isst.fraunhofer.de.ompi.activities.InstructionActivity;
-import isst.fraunhofer.de.ompi.activities.LinkActivity;
-import isst.fraunhofer.de.ompi.activities.HRVResultActivity;
-import isst.fraunhofer.de.ompi.activities.PlaceboTaskActivity;
 import isst.fraunhofer.de.ompi.activities.TaskActivity;
 import isst.fraunhofer.de.ompi.activities.WaitForNextDayActivity;
-import isst.fraunhofer.de.ompi.activities.EndActivity;
+import isst.fraunhofer.de.ompi.activities.WaitForRegistrationActivity;
 
 
 
@@ -67,7 +66,7 @@ public class Scheduler {
 
         WaitForNextDayActivity(WaitForNextDayActivity.class, InstructionActivity.class,EndActivity.class),
         EndActivity(EndActivity.class,LinkActivity.class,null),
-        LinkActivity(LinkActivity.class,HRVCheckActivity.class,null);
+        LinkActivity(LinkActivity.class,RegistrationActivity.class,null);
 
        // TemplateActivity(TemplateActivity.class,StartActivity.class,null);
 

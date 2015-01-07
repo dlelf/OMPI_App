@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
 
-import isst.fraunhofer.de.ompi.R;
 import isst.fraunhofer.de.ompi.adapter.Scheduler;
 
 
@@ -22,7 +21,7 @@ public class StartActivity extends Activity {
         scheduler=Scheduler.getInstance(this);
 
        // scheduler.setStartActivity(new RegistrierungActivity());
-        scheduler.setStartActivity(RegistrationActivity.class);
+        scheduler.setStartActivity(EndActivity.class);
 
         Intent intent = new Intent(this,scheduler.getLastActivity());
         startActivity(intent);

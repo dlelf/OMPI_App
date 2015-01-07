@@ -10,8 +10,6 @@ import java.util.ArrayList;
 import isst.fraunhofer.de.ompi.adapter.HRVAdapter;
 import isst.fraunhofer.de.ompi.adapter.RestAdapter;
 import isst.fraunhofer.de.ompi.adapter.WebAPI;
-import isst.fraunhofer.de.ompi.model.Cycle;
-import isst.fraunhofer.de.ompi.model.Greeting;
 import isst.fraunhofer.de.ompi.model.HRV;
 
 //import isst.fraunhofer.de.ompi.util.Greeting;
@@ -21,22 +19,18 @@ import isst.fraunhofer.de.ompi.model.HRV;
 public class Test extends Activity {
     RestAdapter restAdapter;
     HRVAdapter hrvAdapter ;
-    Cycle cycle;
+
 
 
 
     @Override
     protected void onStart() {
         super.onStart();
-        final WebAPI webservices = new WebAPI(this);
-        Greeting gr = webservices.getService().getPerson();
-
-
+        //final WebAPI webservices = new WebAPI(this);
 
         hrvAdapter = HRVAdapter.getInstance(this);
         restAdapter=RestAdapter.getInstance(this);
         /*hrvAdapter.checkFiles();
-
 
 
         CycleAdapter cycleAdapter= CycleAdapter.getInstance(this);
@@ -55,17 +49,12 @@ public class Test extends Activity {
         System.out.print("Cycle readed successfull");*/
         new HttpRequestTask().execute();
 
-
-
-
-
-
         //new HttpRequestTask().execute();
     }
 
-    private class HttpRequestTask extends AsyncTask<Void, Void, Cycle> {
-        @Override
-        protected Cycle doInBackground(Void... params) {
+    private class HttpRequestTask extends AsyncTask<Void, Void, HRV> {
+            @Override
+        protected HRV doInBackground(Void... params) {
             try {
                 ArrayList<HRV> measurement = hrvAdapter.getHRV();
                 for (HRV hrv : measurement) {
@@ -75,7 +64,7 @@ public class Test extends Activity {
             } catch (Exception e) {
                 Log.e("MainActivity", e.getMessage(), e);
             }
-           return cycle;
+           return null;
         }
 
     }

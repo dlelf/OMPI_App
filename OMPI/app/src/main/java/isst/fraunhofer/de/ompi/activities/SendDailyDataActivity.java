@@ -11,23 +11,26 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import isst.fraunhofer.de.ompi.R;
+import isst.fraunhofer.de.ompi.adapter.HRVAdapter;
 import isst.fraunhofer.de.ompi.adapter.PersonAdapter;
 import isst.fraunhofer.de.ompi.adapter.RestAdapter;
 import isst.fraunhofer.de.ompi.adapter.Scheduler;
+import isst.fraunhofer.de.ompi.model.HRV;
 import isst.fraunhofer.de.ompi.model.Person;
 
 
-public class SendRegistrationActivity extends Activity {
+public class SendDailyDataActivity extends Activity {
 
     public static final String PREFS_NAME = "MyPrefsFile";
    PersonAdapter personAdapter;
     RestAdapter restAdapter;
+    HRVAdapter hrvAdapter ;
     Scheduler scheduler;
     Button nextButton;
     TextView text,title,error;
-    Person person;
-    Activity context;
     boolean connectionFailed;
+    Activity context;
+
 
 
     @Override
@@ -36,11 +39,9 @@ public class SendRegistrationActivity extends Activity {
         personAdapter = PersonAdapter.getInstance(this);
         restAdapter = RestAdapter.getInstance(this);
         scheduler= Scheduler.getInstance(this);
-        person=personAdapter.getPerson();
+        hrvAdapter = HRVAdapter.getInstance(this);
         context=this;
         //new HttpRequestTask().execute();
-
-
     }
 
 
@@ -74,22 +75,22 @@ public class SendRegistrationActivity extends Activity {
         new HttpRequestTask().execute();
     }
 
-    private class HttpRequestTask extends AsyncTask<Void, Void, Person> {
+    private class HttpRequestTask extends AsyncTask<Void, Void, HRV> {
         @Override
-        protected Person doInBackground(Void... params) {
+        protected HRV doInBackground(Void... params) {
             try {
 
-                 restAdapter.sendPerson(person);
+                 restAdapter.sendHRVs(hrvAdapter.getHRV());
 
             } catch (Exception e) {
                 Log.e("MainActivity", e.getMessage(), e);
                 connectionFailed = true;
             }
-            return person;
+            return null;
         }
 
         @Override
-        protected void onPostExecute(Person person) {
+        protected void onPostExecute(HRV hrv) {
             if (!connectionFailed) {
                 Intent intent = new Intent(context, scheduler.chooseNextActivity(context));
                 startActivity(intent);
@@ -98,6 +99,8 @@ public class SendRegistrationActivity extends Activity {
                 error.setVisibility(View.VISIBLE);
 
         }
+
+
     }
 
 

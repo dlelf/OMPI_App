@@ -34,6 +34,7 @@
     Jetzt stellen Sie bitte sicher, dass Sie eine Verbindung zum Internet haben und drücken Sie auf die Taste „Daten senden“ um Ihre Daten zum Server zu schicken.
     </string>
     <string name="send_button">Daten senden</string>
+    <string name="send_error">\n\n\n Daten könnten nicht gesendet werden. Bitte prüffen Sie Ihre Internetverbindung und versuchen Sie noch ein Mal!</string>
 
     <string name="wait_title">Gruppeneinteilung läuft</string>
     <string name="wait_text">Sehr geehrte(r) Versuchsteilnehmer(in), \n \n

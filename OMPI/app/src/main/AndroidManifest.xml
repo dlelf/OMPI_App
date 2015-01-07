@@ -94,6 +94,13 @@
     </activity>
 
         <activity
+            android:name=".activities.SendDailyDataActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/app_name"
+            android:theme="@style/FullscreenTheme" >
+        </activity>
+
+        <activity
             android:name=".activities.FirstHRVCheckActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/app_name"

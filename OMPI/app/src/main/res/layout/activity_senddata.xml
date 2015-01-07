@@ -29,7 +29,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="@string/placeboTask_title"
+                android:text="@string/send_title"
                 android:id="@+id/textTitle"
                 android:layout_gravity="center_horizontal|top"
                 android:gravity="center_horizontal" />
@@ -38,16 +38,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="@string/placeboTask_text"
+                android:text="@string/send_text"
                 android:id="@+id/textText" />
 
-            <EditText
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:inputType="textMultiLine"
-                android:ems="10"
-                android:id="@+id/editText"
-                android:layout_gravity="left|top" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/send_error"
+                android:id="@+id/error"
+                android:layout_gravity="center|bottom"
+                android:textColor="#ffff3123"
+                android:visibility="invisible" />
         </LinearLayout>
     </ScrollView>
 

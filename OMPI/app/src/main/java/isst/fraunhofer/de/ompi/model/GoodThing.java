@@ -5,21 +5,35 @@ import java.io.Serializable;
 
 public class GoodThing  implements Serializable {
 
+    private long id;
+    private String goodThing;
+    private String causality;
+    private String personId;
+    private int dayNr;
+
 
     public long getId() {
         return id;
     }
 
+    public String getPersonId() {
+        return personId;
+    }
+
+    public void setPersonId(String personId) {
+        this.personId = personId;
+    }
+
+    public int getDayNr() {
+        return dayNr;
+    }
+
+    public void setDayNr(int dayNr) {
+        this.dayNr = dayNr;
+    }
+
     public void setId(long id) {
         this.id = id;
-    }
-
-    public Cycle getCycle() {
-        return cycle;
-    }
-
-    public void setCycle(Cycle cycle) {
-        this.cycle = cycle;
     }
 
     public String getGoodThing() {
@@ -38,9 +52,6 @@ public class GoodThing  implements Serializable {
         this.causality = causality;
     }
 
-    private long id;
-	private Cycle cycle;
-	private String goodThing;
-	private String causality;		
+
 
 }

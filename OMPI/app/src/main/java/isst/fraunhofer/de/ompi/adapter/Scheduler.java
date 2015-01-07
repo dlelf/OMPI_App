@@ -18,6 +18,7 @@ import isst.fraunhofer.de.ompi.activities.PlaceboTaskActivity;
 import isst.fraunhofer.de.ompi.activities.TaskActivity;
 import isst.fraunhofer.de.ompi.activities.WaitForNextDayActivity;
 import isst.fraunhofer.de.ompi.activities.EndActivity;
+import isst.fraunhofer.de.ompi.activities.SendDailyDataActivity;
 
 
 
@@ -55,15 +56,17 @@ public class Scheduler {
         RegistrationActivity(RegistrationActivity.class,FirstHRVCheckActivity.class,null),
         FirstHRVCheckActivity(FirstHRVCheckActivity.class,SendRegistrationActivity.class,null),
         SendRegistrationActivity(SendRegistrationActivity.class, WaitForRegistrationActivity.class,null),
-        WaitForRegistrationActivity(WaitForRegistrationActivity.class, InstructionActivity.class,null),
+        WaitForRegistrationActivity(WaitForRegistrationActivity.class, InstructionActivity.class,WaitForNextDayActivity.class),
 
         InstructionActivity(InstructionActivity.class,HRVCheckActivity.class,TaskActivity.class),
 
         HRVCheckActivity(HRVCheckActivity.class,HRVResultActivity.class,null),
         HRVResultActivity(HRVResultActivity.class,TaskActivity.class,PlaceboTaskActivity.class),
 
-        PlaceboTaskActivity(PlaceboTaskActivity.class,WaitForNextDayActivity.class,null),
-        TaskActivity(TaskActivity.class,WaitForNextDayActivity.class,null),
+        PlaceboTaskActivity(PlaceboTaskActivity.class,HRVCheckActivity.class,SendDailyDataActivity.class),
+        TaskActivity(TaskActivity.class,HRVCheckActivity.class,SendDailyDataActivity.class),
+
+        SendDailyDataActivity(SendDailyDataActivity.class, WaitForNextDayActivity.class,null),
 
         WaitForNextDayActivity(WaitForNextDayActivity.class, InstructionActivity.class,EndActivity.class),
         EndActivity(EndActivity.class,LinkActivity.class,null),

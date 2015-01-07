@@ -6,7 +6,10 @@ import android.content.SharedPreferences;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 
-import isst.fraunhofer.de.ompi.model.Cycle;
+import java.util.ArrayList;
+
+import isst.fraunhofer.de.ompi.model.ChildMemory;
+import isst.fraunhofer.de.ompi.model.GoodThing;
 import isst.fraunhofer.de.ompi.model.HRV;
 import isst.fraunhofer.de.ompi.model.Person;
 
@@ -45,16 +48,37 @@ public class RestAdapter {
 
     }
 
-    public void sendCycle(Cycle cycle){
+   /* public void sendCycle(Cycle cycle){
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
         restTemplate.postForObject(url+"/cycle", cycle, Cycle.class);
 
-    }
+    }*/
     public void sendHRV(HRV hrv){
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
         restTemplate.postForObject(url+"/HRV", hrv, HRV.class);
+
+    }
+
+    public void sendHRVs(ArrayList<HRV> hrvs){
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
+        for (HRV hrv : hrvs) {
+            restTemplate.postForObject(url + "/HRV", hrv, HRV.class);
+        }
+    }
+
+    public void sendGoodThing(GoodThing goodThing) {
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
+        restTemplate.postForObject(url + "/goodThing", goodThing, GoodThing.class);
+    }
+
+    public void sendChildMemory(ChildMemory childMemory){
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
+        restTemplate.postForObject(url+"/childMemory",childMemory, ChildMemory.class);
 
     }
 

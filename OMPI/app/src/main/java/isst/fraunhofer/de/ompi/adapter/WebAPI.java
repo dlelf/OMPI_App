@@ -9,7 +9,7 @@ import retrofit.RestAdapter;
 /**
  * Created by durin on 22/12/2014.
  */
-public class WebAPI {
+public class WebAPI {/*
 
 
 
@@ -31,5 +31,5 @@ public class WebAPI {
 
     public WebInterface getService(){
         return service;
-    }
+    }*/
 }

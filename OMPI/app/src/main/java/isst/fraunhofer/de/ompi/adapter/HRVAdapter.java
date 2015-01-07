@@ -11,7 +11,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import isst.fraunhofer.de.ompi.model.Cycle;
+
 import isst.fraunhofer.de.ompi.model.HRV;
 
 /**
@@ -23,7 +23,7 @@ public class HRVAdapter {
 
     private static HRVAdapter mInstance;
     private Context mContext;
-    private Cycle cycle;
+
 
 
     public ArrayList<HRV> getHRV(){
@@ -62,7 +62,6 @@ public class HRVAdapter {
                 HRV hrv = new HRV();
                 hrv.setDate(date);
                 hrv.setRrInterval(Long.parseLong(line));
-                hrv.setCycle(cycle);
                 measurement.add(hrv);
             }
 
@@ -106,13 +105,7 @@ public class HRVAdapter {
     }
 
 
-    public Cycle getCycle() {
-        return cycle;
-    }
 
-    public void setCycle(Cycle cycle) {
-        this.cycle = cycle;
-    }
 
 
     private HRVAdapter(Context pContext){

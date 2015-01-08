@@ -28,7 +28,7 @@ import isst.fraunhofer.de.ompi.activities.InstallHRVActivity;
 public class Scheduler {
     public static final String PREFS_NAME = "MyPrefsFile";
     private static Scheduler mInstance;
-    private Context mContext;
+    private static Context mContext;
     public static final String PROPERTY_CURRENT_ACTIVITY = "currentActivity";
     public static final String PROPERTY_BEFORE_ACTIVITY = "beforeActivity";
     SharedPreferences settings;
@@ -44,6 +44,7 @@ public class Scheduler {
         if (mInstance == null) {
             mInstance = new Scheduler(pContext);
         }
+        mContext=pContext;
         return mInstance;
     }
 
@@ -53,7 +54,7 @@ public class Scheduler {
         //Regeln zur Navigation von Activitäten
         StartActivity(StartActivity.class,RegistrationActivity.class,null),
 
-        RegistrationActivity(RegistrationActivity.class,FirstHRVCheckActivity.class,SendRegistrationActivity.class),
+        RegistrationActivity(RegistrationActivity.class,InstallHRVActivity.class,SendRegistrationActivity.class),
         InstallHRVActivity(InstallHRVActivity.class, FirstHRVCheckActivity.class,SendRegistrationActivity.class),
         FirstHRVCheckActivity(FirstHRVCheckActivity.class,SendRegistrationActivity.class,null),
         SendRegistrationActivity(SendRegistrationActivity.class, WaitForRegistrationActivity.class,null),
@@ -65,7 +66,7 @@ public class Scheduler {
         HRVResultActivity(HRVResultActivity.class,TaskActivity.class,PlaceboTaskActivity.class),
 
         PlaceboTaskActivity(PlaceboTaskActivity.class,HRVCheckActivity.class,SendDailyDataActivity.class),
-        TaskActivity(TaskActivity.class,HRVCheckActivity.class,SendDailyDataActivity.class),
+        TaskActivity(TaskActivity.class,SendDailyDataActivity.class,SendDailyDataActivity.class),
 
         SendDailyDataActivity(SendDailyDataActivity.class, WaitForNextDayActivity.class,null),
 

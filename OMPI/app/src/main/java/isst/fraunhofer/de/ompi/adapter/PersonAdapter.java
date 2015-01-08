@@ -15,7 +15,7 @@ import isst.fraunhofer.de.ompi.model.Person;
     public static final String PROPERTY_PERSON_ID = "personId";
     public static final String PROPERTY_HRV_MEASURABLE= "hrvMeasurable";
 
-    private Context mContext;
+    private static Context mContext;
     SharedPreferences settings;
     private Person person;
 
@@ -30,6 +30,7 @@ import isst.fraunhofer.de.ompi.model.Person;
         if (mInstance == null) {
             mInstance = new PersonAdapter(pContext);
         }
+        mContext=pContext;
         return mInstance;
     }
 

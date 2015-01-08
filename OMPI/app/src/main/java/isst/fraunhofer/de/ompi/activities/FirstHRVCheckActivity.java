@@ -35,7 +35,7 @@ public class FirstHRVCheckActivity extends Activity {
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {  hrvAdapter.startHRV();
-                nextActivity();
+                //nextActivity();
 
             }
         });

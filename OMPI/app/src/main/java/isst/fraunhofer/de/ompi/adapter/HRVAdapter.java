@@ -7,7 +7,6 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Environment;
 import android.util.Log;
-import java.util.concurrent.atomic.AtomicInteger;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -15,7 +14,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-
 
 import isst.fraunhofer.de.ompi.model.HRV;
 
@@ -27,9 +25,7 @@ public class HRVAdapter {
     final static String hrvPackage="com.RMT.ompihrv";
 
     private static HRVAdapter mInstance;
-    private Context mContext;
-
-
+    private static Context mContext;
 
     public ArrayList<HRV> getHRV(){
 
@@ -122,6 +118,7 @@ public class HRVAdapter {
         if (mInstance == null) {
             mInstance = new HRVAdapter(pContext);
         }
+        mContext = pContext;
         return mInstance;
     }
 

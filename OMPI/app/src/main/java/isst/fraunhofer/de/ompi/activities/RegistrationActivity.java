@@ -4,21 +4,13 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.google.android.gms.gcm.GoogleCloudMessaging;
-
-import java.util.concurrent.atomic.AtomicInteger;
-
 import isst.fraunhofer.de.ompi.R;
-import isst.fraunhofer.de.ompi.adapter.GCMAdapter;
-import isst.fraunhofer.de.ompi.adapter.HRVAdapter;
 import isst.fraunhofer.de.ompi.adapter.PersonAdapter;
 import isst.fraunhofer.de.ompi.adapter.Scheduler;
 import isst.fraunhofer.de.ompi.model.Person;
@@ -30,7 +22,6 @@ public class RegistrationActivity extends Activity {
     SharedPreferences settings;
     Scheduler scheduler;
     PersonAdapter personAdapter;
-    HRVAdapter hrvAdapter;
     Person person;
 
     Context context;
@@ -46,7 +37,6 @@ public class RegistrationActivity extends Activity {
         context = getApplicationContext();
         scheduler=Scheduler.getInstance(this);
         personAdapter = PersonAdapter.getInstance(this);
-        hrvAdapter= HRVAdapter.getInstance(this);
         person = personAdapter.getPerson();
 
         nextButton = (Button) this.findViewById(R.id.dummy_next_button);
@@ -66,7 +56,7 @@ public class RegistrationActivity extends Activity {
             @Override
             public void onClick(View v) {
                 saveId();
-                hrvAdapter.installHRV();
+                nextActivity();
             }
         });
     }
@@ -83,18 +73,12 @@ public class RegistrationActivity extends Activity {
 
     }
 
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        Intent intent;
-        if (hrvAdapter.appInstalled()) {
-            person.setHrvMeasurable(true);
-            intent = new Intent(this, scheduler.chooseNextActivity(this));
-        } else {
-            person.setHrvMeasurable(false);
-            intent = new Intent(this, scheduler.chooseNextActivity(this,true));
-        }
-
-        personAdapter.saveAll();
+    private void nextActivity(){
+        Intent intent = new Intent(this,scheduler.chooseNextActivity(this));
         startActivity(intent);
+
     }
+
+
 
 }

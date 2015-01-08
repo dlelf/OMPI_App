@@ -8,6 +8,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 
+import isst.fraunhofer.de.ompi.Constants;
 import isst.fraunhofer.de.ompi.model.ChildMemory;
 import isst.fraunhofer.de.ompi.model.GoodThing;
 import isst.fraunhofer.de.ompi.model.HRV;
@@ -17,7 +18,7 @@ import isst.fraunhofer.de.ompi.model.Person;
  * Created by durin on 19/12/2014.
  */
 public class RestAdapter {
-    private Context mContext;
+    private static Context mContext;
     SharedPreferences settings;
     private static RestAdapter mInstance;
     public static final String PREFS_NAME = "MyPrefsFile";
@@ -30,6 +31,7 @@ public class RestAdapter {
         if (mInstance == null) {
             mInstance = new RestAdapter(pContext);
         }
+        mContext=pContext;
         return mInstance;
     }
 
@@ -44,7 +46,7 @@ public class RestAdapter {
 
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
-        restTemplate.postForObject(url+"/people", person, Person.class);
+        restTemplate.postForObject(Constants.REST_ENDPOINT+"/people", person, Person.class);
 
     }
 

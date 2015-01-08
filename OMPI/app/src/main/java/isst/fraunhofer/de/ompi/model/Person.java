@@ -3,7 +3,6 @@ package isst.fraunhofer.de.ompi.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Person  implements Serializable {
@@ -13,6 +12,9 @@ public class Person  implements Serializable {
     private String longId;
     private Integer groupNr;
     private String googleCloudId;
+    private boolean hrvMeasurable;
+
+
 
     public boolean isHrvMeasurable() {
         return hrvMeasurable;
@@ -22,7 +24,7 @@ public class Person  implements Serializable {
         this.hrvMeasurable = hrvMeasurable;
     }
 
-    private boolean hrvMeasurable;
+
 
 
     public String getLongId() {

@@ -11,7 +11,7 @@ import java.util.Date;
  * Created by durin on 19/12/2014.
  */
 public class CycleAdapter {
-    private Context mContext;
+    private static Context mContext;
     private static CycleAdapter mInstance;
     private HRVAdapter hrvAdapter;
     private PersonAdapter personAdapter;
@@ -52,6 +52,7 @@ public class CycleAdapter {
         if (mInstance == null) {
             mInstance = new CycleAdapter(pContext);
         }
+        mContext=pContext;
         return mInstance;
     }
 

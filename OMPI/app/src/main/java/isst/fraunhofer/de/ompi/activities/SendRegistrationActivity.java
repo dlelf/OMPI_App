@@ -1,7 +1,6 @@
 package isst.fraunhofer.de.ompi.activities;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -38,7 +37,7 @@ public class SendRegistrationActivity extends Activity {
         scheduler= Scheduler.getInstance(this);
         person=personAdapter.getPerson();
         context=this;
-        //new HttpRequestTask().execute();
+        new HttpRequestTask().execute();
 
 
     }

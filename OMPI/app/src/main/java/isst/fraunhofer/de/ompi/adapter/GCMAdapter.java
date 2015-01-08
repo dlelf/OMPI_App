@@ -18,7 +18,7 @@ import java.io.IOException;
  */
 public class GCMAdapter {
     private static GCMAdapter mInstance;
-    Context context;
+    private static Context context;
     private static final String PROPERTY_APP_VERSION = "appVersion";
     public static final String PREFS_NAME = "MyPrefsFile";
     String SENDER_ID = "329654643597";
@@ -39,6 +39,7 @@ public class GCMAdapter {
         if (mInstance == null) {
             mInstance = new GCMAdapter(pContext);
         }
+        context=pContext;
         return mInstance;
     }
 

@@ -58,8 +58,12 @@ public class HRVResultActivity extends Activity {
     }
 
     private void nextActivity(){
+        Intent intent;
         if (hrvValid){
-        Intent intent = new Intent(this,scheduler.chooseNextActivity(this));
+        if (scheduler.getActivityBefore().getClass().equals(TaskActivity.class))
+        intent = new Intent(this,scheduler.chooseNextActivity(this));
+            else
+        intent = new Intent(this,scheduler.chooseNextActivity(this,true));
         startActivity(intent);}
         else {
             //TODO Start OMPI-HRV wieder

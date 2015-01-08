@@ -14,6 +14,16 @@ public class Person  implements Serializable {
     private Integer groupNr;
     private String googleCloudId;
 
+    public boolean isHrvMeasurable() {
+        return hrvMeasurable;
+    }
+
+    public void setHrvMeasurable(boolean hrvMeasurable) {
+        this.hrvMeasurable = hrvMeasurable;
+    }
+
+    private boolean hrvMeasurable;
+
 
     public String getLongId() {
         return longId;

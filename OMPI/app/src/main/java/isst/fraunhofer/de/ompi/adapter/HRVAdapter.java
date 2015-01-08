@@ -1,8 +1,13 @@
 package isst.fraunhofer.de.ompi.adapter;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Environment;
 import android.util.Log;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -126,6 +131,47 @@ public class HRVAdapter {
         return true;
     }
 
+    public boolean appInstalled() {
+        PackageManager pm = mContext.getPackageManager();
+        boolean app_installed = false;
+        try {
+            pm.getPackageInfo(hrvPackage, PackageManager.GET_ACTIVITIES);
+            app_installed = true;
+        }
+        catch (PackageManager.NameNotFoundException e) {
+            app_installed = false;
+        }
+        return app_installed ;
+    }
+
+    public void installHRV() {
+        if (!appInstalled()) {
+            try {
+                ((Activity) mContext).startActivityForResult(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + hrvPackage)), 42);
+            } catch (android.content.ActivityNotFoundException anfe) {
+                ((Activity) mContext).startActivityForResult(new Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/apps/details?id=" + hrvPackage)), 42);
+            }
+        }
+    }
+
+
+
+    public void startHRV(){
+
+        if(appInstalled()) {
+            Intent LaunchIntent = mContext.getPackageManager()
+                    .getLaunchIntentForPackage(hrvPackage);
+            ((Activity)mContext).startActivityForResult(LaunchIntent,42);
+        }
+        else {
+            try {
+                ((Activity)mContext).startActivityForResult(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + hrvPackage)),42);
+            } catch (android.content.ActivityNotFoundException anfe) {
+                ((Activity)mContext).startActivityForResult(new Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/apps/details?id=" +hrvPackage)),42);
+            }
+        }
+
+    }
 
 
 }

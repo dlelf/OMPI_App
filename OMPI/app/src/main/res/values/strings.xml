@@ -20,6 +20,14 @@
     <string name="registrierung_id3_text">1. Buchstabe im Vornamen Ihrer Mutter</string>
     <string name="registrierung_id4_text">1. Buchstabe im Vornamen Ihres Vaters</string>
 
+    <string name="install_button">Installieren</string>
+    <string name="install_title">Installation vom OMPI-HRV</string>
+    <string name="install_text">Es wird versucht ein App zur Messung vom Herzratenvariabilität zu installieren. Dafür wird gleich Play Store geöffnet.
+      \n\n Stellen Sie bitte sicher dass Sie eine Internetverbindung haben
+    \n\n Nach der Installation drücken kommen Sie bitte zurück zum OMPI App
+     \n\n Wenn es steht, dass Ihr Gerät den App nicht unterstützt können Sie trotzdem an dem Experiment weiter Teilnehmen.
+    </string>
+
     <string name="link_button">Weiter</string>
     <string name="link_title">Link zum Fragebogen</string>
     <string name="link_text">Sehr geehrte(r) Versuchsteilnehmer(in), \n\n
@@ -40,6 +48,8 @@
     sie sind jetzt für die Studie registriert. \n\n
     Die Studie wird voraussichtlich ab dem 12.01. beginnen. Dann erhalten sie eine weitere Nachricht von uns.
     </string>
+
+
 
     <string name="hrvcheck_title">HRV Messung</string>
     <string name="hrvcheck_text">Sie werden gleich zur initialen Messung  der Herzfrequenzvariabilität (HRV) weitergeleitet.\n\n

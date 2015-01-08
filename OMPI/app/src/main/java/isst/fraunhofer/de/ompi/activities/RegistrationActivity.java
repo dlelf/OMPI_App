@@ -18,26 +18,25 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import isst.fraunhofer.de.ompi.R;
 import isst.fraunhofer.de.ompi.adapter.GCMAdapter;
+import isst.fraunhofer.de.ompi.adapter.HRVAdapter;
+import isst.fraunhofer.de.ompi.adapter.PersonAdapter;
 import isst.fraunhofer.de.ompi.adapter.Scheduler;
+import isst.fraunhofer.de.ompi.model.Person;
 
 
 public class RegistrationActivity extends Activity {
 
-    GCMAdapter gcmAdapter;
-
-
     public static final String PREFS_NAME = "MyPrefsFile";
-    final String appPackageName = "com.RMT.ompihrv";
     SharedPreferences settings;
     Scheduler scheduler;
+    PersonAdapter personAdapter;
+    HRVAdapter hrvAdapter;
+    Person person;
 
     Context context;
     Button nextButton;
     TextView text,title;
     EditText id1,id2,id3,id4;
-    GoogleCloudMessaging gcm;
-    AtomicInteger msgId = new AtomicInteger();
-    String regid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +44,10 @@ public class RegistrationActivity extends Activity {
         setContentView(R.layout.activity_registration);
         settings = getSharedPreferences(PREFS_NAME, 0);
         context = getApplicationContext();
-        gcmAdapter = GCMAdapter.getInstance(context);
         scheduler=Scheduler.getInstance(this);
+        personAdapter = PersonAdapter.getInstance(this);
+        hrvAdapter= HRVAdapter.getInstance(this);
+        person = personAdapter.getPerson();
 
         nextButton = (Button) this.findViewById(R.id.dummy_next_button);
         id1 = (EditText) this.findViewById(R.id.regId1);
@@ -64,69 +65,36 @@ public class RegistrationActivity extends Activity {
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                gcmAdapter.registerGCM();
                 saveId();
-                nextActivity();
+                hrvAdapter.installHRV();
             }
         });
     }
 
-
-
     private void saveId()
     {
-
         String s1=id1.getText().toString();
         String s2=id2.getText().toString();
         String s3=id3.getText().toString();
         String s4=id4.getText().toString();
 
-        SharedPreferences.Editor editor = settings.edit();
-        editor.putString("personId", s1+s2+s3+s4);
-        editor.commit();
+        person.setLongId(s1+s2+s3+s4);
+        personAdapter.saveAll();
 
     }
 
-    private void startHRV(){
-
-        boolean installed  =  appInstalledOrNot(appPackageName);
-        if(installed) {
-            //This intent will help you to launch if the package is already installed
-            Intent LaunchIntent = getPackageManager()
-                    .getLaunchIntentForPackage(appPackageName);
-            startActivityForResult(LaunchIntent,42);
-
-        }
-        else {
-            try {
-                startActivityForResult(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)),42);
-            } catch (android.content.ActivityNotFoundException anfe) {
-                startActivityForResult(new Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/apps/details?id=" + appPackageName)),42);
-            }
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Intent intent;
+        if (hrvAdapter.appInstalled()) {
+            person.setHrvMeasurable(true);
+            intent = new Intent(this, scheduler.chooseNextActivity(this));
+        } else {
+            person.setHrvMeasurable(false);
+            intent = new Intent(this, scheduler.chooseNextActivity(this,true));
         }
 
-    }
-    private void nextActivity(){
-        startHRV();
-        Intent intent = new Intent(this,scheduler.chooseNextActivity(this));
+        personAdapter.saveAll();
         startActivity(intent);
     }
-
-    private boolean appInstalledOrNot(String uri) {
-        PackageManager pm = getPackageManager();
-        boolean app_installed = false;
-        try {
-            pm.getPackageInfo(uri, PackageManager.GET_ACTIVITIES);
-            app_installed = true;
-        }
-        catch (PackageManager.NameNotFoundException e) {
-            app_installed = false;
-        }
-        return app_installed ;
-    }
-
-
-
-
 
 }

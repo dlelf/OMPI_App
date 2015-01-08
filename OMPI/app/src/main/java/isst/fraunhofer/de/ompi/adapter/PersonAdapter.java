@@ -12,6 +12,8 @@ import isst.fraunhofer.de.ompi.model.Person;
     private static PersonAdapter mInstance;
     public static final String PREFS_NAME = "MyPrefsFile";
     public static final String PROPERTY_REG_ID = "registration_id";
+    public static final String PROPERTY_PERSON_ID = "personId";
+    public static final String PROPERTY_HRV_MEASURABLE= "hrvMeasurable";
 
     private Context mContext;
     SharedPreferences settings;
@@ -41,19 +43,17 @@ import isst.fraunhofer.de.ompi.model.Person;
 
     private Person loadPerson(){
         Person person = new Person();
-
-        person.setLongId( settings.getString("personId",""));
+        person.setLongId( settings.getString(PROPERTY_PERSON_ID,""));
         person.setGoogleCloudId(settings.getString( PROPERTY_REG_ID,""));
-
-
+        person.setHrvMeasurable(settings.getBoolean( PROPERTY_HRV_MEASURABLE,false));
         return person;
-
     }
 
     public void saveAll(){
         SharedPreferences.Editor editor = settings.edit();
-        editor.putString("personId",person.getLongId());
+        editor.putString(PROPERTY_PERSON_ID,person.getLongId());
         editor.putString(PROPERTY_REG_ID,person.getGoogleCloudId());
+        editor.putBoolean(PROPERTY_HRV_MEASURABLE,person.isHrvMeasurable());
         editor.commit();
 
     }

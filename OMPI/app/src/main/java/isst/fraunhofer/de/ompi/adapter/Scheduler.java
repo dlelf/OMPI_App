@@ -18,6 +18,7 @@ import isst.fraunhofer.de.ompi.activities.WaitForNextDayActivity;
 import isst.fraunhofer.de.ompi.activities.WaitForRegistrationActivity;
 import isst.fraunhofer.de.ompi.activities.SendDailyDataActivity;
 import isst.fraunhofer.de.ompi.activities.EndActivity;
+import isst.fraunhofer.de.ompi.activities.InstallHRVActivity;
 
 
 
@@ -52,7 +53,8 @@ public class Scheduler {
         //Regeln zur Navigation von Activitäten
         StartActivity(StartActivity.class,RegistrationActivity.class,null),
 
-        RegistrationActivity(RegistrationActivity.class,FirstHRVCheckActivity.class,null),
+        RegistrationActivity(RegistrationActivity.class,FirstHRVCheckActivity.class,SendRegistrationActivity.class),
+        InstallHRVActivity(InstallHRVActivity.class, FirstHRVCheckActivity.class,SendRegistrationActivity.class),
         FirstHRVCheckActivity(FirstHRVCheckActivity.class,SendRegistrationActivity.class,null),
         SendRegistrationActivity(SendRegistrationActivity.class, WaitForRegistrationActivity.class,null),
         WaitForRegistrationActivity(WaitForRegistrationActivity.class, InstructionActivity.class,WaitForNextDayActivity.class),

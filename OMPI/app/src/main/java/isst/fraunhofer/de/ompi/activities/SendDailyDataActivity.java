@@ -1,7 +1,6 @@
 package isst.fraunhofer.de.ompi.activities;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -15,8 +14,8 @@ import isst.fraunhofer.de.ompi.adapter.HRVAdapter;
 import isst.fraunhofer.de.ompi.adapter.PersonAdapter;
 import isst.fraunhofer.de.ompi.adapter.RestAdapter;
 import isst.fraunhofer.de.ompi.adapter.Scheduler;
+import isst.fraunhofer.de.ompi.adapter.StateAdapter;
 import isst.fraunhofer.de.ompi.model.HRV;
-import isst.fraunhofer.de.ompi.model.Person;
 
 
 public class SendDailyDataActivity extends Activity {
@@ -25,6 +24,7 @@ public class SendDailyDataActivity extends Activity {
    PersonAdapter personAdapter;
     RestAdapter restAdapter;
     HRVAdapter hrvAdapter ;
+    StateAdapter stateAdapter;
     Scheduler scheduler;
     Button nextButton;
     TextView text,title,error;
@@ -40,6 +40,7 @@ public class SendDailyDataActivity extends Activity {
         restAdapter = RestAdapter.getInstance(this);
         scheduler= Scheduler.getInstance(this);
         hrvAdapter = HRVAdapter.getInstance(this);
+        stateAdapter= StateAdapter.getInstance(this);
         context=this;
         //new HttpRequestTask().execute();
     }

@@ -28,6 +28,7 @@ import isst.fraunhofer.de.ompi.activities.InstallHRVActivity;
 public class Scheduler {
     public static final String PREFS_NAME = "MyPrefsFile";
     private static Scheduler mInstance;
+    private PersonAdapter personAdapter;
     private static Context mContext;
     public static final String PROPERTY_CURRENT_ACTIVITY = "currentActivity";
     public static final String PROPERTY_BEFORE_ACTIVITY = "beforeActivity";
@@ -35,9 +36,11 @@ public class Scheduler {
     Class activityBefore;
 
 
+
     private Scheduler(Context pContext){
         mContext=pContext;
         settings = pContext.getSharedPreferences(PREFS_NAME, 0);
+        personAdapter=PersonAdapter.getInstance(pContext);
     }
 
     public static Scheduler getInstance(Context pContext){
@@ -58,15 +61,15 @@ public class Scheduler {
         InstallHRVActivity(InstallHRVActivity.class, FirstHRVCheckActivity.class,SendRegistrationActivity.class),
         FirstHRVCheckActivity(FirstHRVCheckActivity.class,SendRegistrationActivity.class,null),
         SendRegistrationActivity(SendRegistrationActivity.class, WaitForRegistrationActivity.class,null),
-        WaitForRegistrationActivity(WaitForRegistrationActivity.class, InstructionActivity.class,WaitForNextDayActivity.class),
+        WaitForRegistrationActivity(WaitForRegistrationActivity.class, InstructionActivity.class,null),
 
         InstructionActivity(InstructionActivity.class,HRVCheckActivity.class,TaskActivity.class),
 
         HRVCheckActivity(HRVCheckActivity.class,HRVResultActivity.class,null),
-        HRVResultActivity(HRVResultActivity.class,TaskActivity.class,PlaceboTaskActivity.class),
+        HRVResultActivity(HRVResultActivity.class,TaskActivity.class,WaitForNextDayActivity.class),
 
         PlaceboTaskActivity(PlaceboTaskActivity.class,HRVCheckActivity.class,SendDailyDataActivity.class),
-        TaskActivity(TaskActivity.class,SendDailyDataActivity.class,SendDailyDataActivity.class),
+        TaskActivity(TaskActivity.class,HRVCheckActivity.class,SendDailyDataActivity.class),
 
         SendDailyDataActivity(SendDailyDataActivity.class, WaitForNextDayActivity.class,null),
 
@@ -150,7 +153,7 @@ public class Scheduler {
 
 
     public Class getLastActivity(){
-        String className=settings.getString(PROPERTY_CURRENT_ACTIVITY,Action.StartActivity.name());
+        String className=settings.getString(PROPERTY_CURRENT_ACTIVITY,Action.RegistrationActivity.name());
         Action a =  Action.valueOf(className);
         Class r=a.thisActivity;
         return Action.valueOf(className).thisActivity;

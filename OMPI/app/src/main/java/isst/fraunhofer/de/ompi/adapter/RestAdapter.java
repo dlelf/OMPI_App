@@ -22,7 +22,6 @@ public class RestAdapter {
     SharedPreferences settings;
     private static RestAdapter mInstance;
     public static final String PREFS_NAME = "MyPrefsFile";
-    public static final String url = "http://192.168.200.154:8080";
 
 
 
@@ -59,7 +58,7 @@ public class RestAdapter {
     public void sendHRV(HRV hrv){
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
-        restTemplate.postForObject(url+"/HRV", hrv, HRV.class);
+        restTemplate.postForObject(Constants.REST_ENDPOINT+"/HRV", hrv, HRV.class);
 
     }
 
@@ -67,20 +66,20 @@ public class RestAdapter {
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
         for (HRV hrv : hrvs) {
-            restTemplate.postForObject(url + "/HRV", hrv, HRV.class);
+            restTemplate.postForObject(Constants.REST_ENDPOINT + "/hrv", hrv, HRV.class);
         }
     }
 
     public void sendGoodThing(GoodThing goodThing) {
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
-        restTemplate.postForObject(url + "/goodThing", goodThing, GoodThing.class);
+        restTemplate.postForObject(Constants.REST_ENDPOINT + "/goodThing", goodThing, GoodThing.class);
     }
 
     public void sendChildMemory(ChildMemory childMemory){
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
-        restTemplate.postForObject(url+"/childMemory",childMemory, ChildMemory.class);
+        restTemplate.postForObject(Constants.REST_ENDPOINT+"/childMemory",childMemory, ChildMemory.class);
 
     }
 

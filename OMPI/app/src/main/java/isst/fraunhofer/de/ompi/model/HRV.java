@@ -10,7 +10,7 @@ public class HRV  implements Serializable {
     private long id;
     private long date;
     private long rrInterval;
-    private boolean beforeMeasurement;
+    private boolean firstHRV;
     private String personId;
     private int dayNr;
 
@@ -38,12 +38,12 @@ public class HRV  implements Serializable {
         this.rrInterval = rrInterval;
     }
 
-    public boolean isBeforeReading() {
-        return beforeMeasurement;
+    public boolean isFirstHRV() {
+        return firstHRV;
     }
 
-    public void setBeforeReading(boolean beforeReading) {
-        this.beforeMeasurement = beforeReading;
+    public void setFirstHRV(boolean beforeReading) {
+        this.firstHRV = beforeReading;
     }
 
 

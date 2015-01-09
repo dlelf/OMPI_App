@@ -55,6 +55,7 @@ public class RegistrationActivity extends Activity {
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 saveId();
                 nextActivity();
             }

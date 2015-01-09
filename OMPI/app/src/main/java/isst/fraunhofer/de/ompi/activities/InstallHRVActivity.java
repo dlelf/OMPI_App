@@ -76,6 +76,7 @@ public class InstallHRVActivity extends Activity {
     private void nextActivity() {
         gcmAdapter.registerGCM();
         if (hrvAdapter.appInstalled()) {
+            personAdapter.saveAll();
             Intent intent = new Intent(this, scheduler.chooseNextActivity(this));
             startActivity(intent);
         } else

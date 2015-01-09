@@ -9,7 +9,6 @@ import java.util.ArrayList;
 
 import isst.fraunhofer.de.ompi.adapter.HRVAdapter;
 import isst.fraunhofer.de.ompi.adapter.RestAdapter;
-import isst.fraunhofer.de.ompi.adapter.WebAPI;
 import isst.fraunhofer.de.ompi.model.HRV;
 
 //import isst.fraunhofer.de.ompi.util.Greeting;
@@ -30,6 +29,7 @@ public class Test extends Activity {
 
         hrvAdapter = HRVAdapter.getInstance(this);
         restAdapter=RestAdapter.getInstance(this);
+        //hrvAdapter.deleteExternalStoragePublicPicture();
         /*hrvAdapter.checkFiles();
 
 
@@ -47,7 +47,7 @@ public class Test extends Activity {
         cycle.getHRV().add(hrv);
         //cycle =cycleAdapter.createCycle();
         System.out.print("Cycle readed successfull");*/
-        new HttpRequestTask().execute();
+       // new HttpRequestTask().execute();
 
         //new HttpRequestTask().execute();
     }

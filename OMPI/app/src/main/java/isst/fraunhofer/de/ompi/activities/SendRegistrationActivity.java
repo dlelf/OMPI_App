@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import isst.fraunhofer.de.ompi.R;
+import isst.fraunhofer.de.ompi.adapter.HRVAdapter;
 import isst.fraunhofer.de.ompi.adapter.PersonAdapter;
 import isst.fraunhofer.de.ompi.adapter.RestAdapter;
 import isst.fraunhofer.de.ompi.adapter.Scheduler;
@@ -18,10 +19,11 @@ import isst.fraunhofer.de.ompi.model.Person;
 
 public class SendRegistrationActivity extends Activity {
 
-    public static final String PREFS_NAME = "MyPrefsFile";
+
    PersonAdapter personAdapter;
     RestAdapter restAdapter;
     Scheduler scheduler;
+    HRVAdapter hrvAdapter;
     Button nextButton;
     TextView text,title,error;
     Person person;
@@ -34,12 +36,10 @@ public class SendRegistrationActivity extends Activity {
         super.onStart();
         personAdapter = PersonAdapter.getInstance(this);
         restAdapter = RestAdapter.getInstance(this);
+        hrvAdapter=HRVAdapter.getInstance(this);
         scheduler= Scheduler.getInstance(this);
         person=personAdapter.getPerson();
         context=this;
-        new HttpRequestTask().execute();
-
-
     }
 
 
@@ -56,6 +56,7 @@ public class SendRegistrationActivity extends Activity {
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                updatePerson();
                 nextActivity();
 
             }
@@ -65,6 +66,8 @@ public class SendRegistrationActivity extends Activity {
         title.setText(R.string.send_title);
         text.setText(R.string.send_text);
         nextButton.setText(R.string.send_button);
+
+
     }
 
     private void nextActivity(){
@@ -77,9 +80,7 @@ public class SendRegistrationActivity extends Activity {
         @Override
         protected Person doInBackground(Void... params) {
             try {
-
                  restAdapter.sendPerson(person);
-
             } catch (Exception e) {
                 Log.e("MainActivity", e.getMessage(), e);
                 connectionFailed = true;
@@ -97,6 +98,12 @@ public class SendRegistrationActivity extends Activity {
                 error.setVisibility(View.VISIBLE);
 
         }
+    }
+
+    public void updatePerson(){
+        personAdapter.getPerson().setHrvMeasurable(hrvAdapter.isHRVValid(this));
+        hrvAdapter.deleteHrvFile();
+
     }
 
 

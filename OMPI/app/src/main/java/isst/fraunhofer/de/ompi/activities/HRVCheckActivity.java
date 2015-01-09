@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import isst.fraunhofer.de.ompi.R;
+import isst.fraunhofer.de.ompi.adapter.HRVAdapter;
 import isst.fraunhofer.de.ompi.adapter.Scheduler;
 
 public class HRVCheckActivity extends Activity {
@@ -15,6 +16,7 @@ public class HRVCheckActivity extends Activity {
     Button nextButton;
     TextView text,title;
     Scheduler scheduler;
+    HRVAdapter hrvAdapter;
 
 
     @Override
@@ -24,6 +26,7 @@ public class HRVCheckActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_text);
         scheduler=Scheduler.getInstance(this);
+        hrvAdapter= HRVAdapter.getInstance(this);
 
         //Initialize activity components
         nextButton = (Button) this.findViewById(R.id.dummy_next_button);
@@ -31,7 +34,7 @@ public class HRVCheckActivity extends Activity {
         title = (TextView)this.findViewById(R.id.textTitle);
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) { nextActivity();
+            public void onClick(View v) { hrvAdapter.startHRV();
 
             }
         });
@@ -41,6 +44,10 @@ public class HRVCheckActivity extends Activity {
         text.setText(R.string.hrvcheck_text);
         nextButton.setText(R.string.hrvcheck_button);
 
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        nextActivity();
     }
 
     private void nextActivity(){

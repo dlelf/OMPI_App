@@ -9,7 +9,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.ArrayList;
 
 import isst.fraunhofer.de.ompi.Constants;
-import isst.fraunhofer.de.ompi.model.ChildMemory;
+import isst.fraunhofer.de.ompi.model.EarlyMemory;
 import isst.fraunhofer.de.ompi.model.GoodThing;
 import isst.fraunhofer.de.ompi.model.HRV;
 import isst.fraunhofer.de.ompi.model.Person;
@@ -49,16 +49,11 @@ public class RestAdapter {
 
     }
 
-   /* public void sendCycle(Cycle cycle){
-        RestTemplate restTemplate = new RestTemplate();
-        restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
-        restTemplate.postForObject(url+"/cycle", cycle, Cycle.class);
 
-    }*/
     public void sendHRV(HRV hrv){
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
-        restTemplate.postForObject(Constants.REST_ENDPOINT+"/HRV", hrv, HRV.class);
+        restTemplate.postForObject(Constants.REST_ENDPOINT+"/hrv", hrv, HRV.class);
 
     }
 
@@ -76,10 +71,19 @@ public class RestAdapter {
         restTemplate.postForObject(Constants.REST_ENDPOINT + "/goodThing", goodThing, GoodThing.class);
     }
 
-    public void sendChildMemory(ChildMemory childMemory){
+    public void sendGoodThings(ArrayList<GoodThing> goodThings) {
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
-        restTemplate.postForObject(Constants.REST_ENDPOINT+"/childMemory",childMemory, ChildMemory.class);
+        for(GoodThing goodThing : goodThings)
+            restTemplate.postForObject(Constants.REST_ENDPOINT + "/goodThing", goodThing, GoodThing.class);
+    }
+
+
+
+    public void sendEarlyMemory(EarlyMemory earlyMemory){
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
+        restTemplate.postForObject(Constants.REST_ENDPOINT+"/childMemory", earlyMemory, EarlyMemory.class);
 
     }
 

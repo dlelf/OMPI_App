@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * Created by Dmytro Urin on 07.01.2015.
  */
-public class ChildMemory implements Serializable {
+public class EarlyMemory implements Serializable {
 
     private long id;
     private String personId;
@@ -45,9 +45,11 @@ public class ChildMemory implements Serializable {
 
     private String Memory;
 
-    public ChildMemory(String personId, int dayNr, String memory) {
+    public EarlyMemory(String personId, int dayNr, String memory) {
         this.personId = personId;
         this.dayNr = dayNr;
         Memory = memory;
+    }
+    public EarlyMemory() {
     }
 }

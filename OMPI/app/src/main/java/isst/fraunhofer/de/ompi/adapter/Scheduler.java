@@ -121,6 +121,12 @@ public class Scheduler {
         return nextActivity;
     }
 
+    public void changeToActivity(Class<? extends Activity> thisActivity,Class<? extends Activity> nextActivity){
+        saveBeforeActivity(thisActivity);
+        saveLastActivity(nextActivity);
+    }
+
+
     public void saveLastActivity(Class activity){
         String className = activity.getSimpleName();
         SharedPreferences.Editor editor = settings.edit();
@@ -134,6 +140,13 @@ public class Scheduler {
         SharedPreferences.Editor editor = settings.edit();
         editor.putString(PROPERTY_BEFORE_ACTIVITY,className);
         editor.commit();
+    }
+
+    public Class chooseBeforeActivity(Activity activity){
+        Class nextActivity = getActivityBefore();
+        saveLastActivity(nextActivity);
+        saveBeforeActivity(activity.getClass());
+        return  nextActivity;
     }
 
     public Class getActivityBefore(){

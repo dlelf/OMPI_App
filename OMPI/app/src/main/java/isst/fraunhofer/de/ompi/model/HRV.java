@@ -42,8 +42,8 @@ public class HRV  implements Serializable {
         return firstHRV;
     }
 
-    public void setFirstHRV(boolean beforeReading) {
-        this.firstHRV = beforeReading;
+    public void setFirstHRV(boolean firstHRV) {
+        this.firstHRV = firstHRV;
     }
 
 

@@ -124,7 +124,7 @@ public class HRVAdapter {
 
 
     public boolean isHRVValid(Context pContext) {
-        if (checkFiles() != null)
+        if (checkFiles().length >0)
             return true;
         else return false;
     }

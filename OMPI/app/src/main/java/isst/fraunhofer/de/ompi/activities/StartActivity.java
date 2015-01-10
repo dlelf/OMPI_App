@@ -24,10 +24,10 @@ public class StartActivity extends Activity {
         stateAdapter=StateAdapter.getInstance(this);
 
        // scheduler.setStartActivity(new RegistrierungActivity());
-       // stateAdapter.nextDay();
+        stateAdapter.nextDay();
 
 
-        scheduler.setStartActivity(PlaceboTaskActivity.class);
+        scheduler.setStartActivity(HRVResultActivity.class);
         Intent intent = new Intent(this,scheduler.getLastActivity());
         startActivity(intent);
         //nextActivity();

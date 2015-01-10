@@ -27,6 +27,7 @@ public class HRVResultActivity extends Activity {
     StateAdapter stateAdapter;
     RestAdapter restAdapter;
     boolean hrvValid,connectionFailed;
+    Activity context;
 
 
     @Override
@@ -39,6 +40,7 @@ public class HRVResultActivity extends Activity {
         hrvAdapter = HRVAdapter.getInstance(this);
         stateAdapter = StateAdapter.getInstance(this);
         restAdapter=RestAdapter.getInstance(this);
+        context=this;
 
         //Check, if HRV richtig gelesen wurde
         hrvValid = hrvAdapter.isHRVValid(this);
@@ -50,15 +52,10 @@ public class HRVResultActivity extends Activity {
         error = (TextView)this.findViewById(R.id.error);
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                connectionFailed = false;
-                error.setVisibility(View.INVISIBLE);
-                new HttpRequestTask().execute();
+            public void onClick(View v) {if(!hrvValid) backToHrv(); else sendData();
 
             }
         });
-
-
         //Set real data to activity components
         if (hrvValid) {
             title.setText(R.string.hrvResultOk_title);
@@ -68,6 +65,18 @@ public class HRVResultActivity extends Activity {
             text.setText(R.string.hrvResultFailed_text);
         }
         nextButton.setText(R.string.hrvResult_button);
+
+    }
+
+    public void backToHrv() {
+        Intent intent = new Intent(this, scheduler.chooseBeforeActivity(this));
+        startActivity(intent);
+    }
+
+    public void sendData(){
+        connectionFailed = false;
+        error.setVisibility(View.INVISIBLE);
+        new HttpRequestTask().execute();
 
     }
 

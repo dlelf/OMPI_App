@@ -29,9 +29,12 @@ public class GCMAdapter {
     public static final String PROPERTY_REG_ID = "registration_id";
     String regid;
 
+    PersonAdapter personAdapter;
+
     private GCMAdapter(Context pContext){
         this.context=pContext;
         settings = pContext.getSharedPreferences(PREFS_NAME, 0);
+        personAdapter=PersonAdapter.getInstance(pContext);
     }
 
 
@@ -53,6 +56,7 @@ public class GCMAdapter {
 
             if (regid.isEmpty())
                 registerInBackground();
+            //register();
             else saveGCMId(regid);
         } else {
             Log.i(TAG, "No valid Google Play Services APK found.");
@@ -60,11 +64,14 @@ public class GCMAdapter {
 
     }
 
-    public void saveGCMId(String id){
+    public void saveGCMId(String googleId){
+
+        personAdapter.setGoogleId(googleId);
         int appVersion = getAppVersion(context);
         Log.i(TAG, "Saving regId on app version " + appVersion);
+
         SharedPreferences.Editor editor = settings.edit();
-        editor.putString(PROPERTY_REG_ID,regid);
+       // editor.putString(PROPERTY_REG_ID,regid);
         editor.putInt(PROPERTY_APP_VERSION, appVersion);
         editor.commit();
 
@@ -148,8 +155,6 @@ public class GCMAdapter {
                     regid = gcm.register(SENDER_ID);
                     msg = "Device registered, registration ID=" + regid;
 
-
-
                     // Persist the regID - no need to register again.
                     saveGCMId(regid);
                 } catch (IOException ex) {
@@ -161,8 +166,31 @@ public class GCMAdapter {
                 return msg;
             }
 
+            @Override
+            protected void onPostExecute(String msg) {
+                Log.i(TAG, msg + "\n");
+            }
+
 
         }.execute(null, null, null);
+    }
+
+    private void register(){
+        String msg = "";
+        try {
+            if (gcm == null) {
+                gcm = GoogleCloudMessaging.getInstance(context);
+            }
+            regid = gcm.register(SENDER_ID);
+            msg = "Device registered, registration ID=" + regid;
+            // Persist the regID - no need to register again.
+            saveGCMId(regid);
+        } catch (IOException ex) {
+            msg = "Error :" + ex.getMessage();
+            // If there is an error, don't just keep trying to register.
+            // Require the user to click a button again, or perform
+            // exponential back-off.
+        }
     }
 
 

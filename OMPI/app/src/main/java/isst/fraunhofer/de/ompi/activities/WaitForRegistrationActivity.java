@@ -1,17 +1,14 @@
 package isst.fraunhofer.de.ompi.activities;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.MotionEvent;
-import android.view.View;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
 import isst.fraunhofer.de.ompi.R;
 import isst.fraunhofer.de.ompi.adapter.Scheduler;
 
-public class WaitForRegistrationActivity extends Activity {
+public class WaitForRegistrationActivity extends BasicActivity {
 
 
     TextView text,title;
@@ -33,17 +30,17 @@ public class WaitForRegistrationActivity extends Activity {
         text = (TextView)this.findViewById(R.id.textText);
         title = (TextView)this.findViewById(R.id.textTitle);
 
-        //TODO Delete after debug
+       /* //TODO Delete after debug
         scrollView=(ScrollView)this.findViewById(R.id.scrollView);
         scrollView.setOnTouchListener(new MyOnTouch());
-
+*/
         //Set real data to activity components
         title.setText(R.string.wait_title);
         text.setText(R.string.wait_text);
 
     }
 
-    //TODO Delete after debug
+   /* //TODO Delete after debug
     public class MyOnTouch implements View.OnTouchListener {
         @Override
         public boolean onTouch(View v, MotionEvent event) {
@@ -55,7 +52,7 @@ public class WaitForRegistrationActivity extends Activity {
             startActivity(intent);
             return true;
         }
-    }
+    }*/
 
 
 

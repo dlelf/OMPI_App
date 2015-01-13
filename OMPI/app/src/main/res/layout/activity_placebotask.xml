@@ -41,6 +41,16 @@
                 android:text="@string/placeboTask_text"
                 android:id="@+id/textText" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/validation_error"
+                android:id="@+id/validationError"
+                android:layout_gravity="center|bottom"
+                android:textColor="#ffff3123"
+                android:visibility="invisible" />
+
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

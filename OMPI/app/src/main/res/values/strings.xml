@@ -10,22 +10,20 @@
     <string name="dummy_text">Title template</string>
     <string name="dummy_link">http:\\www.google.de</string>
 
-    <string name="start_content">Herzlich willkommen \n zur Studie!\n Nur hier! \n10 VPS!!!! \nAngebot!</string>
-
-    <string name="registration_title">Registration</string>
-    <string name="registration_text">Sehr  geehrte(r) Versuchsteilnehmer(in),\nHerzlich willkommen zur Studie!\nBitte registrieren Sie sich zu Beginn. Dafür tragen Sie bitte den Code in das Freifeld  ein, den sie bei der Beantwortung des Fragebogens erhalten haben.
+    <string name="registration_title">Registrierung</string>
+    <string name="registration_text">Sehr  geehrte(r) Versuchsteilnehmer(in),\nHerzlich willkommen zur Studie!\nBitte registrieren Sie sich zuerst. Dafür tragen Sie bitte den Code in das Freifeld  ein, den sie bei der Beantwortung des Fragebogens erhalten haben.
     </string>
-    <string name="registrierung_id1_text">2. Buchstabe des Nachnamens</string>
+    <string name="registrierung_id1_text">2. Buchstabe des Vornamens</string>
     <string name="registrierung_id2_text">1. Zahl Ihres Geburtsdatums (z.B 02.01.1993 ->02 eintragen)</string>
     <string name="registrierung_id3_text">1. Buchstabe im Vornamen Ihrer Mutter</string>
     <string name="registrierung_id4_text">1. Buchstabe im Vornamen Ihres Vaters</string>
 
     <string name="install_button">Installieren</string>
-    <string name="install_title">Installation vom OMPI-HRV</string>
-    <string name="install_text">Es wird versucht ein App zur Messung vom Herzratenvariabilität zu installieren. Dafür wird gleich Play Store geöffnet.
-      \n\n Stellen Sie bitte sicher dass Sie eine Internetverbindung haben
-    \n\n Nach der Installation drücken kommen Sie bitte zurück zum OMPI App
-     \n\n Wenn es steht, dass Ihr Gerät den App nicht unterstützt können Sie trotzdem an dem Experiment weiter Teilnehmen.
+    <string name="install_title">Installation der OMPI-HRV</string>
+    <string name="install_text">Es wird jetzt eine App zur Messung der Herzratenvariabilität installiert. Dazu wird gleich der Play Store geöffnet. 
+      \n\nStellen Sie bitte sicher, dass Sie eine Internetverbindung haben.
+    \n\nNach der Installation kehren Sie bitte zurück zur OMPI App
+     \n\nSollten Sie eine Nachricht erhalten, dass Ihr Smartphone die App nicht unterstützt, können Sie trotzdem weiter an der Studie teilnehmen.
     </string>
 
     <string name="link_button">Weiter</string>
@@ -37,39 +35,48 @@
     <string name="link_link">https://www.soscisurvey.de/swb-hrv/</string>
 
     <string name="send_title">Daten zum Server</string>
-    <string name="send_text">Ihre Daten wurden erfolgreich erfasst. \n \n
-    Jetzt stellen Sie bitte sicher, dass Sie eine Verbindung zum Internet haben und drücken Sie auf die Taste „Daten senden“ um Ihre Daten zum Server zu schicken.
+    <string name="send_text">Ihre Daten wurden erfolgreich erfasst. \n\n
+    Jetzt stellen Sie bitte sicher, dass Sie eine Verbindung zum Internet haben und drücken Sie auf die Taste \„Daten senden\“ um Ihre Daten zum Server zu schicken.
     </string>
-    <string name="send_button">Daten senden</string>
-    <string name="send_error">\n\n\n Daten könnten nicht gesendet werden. Bitte prüffen Sie Ihre Internetverbindung und versuchen Sie noch ein Mal!</string>
+    <string name="measure_two">Jetzt erfolgt die zweite HRV-Messung. Diese wird wieder zwei Minuten dauern.</string>
 
+
+    <string name="sending_text">\n\n\nIhre Daten werden gesendet, bitte warten Sie einen kurzen Moment.</string>
+    <string name="send_button">Daten senden</string>
+    <string name="send_error">\n\n\n
+    Die Daten konnten nicht gesendet werden. Bitte prüffen Sie Ihre Internetverbindung und versuchen Sie es erneut.</string>
     <string name="wait_title">Gruppeneinteilung läuft</string>
     <string name="wait_text">Sehr geehrte(r) Versuchsteilnehmer(in),\n\n
-    sie sind jetzt für die Studie registriert. \n\n
-    Die Studie wird voraussichtlich ab dem 12.01. beginnen. Dann erhalten sie eine weitere Nachricht von uns.
+    Sie sind jetzt für die Studie registriert. \n\n
+    Die Studie wird voraussichtlich ab dem 14.01. beginnen. Dann erhalten sie eine weitere Nachricht von uns.
     </string>
 
 
 
     <string name="hrvcheck_title">HRV Messung</string>
-    <string name="hrvcheck_text">Sie werden gleich zur initialen Messung  der Herzfrequenzvariabilität (HRV) weitergeleitet.\n\n
-    Die HRV bezeichnet die physiologische Fähigkeit eines Organismus, die Frequenz des Herzrhythmus zu verändern.\n\n
+    <string name="hrvcheckinitial_text">Sie werden gleich zur initialen Messung  der Herzfrequenzvariabilität (HRV) weitergeleitet.\n\n
+	Die HRV bezeichnet die physiologische Fähigkeit eines Organismus, die Frequenz des Herzrhythmus zu verändern.\n\n
     Es wird überprüft, ob Ihr Smartphone die technischen Voraussetzungen erfüllt, um die HRV messen zu können.\n\n
     Dafür benötigen wir ca. 2 Minuten.  Achten Sie bitte darauf, dass Ihr Akku geladen ist. Wenn Sie die Messung durchführen wollen, drücken Sie bitte die Taste "Messung starten".
     Dann bitte den Menüpunkt "HRV" drücken und, wie auf dem Bild dargestellt, den Zeigefinger auf die Kamera und das LED-Licht legen.  Es werden 10 Sekunden für die Kalibrierung benötigt und danach 2 Minuten für die Messung. Bitte halten Sie den Finger die ganze Zeit auf der Kamera.
     </string>
     <string name="hrvcheck_button">Messung starten</string>
 
+    <string name="hrvcheck_text">Sie werden gleich zur Messung  der Herzfrequenzvariabilität (HRV) weitergeleitet.\n\n
+    Dafür benötigen wir ca. 2 Minuten.  Achten Sie bitte darauf, dass Ihr Akku geladen ist. Wenn Sie die Messung durchführen wollen, drücken Sie bitte die Taste "Messung starten".
+    Dann bitte den Menüpunkt \"HRV\" drücken und, wie auf dem Bild dargestellt, den Zeigefinger auf die Kamera und das LED-Licht legen.  Es werden 10 Sekunden für die Kalibrierung benötigt und danach 2 Minuten für die Messung. Bitte halten Sie den Finger die ganze Zeit auf der Kamera.
+    </string>
 
     <string name="instruction_title">Anleitung</string>
     <string name="instruction_text">Sehr geehrte(r) Versuchsteilnehmer(in),\n\n
-    die Studie kann nun beginnen.\n
-    Erledigen Sie bitte die folgende Aufgabe innerhalb der nächsten zwei Wochen regelmäßig einmal täglich (am besten abends).\n\n
+	Die Studie kann nun beginnen.\n
+	Erledigen Sie bitte die folgende Aufgabe innerhalb der nächsten zwei Wochen regelmäßig einmal täglich (am besten abends).\n\n
     </string>
     <string name="task_title">Aufgabe</string>
-    <string name="task1_text">Es wird bei Ihnen eine HRV-Messung durchgeführt. Danach schreiben Sie bitte drei positive Erlebnisse des Tages und den Grund dafür auf. Abschließend wird erneut eine HRV-Messung durchgeführt.  Die komplette Erfassung wird ca. 10-15 Minuten in Anspruch nehmen. Ihre Daten werden anonymisiert übertragen.
+
+    <string name="task1_text">Es wird bei Ihnen eine HRV-Messung durchgeführt. Danach dokumentieren Sie bitte drei positive Erlebnisse des Tages und den Grund dafür. Abschließend wird erneut eine HRV-Messung durchgeführt.  Die komplette Erfassung wird ca. 10-15 Minuten in Anspruch nehmen. Ihre Daten werden anonymisiert übertragen.
     \n\nBitte befolgen Sie während der beiden HRV-Messungen folgende Regeln:\n\n
-        •	\t\t ca. eine halbe Stunde vor der HRV-Erfassung sollte nichts mehr gegessen werden \n
+        •	\t\tca. eine halbe Stunde vor der HRV-Erfassung sollte nichts mehr gegessen werden \n
         \t•	\t\tDie Erfassung sollte täglich möglichst unter gleichen Bedingungen stattfinden (Raumtemperatur, Beleuchtung, Uhrzeit, etc.)  \n
         \t•	\t\t30 Minuten vor der Messung sollte kein Sport getrieben werden (sowie keine sonstigen physischen Belastungen)  \n
         \t•	\t\tWenn Sie einen schlanken Körperbau  und kalte Hände haben – bitte die Messung an anderen Körperteilen durchführen (z.B. Handgelenk)  \n
@@ -78,16 +85,20 @@
     Bitte drücken Sie auf „Start“ wenn Sie mit der Aufgabe beginnen wollen.
     </string>
 
-    <string name="task2_text">Es wird bei Ihnen eine HRV-Messung durchgeführt. Danach dokumentieren Sie bitte eine Erinnerung aus Ihrer Kindheit (ca.30-50 Wörter). Abschließend wird erneut eine HRV-Messung durchgeführt.  Die komplette Erfassung wird ca. 10-15 Minuten dauern. Ihre Daten werden anonymisiert übertragen.
+    <string name="task2_text">Es wird bei Ihnen eine HRV-Messung durchgeführt. Danach dokumentieren Sie bitte eine Erinnerung aus Ihrer Kindheit (ca.30-50 Wörter). Abschließend wird erneut eine HRV-Messung durchgeführt.  Die komplette Erfassung wird ca. 10-15 Minuten in Anspruch nehmen. Ihre Daten werden anonymisiert übertragen.
     \n\n Bitte befolgen Sie während der beiden HRV-Messungen folgende Regeln:\n\n
     \t•   \t\tca. eine halbe Stunde vor der HRV-Erfassung sollte nichts mehr gegessen werden\n
    \t•	\t\tDie Erfassung sollte täglich möglichst unter gleichen Bedingungen stattfinden (Raumtemperatur, Beleuchtung, Uhrzeit, etc.)  \n
     \t•	\t\t30 Minuten vor der Messung sollte kein Sport getrieben werden (sowie keine sonstigen physischen Belastungen)  \n
     \t•	\t\tWenn Sie einen schlanken Körperbau  und kalte Hände haben – bitte die Messung an anderen Körperteilen durchführen (z.B. Handgelenk)  \n
     \t•	\t\tDie Messung sollte bei guter Beleuchtung  durchgeführt werden  \n
-    \t•	\t\tWährend der Messung bitte nicht sprechen \n
     \t•	\t\tWährend der Messung bitte nicht sprechen. \n \n
     Bitte drücken Sie auf „Start“ wenn Sie mit der Aufgabe beginnen wollen.
+    </string>
+
+
+
+    <string name="task3_text">Bitte drücken Sie auf „Start“ wenn Sie mit der Aufgabe beginnen wollen.
     </string>
     <string name="instruction_button">Start</string>
 
@@ -101,28 +112,36 @@
 
     <string name="placeboTask_title">Aufgabe</string>
     <string name="placeboTask_text">Sehr geehrte(r) Versuchsteilnehmer(in), \n \n
-    bitte dokumentieren Sie eine Erinnerung aus Ihrer Kindheit (30-50 Wörter).
+    Bitte dokumentieren Sie eine Erinnerung aus Ihrer Kindheit (30-50 Wörter).
     </string>
     <string name="Task_button">Fertig</string>
 
     <string name="realTask_title">Aufgabe</string>
     <string name="realTask_text">Sehr geehrte(r) Versuchsteilnehmer(in), \n \n
-    bitte dokumentieren Sie 3 positive Dinge des Tages und den Grund dafür.
+    Bitte dokumentieren Sie 3 positive Dinge des Tages und den Grund dafür.
     </string>
     <string name="goodThing">Ich habe heute...</string>
     <string name="reason">Es war gut, weil...</string>
     <string name="realTask_button">Fertig</string>
 
+    <string name="validation_error">Bitte prüfen Sie Ihre Angabe. Kein Feld soll leer sein!</string>
+
     <string name="endofday_title">Danke für Heute</string>
     <string name="endofday_text">Vielen Dank für Ihre Eingaben. Für heute sind Sie mit Ihrer Aufgabe fertig. \n \n
-    Bitte starten Sie die App morgen Abend neu.
+    Morgen abend erhalten Sie eine Nachricht und wir bitten Sie dann, die App neu zu starten.  
     </string>
 
-    <string name="endofexperiment_title">Experimentende</string>
+    <string name="endofexperiment_title">Studienende</string>
     <string name="endofexperiment_text">Vielen Dank für Ihre Teilnahme. \n\n
         Anbei erhalten Sie den Link zu der Befragung.  Bitte füllen Sie den Fragebogen sofort aus – es wird lediglich 5 Minuten dauern.\n\n
-        Bitte löschen Sie die App nicht. Nach zwei Wochen bitten wir Sie erneut, einen letzten Fragebogen auszufüllen. Sie erhalten dazu jedoch eine Benachrichtigung über Ihr Smartphone und die Anweisung wann und wo Sie sich Ihre Versuchspersonenstundne gutgeschrieben lassen können.
+        Bitte löschen Sie die App nicht. Nach zwei Wochen bitten wir Sie erneut, einen letzten Fragebogen auszufüllen. Sie erhalten dazu jedoch eine Benachrichtigung über Ihr Smartphone und die Information wann und wo Sie sich Ihre Versuchspersonenstunden gutschreiben lassen können.
     </string>
+    <string name="endofexperiment_button">Weiter</string>
+
+    <string name="radio_titel">Wählen Sie Ihr Geschlecht:</string>
+
+    <string name="radio_male">Male</string>
+    <string name="radio_female">Female</string>
 
 
 

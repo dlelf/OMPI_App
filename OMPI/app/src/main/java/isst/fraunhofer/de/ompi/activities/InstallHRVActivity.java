@@ -1,6 +1,5 @@
 package isst.fraunhofer.de.ompi.activities;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,7 +14,7 @@ import isst.fraunhofer.de.ompi.adapter.PersonAdapter;
 import isst.fraunhofer.de.ompi.adapter.Scheduler;
 import isst.fraunhofer.de.ompi.model.Person;
 
-public class InstallHRVActivity extends Activity {
+public class InstallHRVActivity extends BasicActivity {
 
     Button nextButton;
     TextView text, title;

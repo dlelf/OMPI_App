@@ -6,7 +6,10 @@ import android.content.SharedPreferences;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import isst.fraunhofer.de.ompi.Constants;
 import isst.fraunhofer.de.ompi.model.EarlyMemory;
@@ -22,6 +25,8 @@ public class RestAdapter {
     SharedPreferences settings;
     private static RestAdapter mInstance;
     public static final String PREFS_NAME = "MyPrefsFile";
+    DateFormat dateFormat;
+    Calendar cal;
 
 
 
@@ -37,12 +42,15 @@ public class RestAdapter {
     private RestAdapter(Context pContext){
         mContext=pContext;
         settings = pContext.getSharedPreferences(PREFS_NAME, 0);
+        dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        cal = Calendar.getInstance();
 
     }
 
 
     public void sendPerson(Person person) {
 
+        person.setDate(dateFormat.format(cal.getTime()));
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
         restTemplate.postForObject(Constants.REST_ENDPOINT+"/people", person, Person.class);
@@ -68,14 +76,14 @@ public class RestAdapter {
     public void sendGoodThing(GoodThing goodThing) {
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
-        restTemplate.postForObject(Constants.REST_ENDPOINT + "/goodThing", goodThing, GoodThing.class);
+        restTemplate.postForObject(Constants.REST_ENDPOINT + "/GoodThing", goodThing, GoodThing.class);
     }
 
     public void sendGoodThings(ArrayList<GoodThing> goodThings) {
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
         for(GoodThing goodThing : goodThings)
-            restTemplate.postForObject(Constants.REST_ENDPOINT + "/goodThing", goodThing, GoodThing.class);
+            restTemplate.postForObject(Constants.REST_ENDPOINT + "/GoodThing", goodThing, GoodThing.class);
     }
 
 
@@ -83,7 +91,7 @@ public class RestAdapter {
     public void sendEarlyMemory(EarlyMemory earlyMemory){
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
-        restTemplate.postForObject(Constants.REST_ENDPOINT+"/childMemory", earlyMemory, EarlyMemory.class);
+        restTemplate.postForObject(Constants.REST_ENDPOINT+"/EarlyMemory", earlyMemory, EarlyMemory.class);
 
     }
 

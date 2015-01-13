@@ -13,20 +13,22 @@ import java.util.ArrayList;
 
 import isst.fraunhofer.de.ompi.R;
 import isst.fraunhofer.de.ompi.adapter.HRVAdapter;
+import isst.fraunhofer.de.ompi.adapter.PersonAdapter;
 import isst.fraunhofer.de.ompi.adapter.RestAdapter;
 import isst.fraunhofer.de.ompi.adapter.Scheduler;
 import isst.fraunhofer.de.ompi.adapter.StateAdapter;
 import isst.fraunhofer.de.ompi.model.HRV;
 
-public class HRVResultActivity extends Activity {
+public class HRVResultActivity extends BasicActivity {
 
     Button nextButton;
-    TextView text, title,error;
+    TextView text, title, error,sending;
     Scheduler scheduler;
     HRVAdapter hrvAdapter;
     StateAdapter stateAdapter;
+    PersonAdapter personAdapter;
     RestAdapter restAdapter;
-    boolean hrvValid,connectionFailed;
+    boolean hrvValid, connectionFailed;
     Activity context;
 
 
@@ -39,8 +41,9 @@ public class HRVResultActivity extends Activity {
         scheduler = Scheduler.getInstance(this);
         hrvAdapter = HRVAdapter.getInstance(this);
         stateAdapter = StateAdapter.getInstance(this);
-        restAdapter=RestAdapter.getInstance(this);
-        context=this;
+        restAdapter = RestAdapter.getInstance(this);
+        personAdapter=PersonAdapter.getInstance(this);
+        context = this;
 
         //Check, if HRV richtig gelesen wurde
         hrvValid = hrvAdapter.isHRVValid(this);
@@ -49,13 +52,9 @@ public class HRVResultActivity extends Activity {
         nextButton = (Button) this.findViewById(R.id.dummy_next_button);
         text = (TextView) this.findViewById(R.id.textText);
         title = (TextView) this.findViewById(R.id.textTitle);
-        error = (TextView)this.findViewById(R.id.error);
-        nextButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {if(!hrvValid) backToHrv(); else sendData();
+        error = (TextView) this.findViewById(R.id.error);
+        sending = (TextView) this.findViewById(R.id.sending);
 
-            }
-        });
         //Set real data to activity components
         if (hrvValid) {
             title.setText(R.string.hrvResultOk_title);
@@ -64,7 +63,19 @@ public class HRVResultActivity extends Activity {
             title.setText(R.string.hrvResultFailed_title);
             text.setText(R.string.hrvResultFailed_text);
         }
+
         nextButton.setText(R.string.hrvResult_button);
+        nextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                nextButton.setEnabled(false);
+                hrvValid = hrvAdapter.isHRVValid(context);
+                if (!hrvValid) backToHrv();
+                else sendData();
+
+            }
+        });
+
 
     }
 
@@ -73,17 +84,18 @@ public class HRVResultActivity extends Activity {
         startActivity(intent);
     }
 
-    public void sendData(){
+    public void sendData() {
         connectionFailed = false;
         error.setVisibility(View.INVISIBLE);
+        sending.setVisibility(View.VISIBLE);
         new HttpRequestTask().execute();
-
     }
 
 
     private class HttpRequestTask extends AsyncTask<Void, Void, HRV> {
         @Override
         protected HRV doInBackground(Void... params) {
+            connectionFailed = false;
             try {
                 ArrayList hrv = hrvAdapter.getHRV();
                 restAdapter.sendHRVs(hrv);
@@ -99,8 +111,10 @@ public class HRVResultActivity extends Activity {
         protected void onPostExecute(HRV hrv) {
             if (!connectionFailed) {
                 nextActivity();
-            } else
+            } else{
                 error.setVisibility(View.VISIBLE);
+                sending.setVisibility(View.VISIBLE);}
+            nextButton.setEnabled(true);
 
         }
     }
@@ -108,15 +122,14 @@ public class HRVResultActivity extends Activity {
 
     private void nextActivity() {
         Intent intent;
-        if (hrvValid) {
-            if (stateAdapter.getState().isFirstHrv())
-                intent = new Intent(this, scheduler.chooseNextActivity(this));
+        if (stateAdapter.getState().isFirstHrv())
+            if (personAdapter.getPerson().getGroupNr()==2)
+                intent = new Intent(this, scheduler.setNextActivity(PlaceboTaskActivity.class));
             else
-                intent = new Intent(this, scheduler.chooseNextActivity(this, true));
-            stateAdapter.inverseFirstHRV();
-            startActivity(intent);
-        } else {
-            //TODO Start OMPI-HRV wieder
-        }
+                intent = new Intent(this, scheduler.chooseNextActivity(this));
+        else
+            intent = new Intent(this, scheduler.chooseNextActivity(this, true));
+        stateAdapter.inverseFirstHRV();
+        startActivity(intent);
     }
 }

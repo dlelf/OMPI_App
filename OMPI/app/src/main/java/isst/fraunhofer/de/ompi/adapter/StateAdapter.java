@@ -3,6 +3,7 @@ package isst.fraunhofer.de.ompi.adapter;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import isst.fraunhofer.de.ompi.Constants;
 import isst.fraunhofer.de.ompi.model.State;
 
 /**
@@ -38,6 +39,12 @@ public class StateAdapter {
         saveState();
     }
 
+    public void setDayNr(int dayNr){
+        state.setDayNr(dayNr);
+        saveState();
+
+    }
+
 
 
     private StateAdapter(Context pContext){
@@ -66,6 +73,14 @@ public class StateAdapter {
         editor.putBoolean(STATE_FIRST_HRV,this.state.isFirstHrv());
         editor.putInt(STATE_DAY_NR, this.state.getDayNr());
         editor.commit();
+    }
+
+    public boolean isLastDay(){
+        return (state.getDayNr()== Constants.EXPERIMENT_DURATION);
+    }
+
+    public boolean isLastDayPassed(){
+        return (state.getDayNr()> Constants.EXPERIMENT_DURATION);
     }
 
 }

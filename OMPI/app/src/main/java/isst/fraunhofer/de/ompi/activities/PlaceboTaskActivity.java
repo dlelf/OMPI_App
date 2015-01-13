@@ -1,7 +1,6 @@
 package isst.fraunhofer.de.ompi.activities;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -11,17 +10,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import isst.fraunhofer.de.ompi.Constants;
 import isst.fraunhofer.de.ompi.R;
 import isst.fraunhofer.de.ompi.adapter.RestAdapter;
 import isst.fraunhofer.de.ompi.adapter.Scheduler;
 import isst.fraunhofer.de.ompi.adapter.TaskAdapter;
 import isst.fraunhofer.de.ompi.model.EarlyMemory;
-import isst.fraunhofer.de.ompi.model.Person;
 
-public class PlaceboTaskActivity extends Activity {
+public class PlaceboTaskActivity extends BasicActivity {
 
     Button nextButton;
-    TextView text,title,error;
+    TextView text, title, connectionError,validationError;
     EditText memory;
 
     Scheduler scheduler;
@@ -38,23 +37,33 @@ public class PlaceboTaskActivity extends Activity {
         //Initialize Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_placebotask);
-        scheduler=Scheduler.getInstance(this);
-        taskAdapter=TaskAdapter.getInstance(this);
-        restAdapter=RestAdapter.getInstance(this);
-        context=this;
+        scheduler = Scheduler.getInstance(this);
+        taskAdapter = TaskAdapter.getInstance(this);
+        restAdapter = RestAdapter.getInstance(this);
+        context = this;
 
         //Initialize activity components
         nextButton = (Button) this.findViewById(R.id.dummy_next_button);
-        text = (TextView)this.findViewById(R.id.textText);
-        title = (TextView)this.findViewById(R.id.textTitle);
-        error = (TextView)this.findViewById(R.id.error);
+        text = (TextView) this.findViewById(R.id.textText);
+        title = (TextView) this.findViewById(R.id.textTitle);
+        connectionError = (TextView) this.findViewById(R.id.error);
+        validationError = (TextView) this.findViewById(R.id.validationError);
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) { save(); sendData();
+            public void onClick(View v) {
+                if (inputIsValid()) {
+                    validationError.setVisibility(View.INVISIBLE);
+                    nextButton.setEnabled(false);
+                    save();
+                    sendData();
+                }
+                else
+                    validationError.setVisibility(View.VISIBLE);
 
             }
         });
-        memory = (EditText)this.findViewById(R.id.editText);
+        memory = (EditText) this.findViewById(R.id.editText);
+
 
         //Set real data to activity components
         title.setText(R.string.placeboTask_title);
@@ -64,14 +73,14 @@ public class PlaceboTaskActivity extends Activity {
 
     }
 
-    private void save(){
+    private void save() {
         taskAdapter.addEarlyMemory(memory.getText().toString());
 
     }
 
-    private void sendData(){
+    private void sendData() {
         connectionFailed = false;
-        error.setVisibility(View.INVISIBLE);
+        connectionError.setVisibility(View.INVISIBLE);
         new HttpRequestTask().execute();
     }
 
@@ -91,22 +100,19 @@ public class PlaceboTaskActivity extends Activity {
         protected void onPostExecute(EarlyMemory earlyMemory) {
             if (!connectionFailed) {
                 nextActivity();
-            }
-            else
-                error.setVisibility(View.VISIBLE);
-
+            } else
+                connectionError.setVisibility(View.VISIBLE);
+            nextButton.setEnabled(true);
         }
     }
 
-    private void nextActivity(){
-        Intent intent = new Intent(this,scheduler.chooseNextActivity(this));
-        startActivity(intent);
+    public boolean inputIsValid(){
+        return (memory.getText().length()> Constants.VALID_TEXT_LENGTH);
+
     }
 
-
-
-
-
-
-
+    private void nextActivity() {
+        Intent intent = new Intent(this, scheduler.chooseNextActivity(this));
+        startActivity(intent);
+    }
 }

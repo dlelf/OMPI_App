@@ -41,6 +41,16 @@
                 android:text="@string/realTask_text"
                 android:id="@+id/textText" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/validation_error"
+                android:id="@+id/validationError"
+                android:layout_gravity="center|bottom"
+                android:textColor="#ffff3123"
+                android:visibility="invisible" />
+
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
@@ -66,7 +76,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="textMultiLine"
                 android:ems="10"
-                android:id="@+id/editText"
+                android:id="@+id/goodThing1"
                 android:layout_gravity="left|top" />
 
             <LinearLayout
@@ -88,7 +98,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="textMultiLine"
                 android:ems="10"
-                android:id="@+id/editText3"
+                android:id="@+id/causality1"
                 android:layout_gravity="left|top" />
 
             <LinearLayout
@@ -116,7 +126,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="textMultiLine"
                 android:ems="10"
-                android:id="@+id/editText5"
+                android:id="@+id/goodThing2"
                 android:layout_gravity="left|top" />
 
             <LinearLayout
@@ -137,7 +147,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="textMultiLine"
                 android:ems="10"
-                android:id="@+id/editText4"
+                android:id="@+id/causality2"
                 android:layout_gravity="left|top" />
 
             <LinearLayout
@@ -165,7 +175,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="textMultiLine"
                 android:ems="10"
-                android:id="@+id/editText7"
+                android:id="@+id/goodThing3"
                 android:layout_gravity="left|top" />
 
             <LinearLayout
@@ -186,8 +196,18 @@
                 android:layout_height="wrap_content"
                 android:inputType="textMultiLine"
                 android:ems="10"
-                android:id="@+id/editText6"
+                android:id="@+id/causality3"
                 android:layout_gravity="left|top" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/send_error"
+                android:id="@+id/error"
+                android:layout_gravity="center|bottom"
+                android:textColor="#ffff3123"
+                android:visibility="invisible" />
         </LinearLayout>
     </ScrollView>
 

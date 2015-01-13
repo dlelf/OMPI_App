@@ -1,6 +1,5 @@
 package isst.fraunhofer.de.ompi.activities;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -10,7 +9,7 @@ import isst.fraunhofer.de.ompi.adapter.Scheduler;
 import isst.fraunhofer.de.ompi.adapter.StateAdapter;
 
 
-public class StartActivity extends Activity {
+public class StartActivity extends BasicActivity {
 
     Button nextButton;
     TextView text;
@@ -23,11 +22,12 @@ public class StartActivity extends Activity {
         scheduler=Scheduler.getInstance(this);
         stateAdapter=StateAdapter.getInstance(this);
 
-       // scheduler.setStartActivity(new RegistrierungActivity());
-        stateAdapter.nextDay();
-
 
         scheduler.setStartActivity(HRVResultActivity.class);
+        //stateAdapter.nextDay();
+
+
+
         Intent intent = new Intent(this,scheduler.getLastActivity());
         startActivity(intent);
         //nextActivity();

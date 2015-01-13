@@ -1,6 +1,5 @@
 package isst.fraunhofer.de.ompi.activities;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,13 +9,15 @@ import android.widget.TextView;
 import isst.fraunhofer.de.ompi.R;
 import isst.fraunhofer.de.ompi.adapter.HRVAdapter;
 import isst.fraunhofer.de.ompi.adapter.Scheduler;
+import isst.fraunhofer.de.ompi.adapter.StateAdapter;
 
-public class HRVCheckActivity extends Activity {
+public class HRVCheckActivity extends BasicActivity {
 
     Button nextButton;
     TextView text,title;
     Scheduler scheduler;
     HRVAdapter hrvAdapter;
+    StateAdapter stateAdapter;
 
 
     @Override
@@ -27,6 +28,7 @@ public class HRVCheckActivity extends Activity {
         setContentView(R.layout.activity_text);
         scheduler=Scheduler.getInstance(this);
         hrvAdapter= HRVAdapter.getInstance(this);
+        stateAdapter=StateAdapter.getInstance(this);
 
         //Initialize activity components
         nextButton = (Button) this.findViewById(R.id.dummy_next_button);
@@ -41,7 +43,10 @@ public class HRVCheckActivity extends Activity {
 
         //Set real data to activity components
         title.setText(R.string.hrvcheck_title);
+        if(stateAdapter.getState().isFirstHrv())
         text.setText(R.string.hrvcheck_text);
+        else
+            text.setText(R.string.measure_two);
         nextButton.setText(R.string.hrvcheck_button);
 
     }

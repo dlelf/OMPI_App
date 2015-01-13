@@ -1,6 +1,5 @@
 package isst.fraunhofer.de.ompi.activities;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,7 +9,7 @@ import android.widget.TextView;
 import isst.fraunhofer.de.ompi.R;
 import isst.fraunhofer.de.ompi.adapter.Scheduler;
 
-public class EndActivity extends Activity {
+public class EndActivity extends BasicActivity {
 
     Button nextButton;
     TextView text,title;
@@ -39,6 +38,7 @@ public class EndActivity extends Activity {
         //Set real data to activity components
         text.setText(R.string.endofexperiment_text);
         title.setText(R.string.endofexperiment_title);
+        nextButton.setText(R.string.endofexperiment_button);
 
     }
 

@@ -1,6 +1,5 @@
 package isst.fraunhofer.de.ompi.activities;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,7 +10,7 @@ import isst.fraunhofer.de.ompi.R;
 import isst.fraunhofer.de.ompi.adapter.HRVAdapter;
 import isst.fraunhofer.de.ompi.adapter.Scheduler;
 
-public class FirstHRVCheckActivity extends Activity {
+public class FirstHRVCheckActivity extends BasicActivity {
 
     Button nextButton;
     TextView text,title;

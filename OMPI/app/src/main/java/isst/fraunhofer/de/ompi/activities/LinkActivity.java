@@ -12,7 +12,7 @@ import android.widget.TextView;
 import isst.fraunhofer.de.ompi.R;
 import isst.fraunhofer.de.ompi.adapter.Scheduler;
 
-public class LinkActivity extends Activity {
+public class LinkActivity extends BasicActivity {
 
     Button nextButton;
     TextView text,title,link;

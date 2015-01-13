@@ -4,9 +4,11 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import isst.fraunhofer.de.ompi.activities.EndActivity;
 import isst.fraunhofer.de.ompi.activities.FirstHRVCheckActivity;
 import isst.fraunhofer.de.ompi.activities.HRVCheckActivity;
 import isst.fraunhofer.de.ompi.activities.HRVResultActivity;
+import isst.fraunhofer.de.ompi.activities.InstallHRVActivity;
 import isst.fraunhofer.de.ompi.activities.InstructionActivity;
 import isst.fraunhofer.de.ompi.activities.LinkActivity;
 import isst.fraunhofer.de.ompi.activities.PlaceboTaskActivity;
@@ -16,9 +18,6 @@ import isst.fraunhofer.de.ompi.activities.StartActivity;
 import isst.fraunhofer.de.ompi.activities.TaskActivity;
 import isst.fraunhofer.de.ompi.activities.WaitForNextDayActivity;
 import isst.fraunhofer.de.ompi.activities.WaitForRegistrationActivity;
-import isst.fraunhofer.de.ompi.activities.SendDailyDataActivity;
-import isst.fraunhofer.de.ompi.activities.EndActivity;
-import isst.fraunhofer.de.ompi.activities.InstallHRVActivity;
 
 
 
@@ -29,6 +28,7 @@ public class Scheduler {
     public static final String PREFS_NAME = "MyPrefsFile";
     private static Scheduler mInstance;
     private PersonAdapter personAdapter;
+    private StateAdapter stateAdapter;
     private static Context mContext;
     public static final String PROPERTY_CURRENT_ACTIVITY = "currentActivity";
     public static final String PROPERTY_BEFORE_ACTIVITY = "beforeActivity";
@@ -41,6 +41,7 @@ public class Scheduler {
         mContext=pContext;
         settings = pContext.getSharedPreferences(PREFS_NAME, 0);
         personAdapter=PersonAdapter.getInstance(pContext);
+        stateAdapter=StateAdapter.getInstance(pContext);
     }
 
     public static Scheduler getInstance(Context pContext){
@@ -68,10 +69,10 @@ public class Scheduler {
         HRVCheckActivity(HRVCheckActivity.class,HRVResultActivity.class,null),
         HRVResultActivity(HRVResultActivity.class,TaskActivity.class,WaitForNextDayActivity.class),
 
-        PlaceboTaskActivity(PlaceboTaskActivity.class,HRVCheckActivity.class,SendDailyDataActivity.class),
-        TaskActivity(TaskActivity.class,HRVCheckActivity.class,SendDailyDataActivity.class),
+        PlaceboTaskActivity(PlaceboTaskActivity.class,HRVCheckActivity.class,WaitForNextDayActivity.class),
+        TaskActivity(TaskActivity.class,HRVCheckActivity.class,WaitForNextDayActivity.class),
 
-        SendDailyDataActivity(SendDailyDataActivity.class, WaitForNextDayActivity.class,null),
+        //SendDailyDataActivity(SendDailyDataActivity.class, WaitForNextDayActivity.class,null),
 
         WaitForNextDayActivity(WaitForNextDayActivity.class, InstructionActivity.class,EndActivity.class),
         EndActivity(EndActivity.class,LinkActivity.class,null),
@@ -172,6 +173,26 @@ public class Scheduler {
         return Action.valueOf(className).thisActivity;
 
     }
+
+    public Class onGroupIdRecieve(){
+        saveBeforeActivity(getLastActivity());
+        saveLastActivity(InstructionActivity.class);
+        return InstructionActivity.class;
+    }
+
+    public Class onNextDayRecieve(){
+        saveBeforeActivity(getLastActivity());
+        saveLastActivity(InstructionActivity.class);
+        return InstructionActivity.class;
+    }
+
+    public Class setNextActivity(Class<? extends Activity> activity){
+        saveBeforeActivity(getLastActivity());
+        saveLastActivity(activity);
+        return activity;
+    }
+
+
 
 
 

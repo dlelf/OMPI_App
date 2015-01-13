@@ -1,6 +1,5 @@
 package isst.fraunhofer.de.ompi.activities;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -8,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import isst.fraunhofer.de.ompi.R;
@@ -16,7 +17,7 @@ import isst.fraunhofer.de.ompi.adapter.Scheduler;
 import isst.fraunhofer.de.ompi.model.Person;
 
 
-public class RegistrationActivity extends Activity {
+public class RegistrationActivity extends BasicActivity {
 
     public static final String PREFS_NAME = "MyPrefsFile";
     SharedPreferences settings;
@@ -26,8 +27,10 @@ public class RegistrationActivity extends Activity {
 
     Context context;
     Button nextButton;
-    TextView text,title;
+    TextView text,title,validationError;
     EditText id1,id2,id3,id4;
+    RadioGroup sexGroup;
+    RadioButton radioSexButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +49,8 @@ public class RegistrationActivity extends Activity {
         id4 = (EditText) this.findViewById(R.id.regId4);
         text = (TextView)this.findViewById(R.id.textText);
         title = (TextView)this.findViewById(R.id.textTitle);
+        validationError = (TextView) this.findViewById(R.id.validationError);
+        sexGroup=(RadioGroup)this.findViewById(R.id.radioSex);
 
         title.setText(R.string.registration_title);
         text.setText(R.string.registration_text);
@@ -55,9 +60,13 @@ public class RegistrationActivity extends Activity {
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                saveId();
-                nextActivity();
+                if (inputIsValid()) {
+                    validationError.setVisibility(View.INVISIBLE);
+                    saveId();
+                    nextActivity();
+                }
+                else
+                    validationError.setVisibility(View.VISIBLE);
             }
         });
     }
@@ -70,6 +79,11 @@ public class RegistrationActivity extends Activity {
         String s4=id4.getText().toString();
 
         person.setLongId(s1+s2+s3+s4);
+
+        int selectedId = sexGroup.getCheckedRadioButtonId();
+        radioSexButton = (RadioButton) findViewById(selectedId);
+        person.setSex(radioSexButton.getText().toString());
+
         personAdapter.saveAll();
 
     }
@@ -77,6 +91,14 @@ public class RegistrationActivity extends Activity {
     private void nextActivity(){
         Intent intent = new Intent(this,scheduler.chooseNextActivity(this));
         startActivity(intent);
+
+    }
+
+    public boolean inputIsValid(){
+        return (id1.getText().length()> 0 &&
+                id2.getText().length()> 1 &&
+                id3.getText().length()> 0 &&
+                id4.getText().length()> 0);
 
     }
 

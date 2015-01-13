@@ -17,7 +17,7 @@ import isst.fraunhofer.de.ompi.adapter.Scheduler;
 import isst.fraunhofer.de.ompi.model.Person;
 
 
-public class SendRegistrationActivity extends Activity {
+public class SendRegistrationActivity extends BasicActivity {
 
 
    PersonAdapter personAdapter;
@@ -56,6 +56,7 @@ public class SendRegistrationActivity extends Activity {
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                nextButton.setEnabled(false);
                 updatePerson();
                 nextActivity();
 
@@ -96,6 +97,7 @@ public class SendRegistrationActivity extends Activity {
             }
             else
                 error.setVisibility(View.VISIBLE);
+            nextButton.setEnabled(true);
 
         }
     }

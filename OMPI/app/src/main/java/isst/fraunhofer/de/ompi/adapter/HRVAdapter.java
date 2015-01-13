@@ -47,7 +47,7 @@ public class HRVAdapter {
     public ArrayList<HRV> getHRV() {
 
         File files[] = checkFiles();
-        if (files.length == 1)
+        if (files!=null)
             return readFile(files[0]);
         else return null;
 
@@ -62,11 +62,18 @@ public class HRVAdapter {
 
         // File sdcard = Environment.getExternalStorageDirectory();
         // String s1=Environment.getExternalStorageState();
-        File hrvDirectory = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), hrvPackage);
+        File hrvDirectory;
+
+            hrvDirectory = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), hrvPackage);
+            if (hrvDirectory.listFiles()==null)
+            hrvDirectory = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS), hrvPackage);
+
+
 
         File files[] = hrvDirectory.listFiles();
+
         Log.d("Files", "Path: " + hrvDirectory.getPath());
-        Log.d("Files", "Size: " + files.length);
+        //Log.d("Files", "Size: " + files.length);
         return files;
     }
 
@@ -82,7 +89,12 @@ public class HRVAdapter {
             while ((line = br.readLine()) != null) {
                 HRV hrv = new HRV();
                 hrv.setDate(date);
-                hrv.setRrInterval(Long.parseLong(line));
+                try{
+                hrv.setRrInterval(Long.parseLong(line));}
+                catch (Exception e){
+                    Log.d("Files",line + " Error by HRV Measurement");
+                    hrv.setRrInterval(0);
+                }
                 hrv.setPersonId(personAdapter.getPerson().getLongId());
                 hrv.setDayNr(stateAdapter.getState().getDayNr());
                 hrv.setFirstHRV(stateAdapter.getState().isFirstHrv());
@@ -124,7 +136,7 @@ public class HRVAdapter {
 
 
     public boolean isHRVValid(Context pContext) {
-        if (checkFiles().length >0)
+        if (checkFiles()!=null&&checkFiles().length!=0)
             return true;
         else return false;
     }
@@ -169,22 +181,11 @@ public class HRVAdapter {
     }
 
     public void deleteHrvFile() {
-        for (File file : checkFiles()) {
-            file.delete();
+        if(checkFiles()!=null) {
+            for (File file : checkFiles()) {
+                file.delete();
+            }
         }
     }
-
-   /* public  void deleteExternalStoragePublicPicture() {
-        // Create a path where we will place our picture in the user's
-        // public pictures directory and delete the file.  If external
-        // storage is not currently mounted this will failFile hrvDirectory = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), hrvPackage);
-        File dir = new File (mContext.getExternalFilesDirs(Environment.DIRECTORY_PICTURES),"dd");
-        File hrvDirectory = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), hrvPackage);
-
-        File file = new File(hrvDirectory, "CSV_20141024093003766.csv");
-        file.delete();
-    }*/
-
-
 
 }

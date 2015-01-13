@@ -10,6 +10,7 @@ public class EarlyMemory implements Serializable {
     private long id;
     private String personId;
     private int dayNr;
+    private String memory;
 
     public String getPersonId() {
         return personId;
@@ -28,11 +29,11 @@ public class EarlyMemory implements Serializable {
     }
 
     public String getMemory() {
-        return Memory;
+        return memory;
     }
 
     public void setMemory(String memory) {
-        Memory = memory;
+        memory = memory;
     }
 
     public long getId() {
@@ -43,13 +44,13 @@ public class EarlyMemory implements Serializable {
         this.id = id;
     }
 
-    private String Memory;
+
 
     public EarlyMemory(String personId, int dayNr, String memory) {
         this.personId = personId;
         this.dayNr = dayNr;
-        Memory = memory;
+        this.memory = memory;
     }
-    public EarlyMemory() {
-    }
+
+
 }

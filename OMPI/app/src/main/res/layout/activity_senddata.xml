@@ -45,6 +45,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/sending_text"
+                android:id="@+id/sending"
+                android:layout_gravity="center|bottom"
+                android:visibility="invisible" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/send_error"
                 android:id="@+id/error"
                 android:layout_gravity="center|bottom"

@@ -1,6 +1,5 @@
 package isst.fraunhofer.de.ompi.activities;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,7 +10,7 @@ import isst.fraunhofer.de.ompi.R;
 import isst.fraunhofer.de.ompi.adapter.PersonAdapter;
 import isst.fraunhofer.de.ompi.adapter.Scheduler;
 
-public class InstructionActivity extends Activity {
+public class InstructionActivity extends BasicActivity {
 
     Button nextButton;
     TextView text,title,taskTitle,taskText;
@@ -46,7 +45,12 @@ public class InstructionActivity extends Activity {
         title.setText(R.string.instruction_title);
         text.setText(R.string.instruction_text);
         taskTitle.setText(R.string.task_title);
-        taskText.setText(R.string.task1_text);
+        switch (personAdapter.getPerson().getGroupNr())
+        {
+        case 1:taskText.setText(R.string.task1_text);
+        case 2:taskText.setText(R.string.task2_text);
+        case 3:taskText.setText(R.string.task3_text);
+        }
         //TODO check groupNr and show suitable taskText
         /*int groupNr = personAdapter.getPerson().getGroupNr();
         switch (groupNr) {
@@ -62,7 +66,13 @@ public class InstructionActivity extends Activity {
     }
 
     private void nextActivity(){
-        Intent intent = new Intent(this,scheduler.chooseNextActivity(this));
+        Intent intent;
+        switch (personAdapter.getPerson().getGroupNr()){
+            case 1: intent = new Intent(this,scheduler.chooseNextActivity(this));
+            case 2: intent = new Intent(this,scheduler.chooseNextActivity(this));
+            case 3: intent = new Intent(this,scheduler.chooseNextActivity(this,true));
+        }
+        intent = new Intent(this,scheduler.chooseNextActivity(this));
         startActivity(intent);
     }
 

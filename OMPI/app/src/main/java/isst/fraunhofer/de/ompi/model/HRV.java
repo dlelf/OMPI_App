@@ -14,6 +14,7 @@ public class HRV  implements Serializable {
     private String personId;
     private int dayNr;
 
+
     public long getDate() {
         return date;
     }

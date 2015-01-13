@@ -40,6 +40,16 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:id="@+id/textText" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/validation_error"
+                android:id="@+id/validationError"
+                android:layout_gravity="center|bottom"
+                android:textColor="#ffff3123"
+                android:visibility="invisible" />
+
             <TableLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -61,7 +71,6 @@
                         android:imeOptions="flagNoExtractUi"
                         android:layout_gravity="left|top"
                         android:autoText="false"
-                        android:backgroundTint="@drawable/abc_ab_share_pack_holo_light"
                         android:visibility="invisible" />
 
                     <TextView
@@ -144,7 +153,6 @@
                         android:imeOptions="flagNoExtractUi"
                         android:layout_gravity="left|top"
                         android:autoText="false"
-                        android:backgroundTint="@drawable/abc_ab_share_pack_holo_light"
                         android:inputType="textCapCharacters" />
 
                     <TextView
@@ -171,7 +179,6 @@
                         android:imeOptions="flagNoExtractUi"
                         android:layout_gravity="left|top"
                         android:autoText="false"
-                        android:backgroundTint="@drawable/abc_ab_share_pack_holo_light"
                         android:inputType="textCapCharacters" />
 
                     <TextView
@@ -183,7 +190,38 @@
                         android:layout_gravity="center_horizontal|left|top"
                         android:inputType="text|textMultiLine" />
                 </TableRow>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/radio_titel"
+                    android:id="@+id/textView12"
+                    android:layout_marginTop="15dp" />
+
+                <RadioGroup
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/radioSex"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/radioMale"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/radio_male"/>
+
+                    <RadioButton
+                        android:id="@+id/radioFemale"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/radio_female"
+                        android:checked="true"/>
+
+                    </RadioGroup>
             </TableLayout>
+
+
         </LinearLayout>
     </ScrollView>
 

@@ -18,7 +18,7 @@ import isst.fraunhofer.de.ompi.adapter.StateAdapter;
 import isst.fraunhofer.de.ompi.model.HRV;
 
 
-public class SendDailyDataActivity extends Activity {
+public class SendDailyDataActivity extends BasicActivity {
 
     public static final String PREFS_NAME = "MyPrefsFile";
    PersonAdapter personAdapter;

@@ -13,17 +13,27 @@ import android.util.Log;
 import java.util.ArrayList;
 
 import isst.fraunhofer.de.ompi.R;
-import isst.fraunhofer.de.ompi.activities.TemplateActivity;
+import isst.fraunhofer.de.ompi.activities.StartActivity;
+import isst.fraunhofer.de.ompi.adapter.PersonAdapter;
+import isst.fraunhofer.de.ompi.adapter.Scheduler;
+import isst.fraunhofer.de.ompi.adapter.StateAdapter;
 
 
 public class GCMIntentService extends GCMBaseIntentService {
 
-	public GCMIntentService() {
+    PersonAdapter personAdapter=PersonAdapter.getInstance(this);
+    StateAdapter stateAdapter=StateAdapter.getInstance(this);
+    Scheduler scheduler=Scheduler.getInstance(this);
+    String messageText;
+
+    public GCMIntentService() {
 		super(getSenderId());
 
 	}
 
-	private static final String SENDER_ID = "215905765243";
+
+
+	private static final String SENDER_ID = "329654643597";
     public static final String PREFS_NAME = "MyPrefsFile";
     SharedPreferences settings;
 
@@ -32,10 +42,7 @@ public class GCMIntentService extends GCMBaseIntentService {
 		// RegistrationID an den eigenen Server senden.
 		Log.i(TAG, "Device registered: regId = " + registrationId);
 		String token = PreferenceManager.getDefaultSharedPreferences(pContext).getString("token", "");
-		String patientid = PreferenceManager.getDefaultSharedPreferences(pContext).getString("patientid", "");
 
-		if (token.isEmpty() || patientid.isEmpty())
-			return;
 
 
 
@@ -50,21 +57,42 @@ public class GCMIntentService extends GCMBaseIntentService {
 	protected void onMessage(final Context context, final Intent arg1) {
 
 		Log.i(TAG, "onMessage, Nach GCM: ");
-//		Log.i(TAG, "onMessage, Parameter: ");
+
 		ArrayList<String> args = new ArrayList<>(arg1.getExtras().keySet());
-		for (int i = 0; i < arg1.getExtras().size(); i++) {
+		/*for (int i = 0; i < arg1.getExtras().size(); i++) {
 			Log.i(TAG, "onmessage loop: "+args.get(i) + ": " + arg1.getExtras().get(args.get(i)));
-		}
+		}*/
 
 
 
-       saveGroupId(arg1.getStringExtra("groupId"));
+        switch (arg1.getStringExtra("functionName")) {
+            case "setGroupId": {
+                setNextDay(1);
+                saveGroupId(Integer.parseInt(arg1.getStringExtra("functionValue")));
+                Intent intent = new Intent(this, scheduler.onGroupIdRecieve());
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                break;
+            }
+            case "setNextDay": {
+                if (!stateAdapter.isLastDayPassed()) {
+                    setNextDay(Integer.parseInt(arg1.getStringExtra("functionValue")));
+                    Intent intent = new Intent(this, scheduler.onNextDayRecieve());
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                }
+                break;
+            }
+        }
+
+            messageText = arg1.getStringExtra("messageText");
 
 
-                Intent serviceIntent = new Intent(context, TemplateActivity.class);
+
+                Intent serviceIntent = new Intent(this, StartActivity.class);
                 serviceIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, serviceIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-                NotificationCompat.Builder builder = new NotificationCompat.Builder(context).setContentTitle("adipo").setContentIntent(pendingIntent).setContentText("Sie wurden zu einer Gruppe zugeteilt")
+                NotificationCompat.Builder builder = new NotificationCompat.Builder(context).setContentTitle("ompi").setContentIntent(pendingIntent).setContentText( messageText)
                         .setSmallIcon(R.drawable.ompi_launcher);
 
                 Notification noti = builder.build();
@@ -82,11 +110,19 @@ public class GCMIntentService extends GCMBaseIntentService {
 
 
 	}
-    public void saveGroupId(String groupId){
-        settings = getSharedPreferences(PREFS_NAME, 0);
-        SharedPreferences.Editor editor = settings.edit();
-        editor.putString("groupId", groupId);
-        editor.commit();
+    public void saveGroupId(int groupId){
+        personAdapter.setGroupId(groupId);
+
+    }
+
+    public  void setNextDay(int dayNr){
+        if (dayNr==0)
+        stateAdapter.nextDay();
+        else
+         stateAdapter.setDayNr(dayNr);
+    }
+
+    public void navigateTo(int ordinal){
 
     }
 

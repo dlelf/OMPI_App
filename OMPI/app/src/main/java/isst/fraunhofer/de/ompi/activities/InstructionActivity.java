@@ -52,7 +52,7 @@ public class InstructionActivity extends BasicActivity {
         case 3:taskText.setText(R.string.task3_text);
         }
         //TODO check groupNr and show suitable taskText
-        /*int groupNr = personAdapter.getPerson().getGroupNr();
+        int groupNr = personAdapter.getPerson().getGroupNr();
         switch (groupNr) {
             case 1: {
                 text.setText(R.string.task1_text);
@@ -62,17 +62,18 @@ public class InstructionActivity extends BasicActivity {
                 text.setText(R.string.task2_text);
                 break;
             }
-        }*/
+        }
     }
 
     private void nextActivity(){
         Intent intent;
         switch (personAdapter.getPerson().getGroupNr()){
-            case 1: intent = new Intent(this,scheduler.chooseNextActivity(this));
-            case 2: intent = new Intent(this,scheduler.chooseNextActivity(this));
-            case 3: intent = new Intent(this,scheduler.chooseNextActivity(this,true));
+            case 1: {intent = new Intent(this,scheduler.chooseNextActivity(this));break;}
+            case 2: {intent = new Intent(this,scheduler.chooseNextActivity(this));break;}
+            case 3: {intent = new Intent(this,scheduler.chooseNextActivity(this,true));break;}
+            default: {intent = new Intent(this,scheduler.chooseNextActivity(this));break;}
         }
-        intent = new Intent(this,scheduler.chooseNextActivity(this));
+        //intent = new Intent(this,scheduler.chooseNextActivity(this));
         startActivity(intent);
     }
 

@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import isst.fraunhofer.de.ompi.Constants;
 import isst.fraunhofer.de.ompi.R;
+import isst.fraunhofer.de.ompi.adapter.PersonAdapter;
 import isst.fraunhofer.de.ompi.adapter.RestAdapter;
 import isst.fraunhofer.de.ompi.adapter.Scheduler;
 import isst.fraunhofer.de.ompi.adapter.TaskAdapter;
@@ -28,6 +29,7 @@ public class TaskActivity extends BasicActivity {
     Scheduler scheduler;
     RestAdapter restAdapter;
     TaskAdapter taskAdapter;
+    PersonAdapter personAdapter;
 
     Activity context;
 
@@ -41,6 +43,7 @@ public class TaskActivity extends BasicActivity {
         scheduler=Scheduler.getInstance(this);
         taskAdapter=TaskAdapter.getInstance(this);
         restAdapter=RestAdapter.getInstance(this);
+        personAdapter=PersonAdapter.getInstance(this);
         context=this;
 
         //Initialize activity components
@@ -122,7 +125,14 @@ public class TaskActivity extends BasicActivity {
     }
 
     private void nextActivity(){
-        Intent intent = new Intent(this,scheduler.chooseNextActivity(this));
+        Intent intent;
+        switch (personAdapter.getPerson().getGroupNr()){
+            case 1: {intent = new Intent(this,scheduler.chooseNextActivity(this));break;}
+            case 2: {intent = new Intent(this,scheduler.chooseNextActivity(this));break;}
+            case 3: {intent = new Intent(this,scheduler.chooseNextActivity(this,true));break;}
+            default: {intent = new Intent(this,scheduler.chooseNextActivity(this));break;}
+        }
+        //intent = new Intent(this,scheduler.chooseNextActivity(this));
         startActivity(intent);
     }
 

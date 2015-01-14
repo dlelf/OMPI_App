@@ -23,6 +23,7 @@ import isst.fraunhofer.de.ompi.model.HRV;
 public class HRVAdapter {
 
     final static String hrvPackage = "com.RMT.ompihrv";
+    public static String MY_PACKAGE_NAME;
 
     private static HRVAdapter mInstance;
     private static Context mContext;
@@ -34,6 +35,7 @@ public class HRVAdapter {
         mContext = pContext;
         personAdapter = PersonAdapter.getInstance(pContext);
         stateAdapter = StateAdapter.getInstance(pContext);
+        MY_PACKAGE_NAME = pContext.getApplicationContext().getPackageName();
     }
 
     public static HRVAdapter getInstance(Context pContext) {
@@ -165,9 +167,15 @@ public class HRVAdapter {
 
 
     public void startHRV() {
+       // ((Activity) mContext).startActivityForResult(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + hrvPackage)), 42);/*
 
         if (appInstalled()) {
-            Intent LaunchIntent = mContext.getPackageManager()
+            Intent LaunchIntent = new Intent();
+            //LaunchIntent = mContext.getPackageManager().getLaunchIntentForPackage(hrvPackage);
+            LaunchIntent.setClassName(hrvPackage,hrvPackage+".ActivityHomescreen");
+            ((Activity) mContext).startActivityForResult(LaunchIntent, 600);
+        }
+            /*Intent LaunchIntent = mContext.getPackageManager()
                     .getLaunchIntentForPackage(hrvPackage);
             ((Activity) mContext).startActivityForResult(LaunchIntent, 42);
         } else {
@@ -176,7 +184,7 @@ public class HRVAdapter {
             } catch (android.content.ActivityNotFoundException anfe) {
                 ((Activity) mContext).startActivityForResult(new Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/apps/details?id=" + hrvPackage)), 42);
             }
-        }
+        }*/
 
     }
 

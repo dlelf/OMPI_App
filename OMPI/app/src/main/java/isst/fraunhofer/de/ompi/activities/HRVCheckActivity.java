@@ -36,7 +36,8 @@ public class HRVCheckActivity extends BasicActivity {
         title = (TextView)this.findViewById(R.id.textTitle);
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) { hrvAdapter.startHRV();
+            public void onClick(View v) {
+                hrvAdapter.startHRV();
 
             }
         });

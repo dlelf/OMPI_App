@@ -23,7 +23,7 @@ public class StartActivity extends BasicActivity {
         stateAdapter=StateAdapter.getInstance(this);
 
 
-        scheduler.setStartActivity(HRVResultActivity.class);
+        //scheduler.setStartActivity(HRVCheckActivity.class);
         //stateAdapter.nextDay();
 
 

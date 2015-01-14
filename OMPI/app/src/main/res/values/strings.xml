@@ -11,7 +11,7 @@
     <string name="dummy_link">http:\\www.google.de</string>
 
     <string name="registration_title">Registrierung</string>
-    <string name="registration_text">Sehr  geehrte(r) Versuchsteilnehmer(in),\nHerzlich willkommen zur Studie!\nBitte registrieren Sie sich zuerst. Dafür tragen Sie bitte den Code in das Freifeld  ein, den sie bei der Beantwortung des Fragebogens erhalten haben.
+    <string name="registration_text">Sehr  geehrte(r) Studienteilnehmer(in),\nHerzlich willkommen zur Studie!\nBitte registrieren Sie sich zuerst. Dafür tragen Sie bitte den Code in das Freifeld  ein, den sie bei der Beantwortung des Fragebogens erhalten haben.
     </string>
     <string name="registrierung_id1_text">2. Buchstabe des Vornamens</string>
     <string name="registrierung_id2_text">1. Zahl Ihres Geburtsdatums (z.B 02.01.1993 ->02 eintragen)</string>
@@ -28,7 +28,7 @@
 
     <string name="link_button">Weiter</string>
     <string name="link_title">Link zum Fragebogen</string>
-    <string name="link_text">Sehr geehrte(r) Versuchsteilnehmer(in), \n\n
+    <string name="link_text">Sehr geehrte(r) Studienteilnehmer(in), \n\n
     Bitte folgen Sie dem Link und füllen Sie den Fragebogen aus.\n\n
     Bitte verwenden Sie dabei zur eindeutigen Zuordnung der Daten den initialen Registrierungscode.
     </string>
@@ -46,7 +46,7 @@
     <string name="send_error">\n\n\n
     Die Daten konnten nicht gesendet werden. Bitte prüffen Sie Ihre Internetverbindung und versuchen Sie es erneut.</string>
     <string name="wait_title">Gruppeneinteilung läuft</string>
-    <string name="wait_text">Sehr geehrte(r) Versuchsteilnehmer(in),\n\n
+    <string name="wait_text">Sehr geehrte(r) Studienteilnehmer(in),\n\n
     Sie sind jetzt für die Studie registriert. \n\n
     Die Studie wird voraussichtlich ab dem 14.01. beginnen. Dann erhalten sie eine weitere Nachricht von uns.
     </string>
@@ -68,7 +68,7 @@
     </string>
 
     <string name="instruction_title">Anleitung</string>
-    <string name="instruction_text">Sehr geehrte(r) Versuchsteilnehmer(in),\n\n
+    <string name="instruction_text">Sehr geehrte(r) Studienteilnehmer(in),\n\n
 	Die Studie kann nun beginnen.\n
 	Erledigen Sie bitte die folgende Aufgabe innerhalb der nächsten zwei Wochen regelmäßig einmal täglich (am besten abends).\n\n
     </string>
@@ -111,13 +111,13 @@
 
 
     <string name="placeboTask_title">Aufgabe</string>
-    <string name="placeboTask_text">Sehr geehrte(r) Versuchsteilnehmer(in), \n \n
+    <string name="placeboTask_text">Sehr geehrte(r) Studienteilnehmer(in), \n \n
     Bitte dokumentieren Sie eine Erinnerung aus Ihrer Kindheit (30-50 Wörter).
     </string>
     <string name="Task_button">Fertig</string>
 
     <string name="realTask_title">Aufgabe</string>
-    <string name="realTask_text">Sehr geehrte(r) Versuchsteilnehmer(in), \n \n
+    <string name="realTask_text">Sehr geehrte(r) Studienteilnehmer(in), \n \n
     Bitte dokumentieren Sie 3 positive Dinge des Tages und den Grund dafür.
     </string>
     <string name="goodThing">Ich habe heute...</string>

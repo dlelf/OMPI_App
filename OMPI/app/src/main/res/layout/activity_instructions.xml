@@ -28,7 +28,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Large Text"
+                android:text="@string/instruction_title"
                 android:id="@+id/textTitle"
                 android:layout_gravity="center_horizontal|top"
                 android:gravity="center_horizontal" />
@@ -37,13 +37,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="@string/dummy_text"
+                android:text="@string/instruction_text"
                 android:id="@+id/textText" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Large Text"
+                android:text="@string/instruction_task_title"
                 android:id="@+id/taskTitle"
                 android:layout_gravity="center_horizontal|top"
                 android:gravity="center_horizontal" />

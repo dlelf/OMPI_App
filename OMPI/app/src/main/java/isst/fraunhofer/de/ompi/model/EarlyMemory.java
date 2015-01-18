@@ -11,6 +11,15 @@ public class EarlyMemory implements Serializable {
     private String personId;
     private int dayNr;
     private String memory;
+    private String date;
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
 
     public String getPersonId() {
         return personId;

@@ -14,18 +14,20 @@ import isst.fraunhofer.de.ompi.Constants;
 import isst.fraunhofer.de.ompi.R;
 import isst.fraunhofer.de.ompi.adapter.RestAdapter;
 import isst.fraunhofer.de.ompi.adapter.Scheduler;
+import isst.fraunhofer.de.ompi.adapter.StateAdapter;
 import isst.fraunhofer.de.ompi.adapter.TaskAdapter;
 import isst.fraunhofer.de.ompi.model.EarlyMemory;
 
 public class PlaceboTaskActivity extends BasicActivity {
 
     Button nextButton;
-    TextView text, title, connectionError,validationError;
+    TextView text, title, connectionError,validationError,dayNr;
     EditText memory;
 
     Scheduler scheduler;
     RestAdapter restAdapter;
     TaskAdapter taskAdapter;
+    StateAdapter stateAdapter;
 
     Activity context;
     Boolean connectionFailed;
@@ -40,12 +42,16 @@ public class PlaceboTaskActivity extends BasicActivity {
         scheduler = Scheduler.getInstance(this);
         taskAdapter = TaskAdapter.getInstance(this);
         restAdapter = RestAdapter.getInstance(this);
+        stateAdapter=StateAdapter.getInstance(this);
         context = this;
 
         //Initialize activity components
         nextButton = (Button) this.findViewById(R.id.dummy_next_button);
         text = (TextView) this.findViewById(R.id.textText);
         title = (TextView) this.findViewById(R.id.textTitle);
+        dayNr=(TextView)this.findViewById(R.id.dayNr);
+        dayNr.setText(String.valueOf(stateAdapter.getState().getDayNr()));
+
         connectionError = (TextView) this.findViewById(R.id.error);
         validationError = (TextView) this.findViewById(R.id.validationError);
         nextButton.setOnClickListener(new View.OnClickListener() {
@@ -66,7 +72,7 @@ public class PlaceboTaskActivity extends BasicActivity {
 
 
         //Set real data to activity components
-        title.setText(R.string.placeboTask_title);
+        title.setText(R.string.Task_title);
         text.setText(R.string.placeboTask_text);
         nextButton.setText(R.string.Task_button);
 

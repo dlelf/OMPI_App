@@ -64,10 +64,10 @@ public class Scheduler {
         SendRegistrationActivity(SendRegistrationActivity.class, WaitForRegistrationActivity.class,null),
         WaitForRegistrationActivity(WaitForRegistrationActivity.class, InstructionActivity.class,null),
 
-        InstructionActivity(InstructionActivity.class,HRVCheckActivity.class,TaskActivity.class),
+        InstructionActivity(InstructionActivity.class,TaskActivity.class, PlaceboTaskActivity.class),
 
         HRVCheckActivity(HRVCheckActivity.class,HRVResultActivity.class,null),
-        HRVResultActivity(HRVResultActivity.class,TaskActivity.class,WaitForNextDayActivity.class),
+        HRVResultActivity(HRVResultActivity.class,WaitForNextDayActivity.class,null),
 
         PlaceboTaskActivity(PlaceboTaskActivity.class,HRVCheckActivity.class,WaitForNextDayActivity.class),
         TaskActivity(TaskActivity.class,HRVCheckActivity.class,WaitForNextDayActivity.class),
@@ -169,21 +169,33 @@ public class Scheduler {
     public Class getLastActivity(){
         String className=settings.getString(PROPERTY_CURRENT_ACTIVITY,Action.RegistrationActivity.name());
         Action a =  Action.valueOf(className);
-        Class r=a.thisActivity;
         return Action.valueOf(className).thisActivity;
 
     }
 
-    public Class onGroupIdRecieve(){
+    public Class onActivityReceive(String activity) {
+        Class newActivity = Action.valueOf(activity).thisActivity;
+        saveBeforeActivity(getLastActivity());
+        saveLastActivity(newActivity);
+        return newActivity;
+    }
+
+    public Class onGroupIdReceive(){
         saveBeforeActivity(getLastActivity());
         saveLastActivity(InstructionActivity.class);
         return InstructionActivity.class;
     }
 
-    public Class onNextDayRecieve(){
+    public Class onNextDayReceive(){
         saveBeforeActivity(getLastActivity());
-        saveLastActivity(InstructionActivity.class);
-        return InstructionActivity.class;
+        if (personAdapter.getPerson().getGroupNr()==2){
+        saveLastActivity(PlaceboTaskActivity.class);
+        return PlaceboTaskActivity.class;
+        }
+        else {
+            saveLastActivity(TaskActivity.class);
+            return TaskActivity.class;
+        }
     }
 
     public Class setNextActivity(Class<? extends Activity> activity){

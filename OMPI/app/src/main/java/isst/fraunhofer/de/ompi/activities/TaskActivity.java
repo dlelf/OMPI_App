@@ -15,13 +15,14 @@ import isst.fraunhofer.de.ompi.R;
 import isst.fraunhofer.de.ompi.adapter.PersonAdapter;
 import isst.fraunhofer.de.ompi.adapter.RestAdapter;
 import isst.fraunhofer.de.ompi.adapter.Scheduler;
+import isst.fraunhofer.de.ompi.adapter.StateAdapter;
 import isst.fraunhofer.de.ompi.adapter.TaskAdapter;
 import isst.fraunhofer.de.ompi.model.GoodThing;
 
 public class TaskActivity extends BasicActivity {
 
     Button nextButton;
-    TextView text,title,error,validationError;
+    TextView text,title,error,validationError,dayNr;
     EditText goodThing1,goodThing2,goodThing3;
     EditText causality1,causality2,causality3;
     Boolean connectionFailed;
@@ -30,6 +31,7 @@ public class TaskActivity extends BasicActivity {
     RestAdapter restAdapter;
     TaskAdapter taskAdapter;
     PersonAdapter personAdapter;
+    StateAdapter stateAdapter;
 
     Activity context;
 
@@ -44,12 +46,17 @@ public class TaskActivity extends BasicActivity {
         taskAdapter=TaskAdapter.getInstance(this);
         restAdapter=RestAdapter.getInstance(this);
         personAdapter=PersonAdapter.getInstance(this);
+        stateAdapter=StateAdapter.getInstance(this);
         context=this;
 
         //Initialize activity components
         nextButton = (Button) this.findViewById(R.id.dummy_next_button);
         text = (TextView)this.findViewById(R.id.textText);
         title = (TextView)this.findViewById(R.id.textTitle);
+        dayNr=(TextView)this.findViewById(R.id.dayNr);
+
+        dayNr.setText(String.valueOf(stateAdapter.getState().getDayNr()));
+
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,8 +96,8 @@ public class TaskActivity extends BasicActivity {
 
     private void save(){
         taskAdapter.addGoodThing(goodThing1.getText().toString(),causality1.getText().toString());
-        taskAdapter.addGoodThing(goodThing2.getText().toString(),causality1.getText().toString());
-        taskAdapter.addGoodThing(goodThing3.getText().toString(),causality1.getText().toString());
+        taskAdapter.addGoodThing(goodThing2.getText().toString(),causality2.getText().toString());
+        taskAdapter.addGoodThing(goodThing3.getText().toString(),causality3.getText().toString());
 
     }
 

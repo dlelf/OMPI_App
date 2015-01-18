@@ -41,6 +41,15 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/dummy_text"
                 android:id="@+id/textText" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/send_error"
+                android:id="@+id/error"
+                android:layout_gravity="center|bottom"
+                android:textColor="#ffff3123"
+                android:visibility="invisible" />
         </LinearLayout>
     </ScrollView>
 

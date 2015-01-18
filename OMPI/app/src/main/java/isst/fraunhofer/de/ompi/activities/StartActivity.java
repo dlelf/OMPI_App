@@ -23,8 +23,9 @@ public class StartActivity extends BasicActivity {
         stateAdapter=StateAdapter.getInstance(this);
 
 
-        //scheduler.setStartActivity(HRVCheckActivity.class);
+        //scheduler.setStartActivity(InstructionActivity.class);
         //stateAdapter.nextDay();
+       // GooglePlayServicesUtil.isUserRecoverableError(3);
 
 
 

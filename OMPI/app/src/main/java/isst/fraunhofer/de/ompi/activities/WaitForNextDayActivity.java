@@ -32,10 +32,7 @@ public class WaitForNextDayActivity extends BasicActivity {
         stateAdapter=StateAdapter.getInstance(this);
         context=this;
 
-        if(stateAdapter.isLastDay()){
-            Intent intent = new Intent(this,scheduler.getLastActivity());
-            startActivity(intent);
-        }
+
 
         //Initialize activity components
         text = (TextView)this.findViewById(R.id.textText);
@@ -48,6 +45,11 @@ public class WaitForNextDayActivity extends BasicActivity {
         //Set real data to activity components
         title.setText(R.string.endofday_title);
         text.setText(R.string.endofday_text);
+
+        if(stateAdapter.isLastDay()){
+            Intent intent = new Intent(this,scheduler.chooseNextActivity(this,true));
+            startActivity(intent);
+        }
 
     }
 

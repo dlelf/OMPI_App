@@ -44,10 +44,10 @@ public class HRVCheckActivity extends BasicActivity {
 
         //Set real data to activity components
         title.setText(R.string.hrvcheck_title);
-        if(stateAdapter.getState().isFirstHrv())
+        //if(stateAdapter.getState().isFirstHrv())
         text.setText(R.string.hrvcheck_text);
-        else
-            text.setText(R.string.measure_two);
+        //else
+        //    text.setText(R.string.measure_two);
         nextButton.setText(R.string.hrvcheck_button);
 
     }

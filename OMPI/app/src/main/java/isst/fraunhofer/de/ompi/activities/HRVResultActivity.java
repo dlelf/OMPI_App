@@ -28,8 +28,9 @@ public class HRVResultActivity extends BasicActivity {
     StateAdapter stateAdapter;
     PersonAdapter personAdapter;
     RestAdapter restAdapter;
-    boolean hrvValid, connectionFailed;
+    boolean  connectionFailed;
     Activity context;
+    ArrayList<HRV> hrv;
 
 
     @Override
@@ -46,7 +47,8 @@ public class HRVResultActivity extends BasicActivity {
         context = this;
 
         //Check, if HRV richtig gelesen wurde
-        hrvValid = hrvAdapter.isHRVValid(this);
+        hrv=hrvAdapter.getHRV();
+       // hrvValid = hrvAdapter.isHRVValid(this);
 
         //Initialize activity components
         nextButton = (Button) this.findViewById(R.id.dummy_next_button);
@@ -56,7 +58,7 @@ public class HRVResultActivity extends BasicActivity {
         sending = (TextView) this.findViewById(R.id.sending);
 
         //Set real data to activity components
-        if (hrvValid) {
+        if (hrv!=null) {
             title.setText(R.string.hrvResultOk_title);
             text.setText(R.string.hrvResultOk_text);
         } else {
@@ -69,8 +71,8 @@ public class HRVResultActivity extends BasicActivity {
             @Override
             public void onClick(View v) {
                 nextButton.setEnabled(false);
-                hrvValid = hrvAdapter.isHRVValid(context);
-                if (!hrvValid) backToHrv();
+                //hrvValid = hrvAdapter.isHRVValid(context);
+                if (hrv==null) backToHrv();
                 else sendData();
 
             }
@@ -97,7 +99,7 @@ public class HRVResultActivity extends BasicActivity {
         protected HRV doInBackground(Void... params) {
             connectionFailed = false;
             try {
-                ArrayList hrv = hrvAdapter.getHRV();
+                //ArrayList<HRV> hrv = hrvAdapter.getHRV();
                 restAdapter.sendHRVs(hrv);
                 hrvAdapter.deleteHrvFile();
             } catch (Exception e) {
@@ -122,14 +124,15 @@ public class HRVResultActivity extends BasicActivity {
 
     private void nextActivity() {
         Intent intent;
-        if (stateAdapter.getState().isFirstHrv())
+       /* if (stateAdapter.getState().isFirstHrv())
             if (personAdapter.getPerson().getGroupNr()==2)
                 intent = new Intent(this, scheduler.setNextActivity(PlaceboTaskActivity.class));
             else
                 intent = new Intent(this, scheduler.chooseNextActivity(this));
         else
             intent = new Intent(this, scheduler.chooseNextActivity(this, true));
-        stateAdapter.inverseFirstHRV();
+        stateAdapter.inverseFirstHRV();*/
+        intent = new Intent(this, scheduler.chooseNextActivity(this));
         startActivity(intent);
     }
 }

@@ -10,6 +10,15 @@ public class GoodThing  implements Serializable {
     private String causality;
     private String personId;
     private int dayNr;
+    private String date;
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
 
 
     public long getId() {

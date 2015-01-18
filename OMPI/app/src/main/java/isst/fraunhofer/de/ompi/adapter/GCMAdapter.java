@@ -1,5 +1,6 @@
 package isst.fraunhofer.de.ompi.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
@@ -28,6 +29,7 @@ public class GCMAdapter {
     GoogleCloudMessaging gcm;
     public static final String PROPERTY_REG_ID = "registration_id";
     String regid;
+    Process p1;
 
     PersonAdapter personAdapter;
 
@@ -50,7 +52,7 @@ public class GCMAdapter {
     public void registerGCM(){
 
 
-        if (checkPlayServices()) {
+        //if (checkPlayServices()) {
             gcm = GoogleCloudMessaging.getInstance(context);
             regid = getRegistrationId(context);
 
@@ -58,9 +60,9 @@ public class GCMAdapter {
                 registerInBackground();
             //register();
             else saveGCMId(regid);
-        } else {
+      /*  } else {
             Log.i(TAG, "No valid Google Play Services APK found.");
-        }
+        }*/
 
     }
 
@@ -82,11 +84,24 @@ public class GCMAdapter {
      * it doesn't, display a dialog that allows users to download the APK from
      * the Google Play Store or enable it in the device's system settings.
      */
-    private boolean checkPlayServices() {
+    /*private boolean checkPlayServices() {
         int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(context);
         if (resultCode != ConnectionResult.SUCCESS) {
             if (GooglePlayServicesUtil.isUserRecoverableError(resultCode)) {
                 Log.i(TAG, "Cannot get Google ID.");
+            } else {
+                Log.i(TAG, "This device is not supported.");
+            }
+            return false;
+        }
+        return true;
+    }*/
+    private boolean checkPlayServices() {
+        int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(context);
+        if (resultCode != ConnectionResult.SUCCESS) {
+            if (GooglePlayServicesUtil.isUserRecoverableError(resultCode)) {
+                GooglePlayServicesUtil.getErrorDialog(resultCode, (Activity)context,
+                        PLAY_SERVICES_RESOLUTION_REQUEST).show();
             } else {
                 Log.i(TAG, "This device is not supported.");
             }
@@ -159,9 +174,7 @@ public class GCMAdapter {
                     saveGCMId(regid);
                 } catch (IOException ex) {
                     msg = "Error :" + ex.getMessage();
-                    // If there is an error, don't just keep trying to register.
-                    // Require the user to click a button again, or perform
-                    // exponential back-off.
+
                 }
                 return msg;
             }
@@ -192,6 +205,31 @@ public class GCMAdapter {
             // exponential back-off.
         }
     }
+
+    public Boolean isOnline() {
+        try {
+            p1 = java.lang.Runtime.getRuntime().exec("ping -c 1 www.google.com");
+            int returnVal = p1.waitFor();
+            boolean reachable = (returnVal == 0);
+            if (reachable) {
+
+                System.out.println("Internet access");
+                return reachable;
+            } else {
+
+                System.out.println("No Internet access");
+            }
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+        } finally {
+            p1.destroy();
+        }
+        return false;
+    }
+
+
 
 
 

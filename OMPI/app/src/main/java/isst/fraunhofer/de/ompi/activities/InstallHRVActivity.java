@@ -17,7 +17,7 @@ import isst.fraunhofer.de.ompi.model.Person;
 public class InstallHRVActivity extends BasicActivity {
 
     Button nextButton;
-    TextView text, title;
+    TextView text, title,error;
 
     Scheduler scheduler;
     HRVAdapter hrvAdapter;
@@ -44,6 +44,7 @@ public class InstallHRVActivity extends BasicActivity {
         nextButton = (Button) this.findViewById(R.id.dummy_next_button);
         text = (TextView) this.findViewById(R.id.textText);
         title = (TextView) this.findViewById(R.id.textTitle);
+        error = (TextView)this.findViewById(R.id.error);
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,6 +74,13 @@ public class InstallHRVActivity extends BasicActivity {
     }
 
     private void nextActivity() {
+
+        //Internet Verbindung wird geprüft
+        if (!gcmAdapter.isOnline()){
+            error.setVisibility(View.VISIBLE);
+            return;
+        }
+
         gcmAdapter.registerGCM();
         if (hrvAdapter.appInstalled()) {
             personAdapter.saveAll();

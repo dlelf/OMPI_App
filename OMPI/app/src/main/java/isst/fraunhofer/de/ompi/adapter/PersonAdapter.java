@@ -24,7 +24,7 @@ import isst.fraunhofer.de.ompi.model.Person;
 
     private PersonAdapter(Context pContext){
         mContext=pContext;
-        settings = pContext.getSharedPreferences(PREFS_NAME, 0);
+        settings = pContext.getSharedPreferences(PREFS_NAME,0);
         person =loadPerson();
     }
 

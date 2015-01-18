@@ -79,8 +79,6 @@ public class StateAdapter {
         return (state.getDayNr()== Constants.EXPERIMENT_DURATION);
     }
 
-    public boolean isLastDayPassed(){
-        return (state.getDayNr()> Constants.EXPERIMENT_DURATION);
-    }
+
 
 }

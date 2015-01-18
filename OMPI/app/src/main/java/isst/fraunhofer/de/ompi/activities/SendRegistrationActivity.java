@@ -25,7 +25,7 @@ public class SendRegistrationActivity extends BasicActivity {
     Scheduler scheduler;
     HRVAdapter hrvAdapter;
     Button nextButton;
-    TextView text,title,error;
+    TextView text,title,error,sending;
     Person person;
     Activity context;
     boolean connectionFailed;
@@ -51,12 +51,14 @@ public class SendRegistrationActivity extends BasicActivity {
         text = (TextView)this.findViewById(R.id.textText);
         title = (TextView)this.findViewById(R.id.textTitle);
         error = (TextView)this.findViewById(R.id.error);
+        sending = (TextView) this.findViewById(R.id.sending);
 
 
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 nextButton.setEnabled(false);
+                sending.setVisibility(View.VISIBLE);
                 updatePerson();
                 nextActivity();
 
@@ -103,7 +105,8 @@ public class SendRegistrationActivity extends BasicActivity {
     }
 
     public void updatePerson(){
-        personAdapter.getPerson().setHrvMeasurable(hrvAdapter.isHRVValid(this));
+        boolean hrvValid=(hrvAdapter.getHRV()!=null);
+        personAdapter.getPerson().setHrvMeasurable(hrvValid);
         hrvAdapter.deleteHrvFile();
 
     }

@@ -10,9 +10,7 @@ import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 
 import isst.fraunhofer.de.ompi.model.HRV;
@@ -49,7 +47,7 @@ public class HRVAdapter {
     public ArrayList<HRV> getHRV() {
 
         File files[] = checkFiles();
-        if (files!=null)
+        if (files!=null && files.length>0)
             return readFile(files[0]);
         else return null;
 
@@ -91,22 +89,22 @@ public class HRVAdapter {
             while ((line = br.readLine()) != null) {
                 HRV hrv = new HRV();
                 hrv.setDate(date);
-                try{
-                hrv.setRrInterval(Long.parseLong(line));}
-                catch (Exception e){
+                //try{
+                hrv.setRrInterval(Long.parseLong(line));
+            //}
+                /*catch (Exception e){
                     Log.d("Files",line + " Error by HRV Measurement");
                     hrv.setRrInterval(0);
-                }
+                }*/
                 hrv.setPersonId(personAdapter.getPerson().getLongId());
                 hrv.setDayNr(stateAdapter.getState().getDayNr());
                 hrv.setFirstHRV(stateAdapter.getState().isFirstHrv());
                 measurement.add(hrv);
             }
 
-        } catch (FileNotFoundException e) {
+        } catch (Exception e) {
             e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+            return null;
         }
 
         return measurement;
@@ -177,14 +175,14 @@ public class HRVAdapter {
         }
             /*Intent LaunchIntent = mContext.getPackageManager()
                     .getLaunchIntentForPackage(hrvPackage);
-            ((Activity) mContext).startActivityForResult(LaunchIntent, 42);
-        } else {
+            ((Activity) mContext).startActivityForResult(LaunchIntent, 42);*/
+         else {
             try {
                 ((Activity) mContext).startActivityForResult(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + hrvPackage)), 42);
             } catch (android.content.ActivityNotFoundException anfe) {
                 ((Activity) mContext).startActivityForResult(new Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/apps/details?id=" + hrvPackage)), 42);
             }
-        }*/
+        }
 
     }
 

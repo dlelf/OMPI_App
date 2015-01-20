@@ -77,10 +77,10 @@ public class InstallHRVActivity extends BasicActivity {
     private void nextActivity() {
 
         //Internet Verbindung wird geprüft
-        if (!gcmAdapter.isOnline()) {
+      /*  if (!gcmAdapter.isOnline()) {
             error.setVisibility(View.VISIBLE);
             return;
-        }
+        }*/
 
         gcmAdapter.registerGCM();
         if (hrvAdapter.appInstalled()) {

@@ -68,8 +68,8 @@ public class HRVAdapter {
             hrvDirectory = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), hrvPackage);
 
        //TODO Need check
-       // if (Build.VERSION.SDK_INT>=19 && hrvDirectory.listFiles()==null)
-       //     hrvDirectory = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS), hrvPackage);
+        if (Build.VERSION.SDK_INT>=19 && hrvDirectory.listFiles()==null)
+            hrvDirectory = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS), hrvPackage);
 
 
 
@@ -138,11 +138,11 @@ public class HRVAdapter {
     }
 
 
-    public boolean isHRVValid(Context pContext) {
+   /* public boolean isHRVValid(Context pContext) {
         if (checkFiles()!=null&&checkFiles().length!=0)
             return true;
         else return false;
-    }
+    }*/
 
     public boolean appInstalled() {
         PackageManager pm = mContext.getPackageManager();

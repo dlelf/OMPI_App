@@ -165,17 +165,12 @@ public class HRVAdapter {
 
 
     public void startHRV() {
-       // ((Activity) mContext).startActivityForResult(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + hrvPackage)), 42);/*
 
         if (appInstalled()) {
             Intent LaunchIntent = new Intent();
-            //LaunchIntent = mContext.getPackageManager().getLaunchIntentForPackage(hrvPackage);
             LaunchIntent.setClassName(hrvPackage,hrvPackage+".ActivityHomescreen");
             ((Activity) mContext).startActivityForResult(LaunchIntent, 600);
         }
-            /*Intent LaunchIntent = mContext.getPackageManager()
-                    .getLaunchIntentForPackage(hrvPackage);
-            ((Activity) mContext).startActivityForResult(LaunchIntent, 42);*/
          else {
             try {
                 ((Activity) mContext).startActivityForResult(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + hrvPackage)), 42);

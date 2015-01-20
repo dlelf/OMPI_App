@@ -69,8 +69,6 @@ public class SendRegistrationActivity extends BasicActivity {
         title.setText(R.string.send_title);
         text.setText(R.string.send_text);
         nextButton.setText(R.string.send_button);
-
-
     }
 
     private void nextActivity(){
@@ -95,6 +93,7 @@ public class SendRegistrationActivity extends BasicActivity {
         protected void onPostExecute(Person person) {
             if (!connectionFailed) {
                 Intent intent = new Intent(context, scheduler.chooseNextActivity(context));
+                hrvAdapter.deleteHrvFile();
                 startActivity(intent);
             }
             else
@@ -107,7 +106,6 @@ public class SendRegistrationActivity extends BasicActivity {
     public void updatePerson(){
         boolean hrvValid=(hrvAdapter.getHRV()!=null);
         personAdapter.getPerson().setHrvMeasurable(hrvValid);
-        hrvAdapter.deleteHrvFile();
 
     }
 

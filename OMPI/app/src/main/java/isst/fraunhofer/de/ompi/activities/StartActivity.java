@@ -23,11 +23,7 @@ public class StartActivity extends BasicActivity {
         stateAdapter=StateAdapter.getInstance(this);
 
 
-        //scheduler.setStartActivity(InstructionActivity.class);
-        //stateAdapter.nextDay();
-       // GooglePlayServicesUtil.isUserRecoverableError(3);
-
-
+        //scheduler.setStartActivity(LinkActivity.class);
 
         Intent intent = new Intent(this,scheduler.getLastActivity());
         startActivity(intent);

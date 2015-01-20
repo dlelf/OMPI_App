@@ -45,6 +45,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColorLink="#000000"
                 android:text="@string/dummy_link"
                 android:id="@+id/textLink"
                 android:autoLink="web" />

@@ -11,7 +11,7 @@
     <string name="dummy_link">http:\\www.google.de</string>
 
     <string name="registration_title">Registrierung</string>
-    <string name="registration_text">Sehr  geehrte(r) Studienteilnehmer(in),\nHerzlich willkommen zur Studie!\nBitte registrieren Sie sich zuerst. Dafür tragen Sie bitte den Code in das Freifeld  ein, den sie bei der Beantwortung des Fragebogens erhalten haben.
+    <string name="registration_text">Sehr  geehrte(r) Studienteilnehmer(in),\nHerzlich willkommen zur Studie!\nBitte registrieren Sie sich zuerst. Dazu tragen Sie bitte den Code in die Freifelder  ein, den sie bei der Beantwortung des Fragebogens erhalten haben.
     </string>
     <string name="registrierung_id1_text">2. Buchstabe des Vornamens</string>
     <string name="registrierung_id2_text">1. Zahl Ihres Geburtsdatums (z.B 02.01.1993 ->02 eintragen)</string>
@@ -22,7 +22,7 @@
     <string name="install_title">Installation der OMPI-HRV</string>
     <string name="install_text">Es wird jetzt eine App zur Messung der Herzratenvariabilität installiert. Dazu wird gleich der Play Store geöffnet.
       \n\nStellen Sie bitte sicher, dass Sie eine Internetverbindung haben.
-     \n\nNach der Installation drucken Sie bitte NICHT an /"Öffnen/", sondern kehren Sie bitte zurück zur OMPI App mit der zurück Taste
+     \n\nNach der Installation drücken Sie bitte NICHT auf \"Öffnen\", sondern kehren Sie bitte zurück zur OMPI App mit der zurück Taste
      \n\nSollten Sie eine Nachricht erhalten, dass Ihr Smartphone die App nicht unterstützt, können Sie trotzdem weiter an der Studie teilnehmen.
     </string>
 
@@ -36,7 +36,7 @@
 
     <string name="send_title">Daten zum Server</string>
     <string name="send_text">Ihre Daten wurden erfolgreich erfasst. \n\n
-    Jetzt stellen Sie bitte sicher, dass Sie eine Verbindung zum Internet haben und drücken Sie auf die Taste \"Daten senden\" um Ihre Daten zum Server zu schicken.
+    Jetzt stellen Sie bitte sicher, dass Sie eine Verbindung zum Internet haben und drücken Sie auf die Taste \"OK\" um Ihre Daten zum Server zu schicken.
     </string>
     <string name="measure_two">Jetzt erfolgt die zweite HRV-Messung. Diese wird wieder zwei Minuten dauern.</string>
 
@@ -44,7 +44,7 @@
     <string name="sending_text">\n\n\nIhre Daten werden gesendet, bitte warten Sie einen kurzen Moment.</string>
     <string name="send_button">Daten senden</string>
     <string name="send_error">\n\n\n
-    Die Daten konnten nicht gesendet werden. Bitte prüffen Sie Ihre Internetverbindung und versuchen Sie es erneut.</string>
+    Die Daten konnten nicht gesendet werden. Bitte prüfen Sie Ihre Internetverbindung und versuchen Sie es erneut. Bitte benutzen Sie keine \"Eduroam\" Verbindung. </string>
     <string name="wait_title">Gruppeneinteilung läuft</string>
     <string name="wait_text">Sehr geehrte(r) Studienteilnehmer(in),\n\n
     Sie sind jetzt für die Studie registriert. \n\n
@@ -65,11 +65,11 @@
     <string name="hrvcheck_text">Sie werden gleich zur Messung  der Herzfrequenzvariabilität (HRV) weitergeleitet.\n\n
     Dafür benötigen wir ca. 2 Minuten.  Achten Sie bitte darauf, dass Ihr Akku geladen ist. Wenn Sie die Messung durchführen wollen, drücken Sie bitte die Taste "Messung starten".
     Dann bitte den Menüpunkt \"HRV\" drücken und, wie auf dem Bild dargestellt, den Zeigefinger auf die Kamera und das LED-Licht legen.  Es werden 10 Sekunden für die Kalibrierung benötigt und danach 2 Minuten für die Messung. Bitte halten Sie den Finger die ganze Zeit auf der Kamera.
-    \n\nBitte befolgen Sie während der beiden HRV-Messungen folgende Regeln:\n\n
+    \n\nBitte befolgen Sie während der HRV-Messung folgende Regeln:\n\n
         •	\t\tca. eine halbe Stunde vor der HRV-Erfassung sollte am besten nichts mehr gegessen werden \n
         \t•	\t\tDie Erfassung sollte täglich möglichst unter gleichen Bedingungen stattfinden (Raumtemperatur, Beleuchtung, Uhrzeit, etc.)  \n
         \t•	\t\t30 Minuten vor der Messung sollte am besten kein Sport getrieben werden (sowie keine sonstigen physischen Belastungen)  \n
-        \t•	\t\tWenn Sie einen schlanken Körperbau  und kalte Hände haben – bitte die Messung an anderen Körperteilen durchführen (z.B. Handgelenk)  \n
+        \t•	\t\tWenn Sie kalte Hände haben – bitte die Messung an anderen Körperteilen durchführen (z.B. Handgelenk)  \n
         \t•	\t\tDie Messung sollte bei guter Beleuchtung  durchgeführt werden  \n
         \t•	\t\tWährend der Messung bitte nicht sprechen \n\n
     </string>
@@ -93,7 +93,7 @@
    \n\nBitte drücken Sie auf „Start“ wenn Sie mit der Aufgabe beginnen wollen.
     </string>
 
-    <string name="task3_text">Dokumentieren Sie bitte drei positive Erlebnisse des Tages. Abschließend wird  eine HRV-Messung durchgeführt.  Die komplette Erfassung wird ca. 10-15 Minuten in Anspruch nehmen. Ihre Daten werden anonymisiert übertragen.
+    <string name="task3_text">Dokumentieren Sie bitte drei positive Erlebnisse des Tages. Die komplette Erfassung wird ca. 10 Minuten in Anspruch nehmen. Ihre Daten werden anonymisiert übertragen.
    \n\nBitte drücken Sie auf „Start“ wenn Sie mit der Aufgabe beginnen wollen.
     </string>
 
@@ -102,7 +102,9 @@
 
 
     <string name="hrvResultOk_title">Messung in Ordnung</string>
-    <string name="hrvResultOk_text">Danke für die HRV-Messung. Ihre Daten wurden erfolgreich gespeichert.</string>
+    <string name="hrvResultOk_text">Ihre Daten wurden erfolgreich erfasst. \n\n
+    Jetzt stellen Sie bitte sicher, dass Sie eine Verbindung zum Internet haben und drücken Sie auf die Taste \"OK\" um Ihre Daten zum Server zu schicken.
+    </string>
     <string name="hrvResultFailed_title">Messung bitte wiederholen</string>
     <string name="hrvResultFailed_text">Ihre HRV-Daten konnten nicht erfolgreich erfasst werden. Bitte wiederholen Sie die Messung.</string>
     <string name="hrvResult_button">OK</string>
@@ -118,8 +120,8 @@
     <string name="realTask_text">Sehr geehrte(r) Studienteilnehmer(in), \n\n
         Bitte schreiben Sie drei Dinge auf, die heute gut verliefen und geben Sie jeweils die Gründe dafür an.“
     </string>
-    <string name="goodThing">Gutes Ding...</string>
-    <string name="reason">War für mich gut, weil...</string>
+    <string name="goodThing">Ein gutes Erlebnis war...</string>
+    <string name="reason">Es hat mir gefallen,weil...</string>
     <string name="realTask_button">Fertig</string>
 
     <string name="validation_error">Bitte prüfen Sie Ihre Angaben in allen Feldern ! </string>
@@ -132,7 +134,7 @@
     <string name="endofexperiment_title">Ende</string>
     <string name="endofexperiment_text">Vielen Dank für Ihre Teilnahme. \n\n
         Anbei erhalten Sie den Link zu der Befragung.  Bitte füllen Sie den Fragebogen sofort aus – es wird lediglich 5 Minuten dauern.\n\n
-        Bitte löschen Sie die App nicht. Nach zwei Wochen bitten wir Sie erneut, einen letzten Fragebogen auszufüllen. Sie erhalten dazu jedoch eine Benachrichtigung über Ihr Smartphone und die Information wann und wo Sie sich Ihre Versuchspersonenstunden gutschreiben lassen können.
+        Bitte deinstallieren Sie die App nicht. Nach zwei Wochen bitten wir Sie erneut, einen letzten Fragebogen auszufüllen. Sie erhalten dazu jedoch eine Benachrichtigung über Ihr Smartphone und die Information wann und wo Sie sich Ihre Versuchspersonenstunden gutschreiben lassen können.
     </string>
     <string name="endofexperiment_button">Weiter</string>
 

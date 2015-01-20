@@ -77,6 +77,10 @@ public class GcmIntentService extends IntentService {
                     }
                     break;
                 }
+                case "message": {
+
+                    break;
+                }
             }
 
             messageText = extras.getString("messageText");

@@ -8,8 +8,8 @@ android {
         applicationId "isst.fraunhofer.de.ompi"
         minSdkVersion 10
         targetSdkVersion 21
-        versionCode 11
-        versionName "0.9.8"
+        versionCode 14
+        versionName "1.0.2"
     }
     buildTypes {
         release {

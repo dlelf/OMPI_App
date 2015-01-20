@@ -17,7 +17,7 @@ import isst.fraunhofer.de.ompi.model.Person;
 public class InstallHRVActivity extends BasicActivity {
 
     Button nextButton;
-    TextView text, title,error;
+    TextView text, title, error;
 
     Scheduler scheduler;
     HRVAdapter hrvAdapter;
@@ -44,7 +44,7 @@ public class InstallHRVActivity extends BasicActivity {
         nextButton = (Button) this.findViewById(R.id.dummy_next_button);
         text = (TextView) this.findViewById(R.id.textText);
         title = (TextView) this.findViewById(R.id.textTitle);
-        error = (TextView)this.findViewById(R.id.error);
+        error = (TextView) this.findViewById(R.id.error);
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,13 +70,14 @@ public class InstallHRVActivity extends BasicActivity {
             intent = new Intent(this, scheduler.chooseNextActivity(this, true));
         }
         personAdapter.saveAll();
+        if (personAdapter.getPerson().getGoogleCloudId() != null)
         startActivity(intent);
     }
 
     private void nextActivity() {
 
         //Internet Verbindung wird geprüft
-        if (!gcmAdapter.isOnline()){
+        if (!gcmAdapter.isOnline()) {
             error.setVisibility(View.VISIBLE);
             return;
         }
@@ -84,8 +85,11 @@ public class InstallHRVActivity extends BasicActivity {
         gcmAdapter.registerGCM();
         if (hrvAdapter.appInstalled()) {
             personAdapter.saveAll();
-            Intent intent = new Intent(this, scheduler.chooseNextActivity(this));
-            startActivity(intent);
+            if (personAdapter.getPerson().getGoogleCloudId() != null) {
+                Intent intent = new Intent(this, scheduler.chooseNextActivity(this));
+                startActivity(intent);
+            }
+
         } else
             hrvAdapter.installHRV();
     }

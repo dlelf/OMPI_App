@@ -30,7 +30,7 @@ public class WaitForRegistrationActivity extends BasicActivity {
         text = (TextView)this.findViewById(R.id.textText);
         title = (TextView)this.findViewById(R.id.textTitle);
 
-       /* //TODO Delete after debug
+       /*
         scrollView=(ScrollView)this.findViewById(R.id.scrollView);
         scrollView.setOnTouchListener(new MyOnTouch());
 */
@@ -40,19 +40,7 @@ public class WaitForRegistrationActivity extends BasicActivity {
 
     }
 
-   /* //TODO Delete after debug
-    public class MyOnTouch implements View.OnTouchListener {
-        @Override
-        public boolean onTouch(View v, MotionEvent event) {
-            return pageFlip(v, event);
-        }
 
-        public boolean pageFlip(View v, MotionEvent event) {
-            Intent intent = new Intent(context,scheduler.chooseNextActivity(context));
-            startActivity(intent);
-            return true;
-        }
-    }*/
 
 
 

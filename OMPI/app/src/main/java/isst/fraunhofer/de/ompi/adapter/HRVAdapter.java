@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Environment;
 import android.util.Log;
 
@@ -65,8 +66,10 @@ public class HRVAdapter {
         File hrvDirectory;
 
             hrvDirectory = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), hrvPackage);
-            if (hrvDirectory.listFiles()==null)
-            hrvDirectory = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS), hrvPackage);
+
+       //TODO Need check
+       // if (Build.VERSION.SDK_INT>=19 && hrvDirectory.listFiles()==null)
+       //     hrvDirectory = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS), hrvPackage);
 
 
 

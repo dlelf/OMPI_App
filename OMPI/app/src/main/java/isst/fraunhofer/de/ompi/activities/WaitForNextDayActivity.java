@@ -38,7 +38,7 @@ public class WaitForNextDayActivity extends BasicActivity {
         text = (TextView)this.findViewById(R.id.textText);
         title = (TextView)this.findViewById(R.id.textTitle);
 
-        //TODO Delete after debug
+
      /*   scrollView=(ScrollView)this.findViewById(R.id.scrollView);
         scrollView.setOnTouchListener(new MyOnTouch());*/
 
@@ -53,7 +53,7 @@ public class WaitForNextDayActivity extends BasicActivity {
 
     }
 
-   /* //TODO Delete after debug
+   /*
     public class MyOnTouch implements View.OnTouchListener {
         @Override
         public boolean onTouch(View v, MotionEvent event) {

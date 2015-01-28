@@ -59,7 +59,7 @@ public class HRVResultActivity extends BasicActivity {
 
         //Set real data to activity components
         if (hrv!=null) {
-            title.setText(R.string.hrvResultOk_title);
+            title.setText(R.string.hrvResultOk_title+" erfasst "+hrv.size()+" lines");
             text.setText(R.string.hrvResultOk_text);
         } else {
             title.setText(R.string.hrvResultFailed_title);

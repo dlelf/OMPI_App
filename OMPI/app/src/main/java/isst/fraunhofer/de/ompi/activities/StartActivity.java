@@ -23,7 +23,7 @@ public class StartActivity extends BasicActivity {
         stateAdapter=StateAdapter.getInstance(this);
 
 
-        //scheduler.setStartActivity(LinkActivity.class);
+       // scheduler.setStartActivity(HRVCheckActivity.class);
 
         Intent intent = new Intent(this,scheduler.getLastActivity());
         startActivity(intent);

@@ -5,11 +5,11 @@ android {
     buildToolsVersion "21.1.1"
 
     defaultConfig {
-        applicationId "isst.fraunhofer.de.ompi"
+        applicationId "isst.fraunhofer.de.omp"
         minSdkVersion 10
         targetSdkVersion 21
-        versionCode 17
-        versionName "1.1.0"
+        versionCode 18
+        versionName "1.1.1"
     }
     buildTypes {
         release {
